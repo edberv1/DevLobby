@@ -10,13 +10,11 @@ import Contact from './Pages/Contact';
 import SignUp from './Pages/SignUp';
 import Login from './Pages/Login';
 import NotFound from './Pages/NotFound';
-import Notification from "./Organisms/DashboardSidebar/Notification";
 
 function App() {
   return (
     <div>
       <Sidebar />
-      <Notification/>
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Layout />}>
