@@ -1,8 +1,11 @@
-import './App.css';
+import "./App.css";
+import Sidebar from "./Organisms/DashboardSidebar/Sidebar";
 
 function App() {
   return (
-   <> <h1>Dev Lobby</h1> </>
+    <>
+      <Sidebar />
+    </>
   );
 }
 
