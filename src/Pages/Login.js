@@ -1,10 +1,11 @@
 import React from 'react'
+import LoginSignup from '../loginSignup/LoginSignup/LoginSignup'
 
 function Login() {
   return (
-    <div>
-      
-    </div>
+    <>
+      <LoginSignup />
+    </>
   )
 }
 

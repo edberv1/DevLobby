@@ -10,7 +10,7 @@ import Contact from './Pages/Contact';
 import SignUp from './Pages/SignUp';
 import Login from './Pages/Login';
 import NotFound from './Pages/NotFound';
-import LoginSignup from './loginSignup/LoginSignup/LoginSignup';
+
 
 
 function App() {
@@ -19,17 +19,17 @@ function App() {
       <Sidebar />
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="/pricing" element={<Pricing />} />
-            <Route path="/ourcards" element={<OurCards />} />
+          <Route path='/' element={<Layout />} />
+          <Route index element={<Home />} />
+          <Route path="/pricing" element={<Pricing />} />
+          <Route path="/ourcards" element={<OurCards />} />
 
-            <Route path="/customers" element={<Customers />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="*" element={<NotFound />} />
-          </Route>
+          <Route path="/customers" element={<Customers />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="*" element={<NotFound />} />
+
         </Routes>
       </BrowserRouter>
     </div>
