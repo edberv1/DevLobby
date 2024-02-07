@@ -1,3 +1,8 @@
+.test {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 @mixin rounded-corners($radius: 1rem) {
   border-radius: $radius;
 }
@@ -30,6 +35,8 @@
 .butonat-client {
   display: flex;
   align-items: center;
+  justify-content: center;
+  margin: 0;
 
   button {
     @include button-styles(#95bfd834, #ffffff, #c2e0f134);
@@ -44,26 +51,32 @@
 .navbar {
   font-family: "Poppins", sans-serif;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   background-color: #1a1a1a;
-  padding: 2rem 2rem;
+  padding: 1rem 2rem;
+  border-bottom: 3px solid white;
 
   .navbar-logo {
     color: #ffffff;
     font-size: 1.5rem;
     z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .navbar-links {
     list-style: none;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    align-self: center;
     align-items: center;
-    height: 60px;
-    margin: 0;
+    height: 55px;
+    margin: 0 auto;
+    padding-left: 5px;
     background-color: #282828;
-    @include rounded-corners;
+    border-radius: 2rem;
 
     li {
       margin-right: 10px;
@@ -78,12 +91,12 @@
           background-color: #fff;
           color: #1a1a1a;
           font-weight: 550;
-          @include rounded-corners;
+          border-radius: 2rem;
         }
 
         &.pricing {
           background-color: #333333;
-          @include rounded-corners;
+          border-radius: 2rem;
         }
       }
     }
@@ -264,7 +277,7 @@
       padding: 0;
     }
     .navbar-logo {
-      font-size: 1.5rem;
+      font-size: 1rem;
     }
   }
 }

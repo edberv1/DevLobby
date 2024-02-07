@@ -12,7 +12,9 @@ const Navbar = () => {
   return (
     <>
       <nav className={`navbar ${isMenuOpen ? "menu-open" : ""}`}>
-        <div className="navbar-logo">DevLobby</div>
+        <div className="navbar-logo">
+          <h1>DevLobby</h1>
+        </div>
         {/* Hamburger menu icon */}
         <div className="hamburger-menu" onClick={toggleMenu}>
           <div className="bar"></div>
