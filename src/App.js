@@ -4,11 +4,9 @@ import Navbar from "./Organisms/Navbar";
 
 function App() {
   return (
-    <div>
-      <BrowserRouter>
-        <Navbar />
-      </BrowserRouter>
-    </div>
+    <BrowserRouter>
+      <Navbar />
+    </BrowserRouter>
   );
 }
 
