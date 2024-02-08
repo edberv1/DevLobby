@@ -5,6 +5,9 @@ qe mos me livrit menuja e navbarit
 */
 $logo-max-width: 236px;
 
+body {
+  background-color: #1a1a1a;
+}
 @mixin rounded-corners($radius: 1rem) {
   border-radius: $radius;
 }
