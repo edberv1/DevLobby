@@ -4,7 +4,7 @@ import LoginSignup from '../loginSignup/LoginSignup/LoginSignup'
 function Login() {
   return (
     <>
-      <LoginSignup />
+      <Login />
     </>
   )
 }
