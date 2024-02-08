@@ -1,10 +1,10 @@
 import React from 'react'
-import LoginSignup from '../loginSignup/LoginSignup/LoginSignup'
+import Logiin from '../Logi-n/Loginn/Logiin'
 
 function Login() {
   return (
     <>
-      <Login />
+      <Logiin />
     </>
   )
 }
