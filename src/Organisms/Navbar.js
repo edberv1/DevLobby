@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../Styles/Navbar.scss";
+import devLobbylogo from "../Images/Logo/devlobby-logo.png";
 
 const Navbar = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
@@ -13,7 +14,7 @@ const Navbar = () => {
     <>
       <nav className={`navbar ${isMenuOpen ? "menu-open" : ""}`}>
         <div className="navbar-logo">
-          <h1>DevLobby</h1>
+          <img src={devLobbylogo} alt="DevLoby Logo" />
         </div>
         {/* Hamburger menu icon */}
         <div className="hamburger-menu" onClick={toggleMenu}>
