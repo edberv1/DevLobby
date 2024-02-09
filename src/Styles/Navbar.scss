@@ -4,9 +4,9 @@ ja lojna qet max width logos (ka ana e majt) edhe butonav (ka ana e djatht)
 qe mos me livrit menuja e navbarit
 */
 $logo-max-width: 236px;
-
 body {
-  background-color: #1a1a1a;
+  padding: 0;
+  margin: 0;
 }
 @mixin rounded-corners($radius: 1rem) {
   border-radius: $radius;
@@ -44,7 +44,7 @@ body {
   margin: 0;
 
   button {
-    @include button-styles(rgb(35, 35, 208), #ffffff, blue);
+    @include button-styles(#0070ec, #ffffff, blue);
   }
 
   button:last-child {
@@ -197,11 +197,11 @@ body {
         gap: 10px;
         &:first-child {
           background-color: rgb(35, 35, 208);
-          color: white; // Grayish background for "Log In"
+          color: white;
         }
 
         &:last-child {
-          background-color: white; // Beige background for "Sign Up"
+          background-color: white;
         }
       }
 
@@ -209,9 +209,9 @@ body {
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: space-around; // Center vertically
+        justify-content: space-around;
         position: absolute;
-        top: 1px; // Adjust as needed
+        top: 1px;
         left: 0;
         width: 100%;
         padding-left: 3vh;
@@ -248,10 +248,10 @@ body {
       }
 
       .navbar-buttons {
-        margin-top: 20px; // Adjust as needed
+        margin-top: 20px;
         button {
           width: 100%;
-          margin-bottom: 10px; // Adjust as needed
+          margin-bottom: 10px;
         }
       }
     }
@@ -291,12 +291,12 @@ body {
           align-items: center;
           justify-content: center;
           &:first-child {
-            background-color: rgb(35, 35, 208);
-            color: white; // Grayish background for "Log In"
+            background-color: #0070ec;
+            color: white;
           }
 
           &:last-child {
-            background-color: white; // Beige background for "Sign Up"
+            background-color: white;
           }
         }
         li {
