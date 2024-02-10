@@ -39,8 +39,8 @@ const Navbar = () => {
             </Link>
           </li>
           <li onClick={closeMenu}>
-            <Link to="/playarena" className="playarena">
-              PlayArena
+            <Link to="/playcodearena" className="playcodearena">
+              PlayCodeArena
             </Link>
           </li>
           <li onClick={closeMenu}>
