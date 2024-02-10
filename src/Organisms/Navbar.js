@@ -30,18 +30,18 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/pricing" className="pricing">
-              Pricing
+            <Link to="/playarena" className="playarena">
+              PlayArena
             </Link>
           </li>
           <li>
-            <Link to="/cards">Our Cards</Link>
+            <Link to="/chat">Chat</Link>
           </li>
           <li>
-            <Link to="/customers">Customers</Link>
+            <Link to="/blog">Blog</Link>
           </li>
           <li>
-            <Link to="/contact">Contact</Link>
+            <Link to="/about">About</Link>
           </li>
           <div>
             <button className="butonat-nav">Log in</button>

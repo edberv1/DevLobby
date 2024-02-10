@@ -1,11 +1,13 @@
+// App.js
+import React from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./Organisms/Navbar";
 import Home from "./Pages/Home";
-import Pricing from "./Pages/Pricing";
-import OurCards from "./Pages/OurCards";
-import Customers from "./Pages/Customers";
-import Contact from "./Pages/Contact";
+import PlayArena from "./Pages/PlayArena";
+import Chat from "./Pages/Chat";
+import Blog from "./Pages/Blog";
+import About from "./Pages/About";
 
 function App() {
   return (
@@ -14,10 +16,10 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/pricing" element={<Pricing />} />
-          <Route path="/cards" element={<OurCards />} />
-          <Route path="/customers" element={<Customers />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/playarena" element={<PlayArena />} />
+          <Route path="/chat" element={<Chat />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/about" element={<About />} />
         </Routes>
       </BrowserRouter>
     </>
