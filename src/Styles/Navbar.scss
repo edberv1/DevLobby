@@ -83,7 +83,7 @@ body {
   &-logo {
     height: auto;
     max-width: 236px;
-    z-index: 2;
+    z-index: 1;
     display: flex;
     flex-grow: 1;
     align-items: center;
@@ -266,6 +266,8 @@ body {
   @media screen and (max-width: 480px) {
     .hamburger-menu {
       display: block;
+    }
+    img {
     }
     .navbar-links {
       margin: 0;

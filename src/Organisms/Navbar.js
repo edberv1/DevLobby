@@ -10,6 +10,10 @@ const Navbar = () => {
     setMenuOpen(!isMenuOpen);
   };
 
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
+
   return (
     <>
       <nav className={`navbar ${isMenuOpen ? "menu-open" : ""}`}>
@@ -17,30 +21,35 @@ const Navbar = () => {
           <img src={devLobbylogo} alt="DevLoby Logo" />
         </div>
         {/* Hamburger menu icon */}
-        <div className="hamburger-menu" onClick={toggleMenu}>
+        <div
+          className="hamburger-menu"
+          onClick={toggleMenu}
+          role="button"
+          tabIndex="0"
+        >
           <div className="bar"></div>
           <div className="bar"></div>
           <div className="bar"></div>
         </div>
         {/* Navbar links */}
         <ul className={`navbar-links ${isMenuOpen ? "menu-open" : ""}`}>
-          <li>
-            <Link to="/" className="home">
+          <li onClick={closeMenu}>
+            <Link to="/home" className="home">
               Home
             </Link>
           </li>
-          <li>
+          <li onClick={closeMenu}>
             <Link to="/playarena" className="playarena">
               PlayArena
             </Link>
           </li>
-          <li>
+          <li onClick={closeMenu}>
             <Link to="/chat">Chat</Link>
           </li>
-          <li>
+          <li onClick={closeMenu}>
             <Link to="/blog">Blog</Link>
           </li>
-          <li>
+          <li onClick={closeMenu}>
             <Link to="/about">About</Link>
           </li>
           <div>
