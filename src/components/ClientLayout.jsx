@@ -5,17 +5,21 @@ import ClientHeaderSection from './molecules/ClientHeaderSection'
 import Sidebar from './molecules/Sidebar'
 import Cards from './organisms/Cards'
 import NotificationBar from './atoms/NotificationBar'
+import Login from '../components/organisms/Login'
 
 const ClientLayout = () => {
   return (
-    <div>
-      <NotificationBar />
-      <Navbar />
-      <ClientHeaderSection />
-      <Outlet />
-      {/* <Sidebar /> */}
-      <Cards />
-    </div>
+    <>
+      <Login />
+      <div>
+        <NotificationBar />
+        <Navbar />
+        <ClientHeaderSection />
+        <Outlet />
+        {/* <Sidebar /> */}
+        <Cards />
+      </div>
+    </>
   )
 }
 
