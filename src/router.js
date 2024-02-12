@@ -3,10 +3,10 @@ import Home from "./components/organisms/Home"
 import About from "./components/organisms/About"
 import PlayCodeArena from "./components/organisms/PlayCodeArena"
 import Blog from "./components/organisms/Blog"
-import ClientLayout from "./components/ClientLayout";
+import ClientLayout from "./components/Pages/LayoutClient";
 import Chat from "./components/organisms/Chat";
 import LearnMore from "./components/organisms/LearnMore";
-import AdminLayout from "./components/AdminLayout";
+import AdminLayout from './components/Pages/LayoutAdmin';
 
 const router = createBrowserRouter([
   {
