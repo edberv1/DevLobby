@@ -3,12 +3,15 @@ import { Outlet } from 'react-router-dom'
 import LandingLayout from './organisms/LandingLayout'
 
 const ClientLayout = () => {
+  const isLoggedIn = false
   return (
     <>
-      <div>
-        <LandingLayout />
-        <div className='organism-container'>
-          <Outlet />
+      <div className='clientLayout'>
+        <div>
+          {!isLoggedIn ? <LandingLayout /> : ''}
+          <div className='organism-container'>
+            <Outlet />
+          </div>
         </div>
       </div>
     </>

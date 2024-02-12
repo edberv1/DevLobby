@@ -1,3 +1,5 @@
-.button {
-  @include btn;
+.login {
+  .button {
+    @include btn;
+  }
 }

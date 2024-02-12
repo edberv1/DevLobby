@@ -11,57 +11,59 @@ $theme-gray-bluish: #4b506d;
   font-weight: 600;
 }
 
-.dashboard-card {
-  background-color: $theme-background-light;
-  border: 2px solid $theme-border-light;
-  font-family: sans-serif;
-  border-radius: 8px;
-  padding-bottom: 10px;
-}
+.dashboardCard {
+  .dashboard-card {
+    background-color: $theme-background-light;
+    border: 2px solid $theme-border-light;
+    font-family: sans-serif;
+    border-radius: 8px;
+    padding-bottom: 10px;
+  }
 
-header {
-  padding: 32px 32px 8px;
-  .title-container {
+  header {
+    padding: 32px 32px 8px;
+    .title-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .title {
+        color: $theme-title;
+        letter-spacing: 0.4px;
+        margin-bottom: 8px;
+        width: 80%;
+        font-size: 19px;
+        font-weight: bold;
+      }
+      .view-details {
+        cursor: pointer;
+        color: $theme-blue;
+        @include sub-heading();
+      }
+    }
+
+    .description {
+      letter-spacing: 0.1px;
+      font-size: 12px;
+      color: $theme-gray-bluish;
+      span {
+        color: $theme-gray-light;
+      }
+    }
+  }
+  .border-bottom {
+    border-bottom: 1px solid #dfe0eb;
+  }
+
+  .item-container {
+    @include sub-heading();
+    padding: 0px 32px;
+    margin: 16px 0px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    .title {
-      color: $theme-title;
-      letter-spacing: 0.4px;
-      margin-bottom: 8px;
-      width: 80%;
-      font-size: 19px;
-      font-weight: bold;
-    }
-    .view-details {
-      cursor: pointer;
-      color: $theme-blue;
-      @include sub-heading();
-    }
-  }
-
-  .description {
-    letter-spacing: 0.1px;
-    font-size: 12px;
-    color: $theme-gray-bluish;
-    span {
+    color: $theme-title;
+    .size {
       color: $theme-gray-light;
     }
-  }
-}
-.border-bottom {
-  border-bottom: 1px solid #dfe0eb;
-}
-
-.item-container {
-  @include sub-heading();
-  padding: 0px 32px;
-  margin: 16px 0px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: $theme-title;
-  .size {
-    color: $theme-gray-light;
   }
 }

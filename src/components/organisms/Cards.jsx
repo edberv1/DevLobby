@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from '../molecules/Card'
+import Card from '../molecules/LandingCard'
 import b1 from '../../assets/images/b1.png'
 import b2 from '../../assets/images/b2.jpg'
 import b3 from '../../assets/images/b3.jpg'

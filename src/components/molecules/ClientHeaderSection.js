@@ -6,15 +6,17 @@ import PlayCodeArenaButton from "../atoms/PlayCodeArenaButton"
 
 function ClientHeaderSection() {
   return (
-    <header className="header">
-      <Link to="/learn-more">
-        <LearnMoreButton />
-      </Link>
-      <HeaderBanner />
-      <Link to="/code-arena">
-        <PlayCodeArenaButton />
-      </Link>
-    </header>
+    <div className='clientHeaderSection'>
+      <header className="header">
+        <Link to="/learn-more">
+          <LearnMoreButton />
+        </Link>
+        <HeaderBanner />
+        <Link to="/code-arena">
+          <PlayCodeArenaButton />
+        </Link>
+      </header>
+    </div>
   );
 }
 
