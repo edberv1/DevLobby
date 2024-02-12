@@ -10,7 +10,7 @@ const items = [
 
 const DashboardCard = ({ title }) => {
   return (
-    <div className='card'>
+    <div className='dashboard-card'>
       <header>
         <div className='title-container'>
           <div className='title'>{title}</div>

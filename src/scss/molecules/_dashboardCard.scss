@@ -11,13 +11,12 @@ $theme-gray-bluish: #4b506d;
   font-weight: 600;
 }
 
-.card {
+.dashboard-card {
   background-color: $theme-background-light;
   border: 2px solid $theme-border-light;
   font-family: sans-serif;
   border-radius: 8px;
   padding-bottom: 10px;
-  width: 100%;
 }
 
 header {
