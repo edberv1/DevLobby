@@ -42,6 +42,14 @@ body {
   align-items: center;
   justify-content: center;
   margin: 0;
+  .login a {
+    text-decoration: none;
+    color: white;
+  }
+  .signup a {
+    text-decoration: none;
+    color: black;
+  }
 
   button {
     @include button-styles(#0070ec, #ffffff, blue);
@@ -203,6 +211,15 @@ body {
         &:last-child {
           background-color: white;
         }
+      }
+      .butonat-nav.login a {
+        text-decoration: none;
+        color: white;
+        border-bottom: none;
+      }
+      .butonat-nav.signup a {
+        text-decoration: none;
+        color: black;
       }
 
       &.menu-open {

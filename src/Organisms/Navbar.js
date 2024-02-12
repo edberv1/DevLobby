@@ -53,14 +53,22 @@ const Navbar = () => {
             <Link to="/about">About</Link>
           </li>
           <div>
-            <button className="butonat-nav">Log in</button>
-            <button className="butonat-nav">Sign up</button>
+            <button className="butonat-nav login">
+              <Link to="/">Log in</Link>
+            </button>
+            <button className="butonat-nav signup">
+              <Link to="/">Sign Up</Link>
+            </button>
           </div>
         </ul>
         {/* Buttons */}
         <div className="butonat-client">
-          <button>Log in</button>
-          <button>Sign up</button>
+          <button className="login">
+            <Link to="/">Log in</Link>
+          </button>
+          <button button className="signup">
+            <Link to="/">Sign Up</Link>
+          </button>
         </div>
       </nav>
     </>
