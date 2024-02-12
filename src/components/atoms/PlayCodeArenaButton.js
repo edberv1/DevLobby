@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 function PlayCodeArenaButton() {
   return (
+    <div className='playCodeArenaButton'>
       <Link to="/playcodearena" className="btn">
         <span></span>
         <span></span>
@@ -10,6 +11,7 @@ function PlayCodeArenaButton() {
         <span></span>
         PlayCode Arena
       </Link>
+    </div>
   );
 }
 
