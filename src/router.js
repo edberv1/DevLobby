@@ -1,21 +1,31 @@
 import { createBrowserRouter } from "react-router-dom";
-import Home from "./components/organisms/Home"
 import About from "./components/organisms/About"
 import PlayCodeArena from "./components/organisms/PlayCodeArena"
 import Blog from "./components/organisms/Blog"
-import ClientLayout from "./components/Pages/LayoutClient";
 import Chat from "./components/organisms/Chat";
 import LearnMore from "./components/organisms/LearnMore";
+import ClientLayout from "./components/Pages/LayoutClient";
 import AdminLayout from './components/Pages/LayoutAdmin';
+import Landing from "./components/organisms/Landing";
+import Login from './components/organisms/Login'
+import Signup from './components/organisms/Signup'
 
 const router = createBrowserRouter([
+  {
+    path: "login",
+    element: <Login />
+  },
+  {
+    path: "signup",
+    element: <Signup />
+  },
   {
     path: "",
     element: <ClientLayout />,
     children: [
       {
         index: true,
-        element: <Home />
+        element: <Landing />
       },
       {
         path: "about",
@@ -37,13 +47,12 @@ const router = createBrowserRouter([
         path: "learn-more",
         element: <LearnMore />
       },
-      {
-        path: "admin",
-        element: <AdminLayout />
-      }
     ]
   },
-
+  {
+    path: "admin",
+    element: <AdminLayout />
+  }
 ])
 
 export default router;
