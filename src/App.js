@@ -8,6 +8,7 @@ import PlayCodeArena from "./Pages/PlayCodeArena";
 import Chat from "./Pages/Chat";
 import Blog from "./Pages/Blog";
 import About from "./Pages/About";
+import Signup from "./Organisms/Signup";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/chat" element={<Chat />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/about" element={<About />} />
+          <Route path="/signup" element={<Signup />} />
         </Routes>
       </BrowserRouter>
     </>

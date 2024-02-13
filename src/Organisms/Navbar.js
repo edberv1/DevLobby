@@ -56,8 +56,8 @@ const Navbar = () => {
             <button className="butonat-nav login">
               <Link to="/">Log in</Link>
             </button>
-            <button className="butonat-nav signup">
-              <Link to="/">Sign Up</Link>
+            <button className="butonat-nav signup" onClick={closeMenu}>
+              <Link to="/signup">Sign Up</Link>
             </button>
           </div>
         </ul>
@@ -66,8 +66,8 @@ const Navbar = () => {
           <button className="login">
             <Link to="/">Log in</Link>
           </button>
-          <button button className="signup">
-            <Link to="/">Sign Up</Link>
+          <button className="signup" onClick={closeMenu}>
+            <Link to="/signup">Sign Up</Link>
           </button>
         </div>
       </nav>
