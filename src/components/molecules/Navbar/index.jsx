@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "../Styles/Navbar.scss";
-import devLobbylogo from "../Images/Logo/devlobby-logo.png";
+import "./Navbar.scss";
+import devLobbylogo from "../../../assets/images/devlobby-logo.png";
 
 const Navbar = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
@@ -34,7 +34,7 @@ const Navbar = () => {
         {/* Navbar links */}
         <ul className={`navbar-links ${isMenuOpen ? "menu-open" : ""}`}>
           <li onClick={closeMenu}>
-            <Link to="/home" className="home">
+            <Link to="/" className="home">
               Home
             </Link>
           </li>
