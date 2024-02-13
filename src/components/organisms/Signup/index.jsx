@@ -9,72 +9,86 @@ const SignUp = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [isSignupSuccess, setIsSignupSuccess] = useState(false);
 
   const handleSignup = async (e) => {
     e.preventDefault();
+    setError("");
 
-    const data = {
-      username,
-      email,
-      password,
-    };
+    const data = { username, email, password };
 
     try {
       const response = await AuthService.signup(data);
-      console.log(response);
-      // tdhenat e userit dalin nconsole
+      if (response.error) {
+        setError(response.error);
+      } else {
+        setIsSignupSuccess(true);
+      }
     } catch (error) {
-      console.error(error);
-      // me tregu errorin, (ska mujt me fetch n'server, passwordi shume weak etj...)
+      setError("Failed to sign up. Please try again.");
     }
   };
+
   return (
     <>
       <Navbar />
       <div className="signup-container">
-        <div className="signup-form">
-          <h2>Sign Up</h2>
-          <img src={DevLobbyLogoIcon} alt="DevLobby Logo" />
-          <p>See your growth and get consulting support!</p>
-          <div className="divider">
-            <hr />
-            Sign up with Email <hr />
+        {/* Conditionally render the form or success message */}
+        {isSignupSuccess ? (
+          <div className="success-message">
+            You have successfully created an account.
+            <br />
+            Welcome aboard!
           </div>
-          <form onSubmit={handleSignup}>
-            <input
-              type="text"
-              placeholder="Username"
-              required
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-            <input
-              type="email"
-              placeholder="Email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <input
-              type="password"
-              placeholder="Password"
-              minLength="8"
-              required
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <button type="submit" className="signup-btn">
-              Sign Up
-            </button>
-          </form>
-          <div className="signin-redirect">
-            Already have an Account? <a href="/login">Sign in</a>
-          </div>
-          <footer>©2024 Nexus. All rights reserved.</footer>
-        </div>
-        <div className="signup-image-section">
-          <img src={SignupImage} alt="DevLobby Signup" />
-        </div>
+        ) : (
+          <>
+            <div className="signup-form">
+              <h2>Sign Up</h2>
+              <img src={DevLobbyLogoIcon} alt="DevLobby Logo" />
+              <p>See your growth and get consulting support!</p>
+              {error && <div className="error-message">{error}</div>}
+              <div className="divider">
+                <hr />
+                Sign up with Email <hr />
+              </div>
+              <form onSubmit={handleSignup}>
+                <input
+                  type="text"
+                  placeholder="Username"
+                  required
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
+                <input
+                  type="email"
+                  placeholder="Email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <input
+                  type="password"
+                  placeholder="Password"
+                  minLength="8"
+                  required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                <button type="submit" className="signup-btn">
+                  Sign Up
+                </button>
+              </form>
+              <div className="signin-redirect">
+                Already have an Account? <a href="/login">Sign in</a>
+              </div>
+            </div>
+            {/* This ensures the image is on the right */}
+            <div className="signup-image-section">
+              <img src={SignupImage} alt="DevLobby Signup" />
+            </div>
+          </>
+        )}
       </div>
     </>
   );

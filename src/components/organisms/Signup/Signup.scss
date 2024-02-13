@@ -110,6 +110,17 @@
       font-size: 0.8rem;
     }
   }
+  .error-message {
+    color: #ff6b6b; /* Light red color */
+    font-size: 1.1rem; /* Slightly larger font */
+    margin-top: 1rem;
+  }
+
+  .success-message {
+    color: #38c172; /* Light green color */
+    font-size: 3rem; /* Larger font for visibility */
+    text-align: center;
+  }
 
   @media (max-width: 480px), (max-width: 1024px) {
     flex-direction: column;
