@@ -7,6 +7,7 @@ import ClientLayout from "./components/Pages/LayoutClient";
 import Chat from "./components/organisms/Chat";
 import LearnMore from "./components/organisms/LearnMore";
 import AdminLayout from './components/Pages/LayoutAdmin';
+import Login from "./components/organisms/Login";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: "learn-more",
         element: <LearnMore />
+      },
+      {
+        path: "Login",
+        element: <Login />
       },
       {
         path: "admin",
