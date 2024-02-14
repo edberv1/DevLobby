@@ -47,14 +47,6 @@ const router = createBrowserRouter([
         path: "learn-more",
         element: <LearnMore />,
       },
-      {
-        path: "signup",
-        element: <LearnMore />,
-      },
-      {
-        path: "login",
-        element: <LearnMore />,
-      },
     ],
   },
   {
