@@ -82,7 +82,8 @@ $theme-background-dark: #282828;
     gap: 8px;
 
     button {
-      @include button-styles(rgb(168, 166, 166), white, rgb(113, 62, 62));
+      @include button-styles(rgb(115, 114, 114), white, rgb(87, 85, 85));
+      box-shadow: 0 10px 12px 0 rgba(0, 0, 0, 0.2);
     }
   }
 }

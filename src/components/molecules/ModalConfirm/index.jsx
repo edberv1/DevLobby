@@ -9,6 +9,12 @@ const ModalConfirm = ({
   setModalOpen,
   confirmHandler
 }) => {
+  // prevent screen from scrolling
+  useEffect(() => {
+    document.body.style.overflow = 'hidden'
+    return () => (document.body.style.overflow = 'unset')
+  })
+
   // close if ESC pressed
   useEffect(() => {
     const keyHandler = ({ keyCode }) => {
