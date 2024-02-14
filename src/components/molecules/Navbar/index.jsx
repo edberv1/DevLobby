@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.scss";
-import devLobbylogo from "../../../assets/images/devlobby-logo.png";
+import devLobbylogo from "../../../assets/images/devlobby-logo-cut.png";
 
 const Navbar = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
