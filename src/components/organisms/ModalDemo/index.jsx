@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import ModalBasic from '../../molecules/ModalBasic'
 import ModalConfirm from '../../molecules/ModalConfirm'
+import ModalDelete from '../../molecules/ModalDelete'
 
 const ModalDemo = () => {
   const [basicModalOpen, setBasicModalOpen] = useState(false)
@@ -32,10 +33,9 @@ const ModalDemo = () => {
         Hello World bla bla bla Hello World bla bla bla
       </ModalBasic>
 
-      <ModalConfirm
+      <ModalDelete
         modalOpen={confirmModalOpen}
         setModalOpen={setConfirmModalOpen}
-        title={'Hello Wolrd'}
         confirmHandler={() => {
           alert('Confirmed')
         }}
@@ -43,7 +43,7 @@ const ModalDemo = () => {
         Hello World bla bla bla Hello World bla bla bla Hello World bla bla bla
         Hello World bla bla bla Hello World bla bla bla Hello World bla bla bla
         Hello World bla bla bla Hello World bla bla bla
-      </ModalConfirm>
+      </ModalDelete>
     </div>
   )
 }
