@@ -1,185 +1,296 @@
-.navbar {
-  /*
+/*
 masi qe navbari osht display:flex, justify-content:space-between,
 ja lojna qet max width logos (ka ana e majt) edhe butonav (ka ana e djatht)
 qe mos me livrit menuja e navbarit
 */
-  $logo-max-width: 236px;
-  body {
-    padding: 0;
-    margin: 0;
+$logo-max-width: 236px;
+body {
+  padding: 0;
+  margin: 0;
+}
+@mixin rounded-corners($radius: 1rem) {
+  border-radius: $radius;
+}
+
+@mixin button-styles($bg-color, $text-color, $hover-color) {
+  padding: 0.5rem 1rem;
+  height: 40px;
+  font-weight: 550;
+  width: 110px;
+  margin-left: 0.5rem;
+  border: none;
+  color: $text-color;
+  background-color: $bg-color;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: $hover-color;
   }
-  @mixin rounded-corners($radius: 1rem) {
-    border-radius: $radius;
+}
+.butonat-menu {
+  display: none;
+}
+.butonat-nav {
+  padding: 0;
+  margin: 0;
+  display: none;
+}
+.butonat-client {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  .login a {
+    text-decoration: none;
+    color: white;
+  }
+  .signup a {
+    text-decoration: none;
+    color: black;
   }
 
-  @mixin button-styles($bg-color, $text-color, $hover-color) {
-    padding: 0.5rem 1rem;
-    height: 40px;
-    font-weight: 550;
-    width: 110px;
-    margin-left: 0.5rem;
-    border: none;
-    color: $text-color;
-    background-color: $bg-color;
-    border-radius: 2rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  button {
+    @include button-styles(#0070ec, #ffffff, blue);
+  }
 
-    &:hover {
-      background-color: $hover-color;
-    }
+  button:last-child {
+    @include button-styles(#ffffffff, #ffffff, rgb(208, 212, 207));
+    color: black;
   }
-  .butonat-menu {
-    display: none;
-  }
-  .butonat-nav {
-    padding: 0;
-    margin: 0;
-    display: none;
+}
+
+.navbar {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1a1a1a;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid white;
+  max-height: 100px;
+  &.menu-open {
+    position: fixed;
+    top: 0;
+    left: 100%;
+    height: 100vh;
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    transition: transform 1s;
+    transform: translateX(-100%);
+    z-index: 30;
   }
   .butonat-client {
+    max-width: $logo-max-width;
+  }
+
+  &-logo {
+    height: auto;
+    max-width: 236px;
+    z-index: 1;
     display: flex;
+    flex-grow: 1;
     align-items: center;
     justify-content: center;
-    margin: 0;
-
-    button {
-      @include button-styles(#0070ec, #ffffff, blue);
-    }
-
-    button:last-child {
-      @include button-styles(#ffffffff, #ffffff, rgb(208, 212, 207));
-      color: black;
+    img {
+      width: $logo-max-width;
+      height: auto;
     }
   }
 
-  .navbar {
-    font-family: 'Poppins', sans-serif;
+  &-links {
+    list-style: none;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    align-self: center;
     align-items: center;
-    background-color: #1a1a1a;
-    padding: 1rem 2rem;
-    border-bottom: 1px solid white;
-    max-height: 100px;
-    &.menu-open {
-      position: fixed;
-      top: 0;
-      left: 100%;
-      height: 100vh;
-      width: 100%;
-      max-width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      transition: transform 1s;
-      transform: translateX(-100%);
-      z-index: 30;
-    }
-    .butonat-client {
-      max-width: $logo-max-width;
-    }
+    height: 55px;
+    margin: 0 auto;
+    padding-left: 5px;
+    background-color: #282828;
+    border-radius: 2rem;
 
-    &-logo {
-      height: auto;
-      max-width: 236px;
-      z-index: 1;
-      display: flex;
-      flex-grow: 1;
-      align-items: center;
-      justify-content: center;
-      img {
-        width: $logo-max-width;
-        height: auto;
+    li {
+      margin-right: 10px;
+
+      a,
+      .nav-link {
+        color: #ffffff;
+        padding: 0.7rem 1rem;
+        text-decoration: none;
+        &:hover {
+          color: gray;
+        }
+
+        &.home {
+          background-color: #fff;
+          color: #1a1a1a;
+          font-weight: 550;
+          border-radius: 2rem;
+          &:hover {
+            color: white;
+            background-color: gray;
+          }
+        }
+
+        &.playcodearena {
+          background-color: #333333;
+          border-radius: 2rem;
+        }
       }
     }
+  }
 
-    &-links {
-      list-style: none;
-      display: flex;
-      justify-content: space-around;
-      align-self: center;
-      align-items: center;
-      height: 55px;
-      margin: 0 auto;
-      padding-left: 5px;
-      background-color: #282828;
-      border-radius: 2rem;
+  .hamburger-menu {
+    display: none;
+    cursor: pointer;
+    padding-right: 0px;
+
+    .bar {
+      height: 3px;
+      width: 25px;
+      background-color: #8b8a8a;
+      margin: 6px 0;
+      transition: 0.4s;
+    }
+  }
+  &.menu-open {
+    .hamburger-menu {
+      // Styles for X icon
+      .bar:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 7.5px);
+      }
+      .bar:nth-child(2) {
+        opacity: 0;
+      }
+      .bar:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -7.5px);
+      }
+    }
+  }
+
+  // per tableta
+  @media screen and (max-width: 1024px) {
+    .butonat-client {
+      display: none;
+    }
+    .navbar-links {
+      display: none;
+      flex-direction: column;
+      background-color: #333333;
+      position: absolute;
+      height: auto;
+      left: 0;
+      width: 100%;
+      z-index: 1;
+      .butonat-nav {
+        padding: 0.5rem 1rem;
+        height: 40px;
+        font-weight: 550;
+        width: 250px;
+        margin-left: 0.5rem;
+        margin-bottom: 10px;
+        border: none;
+        border-radius: 2rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        &:first-child {
+          background-color: rgb(35, 35, 208);
+          color: white;
+        }
+
+        &:last-child {
+          background-color: white;
+        }
+      }
+      .butonat-nav.login a {
+        text-decoration: none;
+        color: white;
+        border-bottom: none;
+      }
+      .butonat-nav.signup a {
+        text-decoration: none;
+        color: black;
+      }
+
+      &.menu-open {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        position: absolute;
+        top: 1px;
+        left: 0;
+        width: 100%;
+        padding-left: 3vh;
+        margin-top: 100px;
+        background-color: #282828;
+
+        a {
+          border-bottom: 1px solid white;
+        }
+        @include rounded-corners;
+        .butonat-nav {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+      }
 
       li {
-        margin-right: 10px;
+        margin: 40px 0px;
 
-        a,
         .nav-link {
-          color: #ffffff;
-          padding: 0.7rem 1rem;
-          text-decoration: none;
-          &:hover {
-            color: gray;
-          }
+          padding: 1rem;
+          color: #fff;
+          border-bottom: solid rgb(215, 213, 213);
 
           &.home {
             background-color: #fff;
-            color: #1a1a1a;
-            font-weight: 550;
-            border-radius: 2rem;
-            &:hover {
-              color: white;
-              background-color: gray;
-            }
           }
-
           &.playcodearena {
             background-color: #333333;
-            border-radius: 2rem;
+            border-radius: 0;
           }
+        }
+      }
+
+      .navbar-buttons {
+        margin-top: 20px;
+        button {
+          width: 100%;
+          margin-bottom: 10px;
         }
       }
     }
 
     .hamburger-menu {
-      display: none;
-      cursor: pointer;
-      padding-right: 0px;
-
-      .bar {
-        height: 3px;
-        width: 25px;
-        background-color: #8b8a8a;
-        margin: 6px 0;
-        transition: 0.4s;
-      }
+      display: block;
+      z-index: 2;
     }
-    &.menu-open {
-      .hamburger-menu {
-        // Styles for X icon
-        .bar:nth-child(1) {
-          transform: rotate(-45deg) translate(-5px, 7.5px);
-        }
-        .bar:nth-child(2) {
-          opacity: 0;
-        }
-        .bar:nth-child(3) {
-          transform: rotate(45deg) translate(-5px, -7.5px);
-        }
-      }
-    }
+  }
 
-    // per tableta
-    @media screen and (max-width: 1024px) {
-      .butonat-client {
-        display: none;
-      }
-      .navbar-links {
-        display: none;
-        flex-direction: column;
-        background-color: #333333;
-        position: absolute;
-        height: auto;
-        left: 0;
-        width: 100%;
-        z-index: 1;
+  // per telefona
+  @media screen and (max-width: 480px) {
+    .hamburger-menu {
+      display: block;
+    }
+    .navbar-links {
+      margin: 0;
+      padding: 0;
+      &.menu-open {
+        text-align: center;
+        margin-top: 100px;
+        padding-left: 4vh;
         .butonat-nav {
           padding: 0.5rem 1rem;
           height: 40px;
@@ -187,6 +298,7 @@ qe mos me livrit menuja e navbarit
           width: 250px;
           margin-left: 0.5rem;
           margin-bottom: 10px;
+          margin-top: 10px;
           border: none;
           border-radius: 2rem;
           cursor: pointer;
@@ -195,9 +307,8 @@ qe mos me livrit menuja e navbarit
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          gap: 10px;
           &:first-child {
-            background-color: rgb(35, 35, 208);
+            background-color: #0070ec;
             color: white;
           }
 
@@ -205,111 +316,13 @@ qe mos me livrit menuja e navbarit
             background-color: white;
           }
         }
-
-        &.menu-open {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: space-around;
-          position: absolute;
-          top: 1px;
-          left: 0;
-          width: 100%;
-          padding-left: 3vh;
-          margin-top: 100px;
-          background-color: #282828;
-
-          a {
-            border-bottom: 1px solid white;
-          }
-          @include rounded-corners;
-          .butonat-nav {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-          }
-        }
-
         li {
-          margin: 40px 0px;
-
-          .nav-link {
-            padding: 1rem;
-            color: #fff;
-            border-bottom: solid rgb(215, 213, 213);
-
-            &.home {
-              background-color: #fff;
-            }
-            &.playcodearena {
-              background-color: #333333;
-              border-radius: 0;
-            }
-          }
+          margin: 25px;
         }
-
-        .navbar-buttons {
-          margin-top: 20px;
-          button {
-            width: 100%;
-            margin-bottom: 10px;
-          }
-        }
-      }
-
-      .hamburger-menu {
-        display: block;
-        z-index: 2;
       }
     }
-
-    // per telefona
-    @media screen and (max-width: 480px) {
-      .hamburger-menu {
-        display: block;
-      }
-      img {
-      }
-      .navbar-links {
-        margin: 0;
-        padding: 0;
-        &.menu-open {
-          text-align: center;
-          margin-top: 100px;
-          padding-left: 4vh;
-          .butonat-nav {
-            padding: 0.5rem 1rem;
-            height: 40px;
-            font-weight: 550;
-            width: 250px;
-            margin-left: 0.5rem;
-            margin-bottom: 10px;
-            margin-top: 10px;
-            border: none;
-            border-radius: 2rem;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            &:first-child {
-              background-color: #0070ec;
-              color: white;
-            }
-
-            &:last-child {
-              background-color: white;
-            }
-          }
-          li {
-            margin: 25px;
-          }
-        }
-      }
-      .hamburger-menu {
-        padding: 0;
-      }
+    .hamburger-menu {
+      padding: 0;
     }
   }
 }
