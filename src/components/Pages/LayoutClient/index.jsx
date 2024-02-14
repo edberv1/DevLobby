@@ -1,6 +1,6 @@
-import React from 'react'
-import { Outlet } from 'react-router-dom'
-import Navbar from '../../molecules/Navbar'
+import React from "react";
+import { Outlet } from "react-router-dom";
+import Navbar from "../../molecules/Navbar";
 
 const ClientLayout = () => {
   return (
@@ -10,7 +10,7 @@ const ClientLayout = () => {
         <Outlet />
       </div>
     </>
-  )
-}
+  );
+};
 
-export default ClientLayout
+export default ClientLayout;

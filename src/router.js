@@ -1,23 +1,23 @@
 import { createBrowserRouter } from "react-router-dom";
-import About from "./components/organisms/About"
-import PlayCodeArena from "./components/organisms/PlayCodeArena"
-import Blog from "./components/organisms/Blog"
+import About from "./components/organisms/About";
+import PlayCodeArena from "./components/organisms/PlayCodeArena";
+import Blog from "./components/organisms/Blog";
 import Chat from "./components/organisms/Chat";
 import LearnMore from "./components/organisms/LearnMore";
 import ClientLayout from "./components/Pages/LayoutClient";
-import AdminLayout from './components/Pages/LayoutAdmin';
+import AdminLayout from "./components/Pages/LayoutAdmin";
 import Landing from "./components/organisms/Landing";
-import Login from './components/organisms/Login'
-import Signup from './components/organisms/Signup'
+import Login from "./components/organisms/Login";
+import Signup from "./components/organisms/Signup";
 
 const router = createBrowserRouter([
   {
     path: "login",
-    element: <Login />
+    element: <Login />,
   },
   {
     path: "signup",
-    element: <Signup />
+    element: <Signup />,
   },
   {
     path: "",
@@ -25,34 +25,34 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Landing />
+        element: <Landing />,
       },
       {
         path: "about",
-        element: <About />
+        element: <About />,
       },
       {
         path: "chat",
-        element: <Chat />
+        element: <Chat />,
       },
       {
         path: "playcodearena",
-        element: <PlayCodeArena />
+        element: <PlayCodeArena />,
       },
       {
         path: "blog",
-        element: <Blog />
+        element: <Blog />,
       },
       {
         path: "learn-more",
-        element: <LearnMore />
+        element: <LearnMore />,
       },
-    ]
+    ],
   },
   {
     path: "admin",
-    element: <AdminLayout />
-  }
-])
+    element: <AdminLayout />,
+  },
+]);
 
 export default router;
