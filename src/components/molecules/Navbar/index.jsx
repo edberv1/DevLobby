@@ -52,13 +52,13 @@ const Navbar = () => {
               <Link to='/about'>About</Link>
             </li>
             <div>
-              <button className='butonat-nav'>Log in</button>
+              <button className='butonat-nav' onClick={closeMenu}><Link to='/login'>Login</Link></button>
               <button className='butonat-nav'>Sign up</button>
             </div>
           </ul>
           {/* Buttons */}
           <div className='butonat-client'>
-            <button>Log in</button>
+            <button><Link to='/login'>Login</Link></button>
             <button>Sign up</button>
           </div>
         </nav>

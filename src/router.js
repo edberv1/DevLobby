@@ -11,6 +11,10 @@ import Login from "./components/organisms/Login";
 
 const router = createBrowserRouter([
   {
+    path: "login",
+    element: <Login />,
+  },
+  {
     path: "",
     element: <ClientLayout />,
     children: [
