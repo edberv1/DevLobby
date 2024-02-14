@@ -1,14 +1,12 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 import Navbar from '../../molecules/Navbar'
-import ModalDemo from '../../organisms/ModalDemo'
 
 const ClientLayout = () => {
   return (
     <>
       <div>
         <Navbar />
-        <ModalDemo />
         <Outlet />
       </div>
     </>

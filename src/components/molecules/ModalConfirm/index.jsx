@@ -28,7 +28,7 @@ const ModalConfirm = ({
   return (
     <>
       {modalOpen && (
-        <div>
+        <div className='modalConfirm'>
           <BackDrop setModalOpen={setModalOpen} />
           <div className='modalBackground'>
             <div className='modalContainer'>

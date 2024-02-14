@@ -21,9 +21,8 @@ const ModalBasic = ({ children, title, modalOpen, setModalOpen }) => {
 
   return (
     <>
-      {' '}
       {modalOpen && (
-        <div>
+        <div className='modalBasic'>
           <BackDrop setModalOpen={setModalOpen} />
           <div className={`modalContainer`}>
             <div className='header'>
