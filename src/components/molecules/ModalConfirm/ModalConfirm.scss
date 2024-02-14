@@ -35,6 +35,12 @@ $theme-background-dark: #282828;
     border: 2px solid $theme-border-light;
     font-family: sans-serif;
     border-radius: 8px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+
+    &.show {
+      opacity: 1;
+    }
 
     .header {
       display: flex;
@@ -72,6 +78,7 @@ $theme-background-dark: #282828;
       font-size: 14px;
       padding: 16px 20px;
       padding-bottom: 4px;
+      width: 90%;
       letter-spacing: 0.1px;
     }
 

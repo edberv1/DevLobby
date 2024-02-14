@@ -36,6 +36,12 @@ $theme-background-dark: #282828;
     border: 2px solid $theme-border-light;
     font-family: sans-serif;
     border-radius: 8px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+
+    &.show {
+      opacity: 1;
+    }
 
     .header {
       display: flex;

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './ModalConfirm.scss'
 import BackDrop from '../../atoms/BackDrop'
 
@@ -9,11 +9,22 @@ const ModalConfirm = ({
   setModalOpen,
   confirmHandler
 }) => {
+  const [renderModal, setRenderModal] = useState(modalOpen)
   // prevent screen from scrolling
   useEffect(() => {
-    document.body.style.overflow = 'hidden'
-    return () => (document.body.style.overflow = 'unset')
-  })
+    if (modalOpen) {
+      document.body.style.overflow = 'hidden';
+      // After a brief delay, set renderModal to true
+      const timeoutId = setTimeout(() => {
+        setRenderModal(true);
+      }, 0); // Adjust this delay as needed
+      return () => clearTimeout(timeoutId);
+    } else {
+      document.body.style.overflow = 'unset';
+      // Set renderModal to false immediately when modal is closed
+      setRenderModal(false);
+    }
+  }, [modalOpen])
 
   // close if ESC pressed
   useEffect(() => {
@@ -31,7 +42,7 @@ const ModalConfirm = ({
         <div className='modalConfirm'>
           <BackDrop setModalOpen={setModalOpen} />
           <div className='modalBackground'>
-            <div className='modalContainer'>
+            <div className={`modalContainer${renderModal ? ' show' : ''}`}>
               <div className='header'>
                 <div className='title'>{title}</div>
                 <div

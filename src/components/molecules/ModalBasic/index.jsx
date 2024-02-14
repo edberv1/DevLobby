@@ -1,14 +1,25 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './ModalBasic.scss'
 import BackDrop from '../../atoms/BackDrop'
 
 const ModalBasic = ({ children, title, modalOpen, setModalOpen }) => {
+  const [renderModal, setRenderModal] = useState(modalOpen)
+
   // prevent screen from scrolling
   useEffect(() => {
-    document.body.style.overflow = 'hidden'
-    return () => (document.body.style.overflow = 'unset')
-  })
-
+    if (modalOpen) {
+      document.body.style.overflow = 'hidden'
+      // After a brief delay, set renderModal to true
+      const timeoutId = setTimeout(() => {
+        setRenderModal(true)
+      }, 0) // Adjust this delay as needed
+      return () => clearTimeout(timeoutId)
+    } else {
+      document.body.style.overflow = 'unset'
+      // Set renderModal to false immediately when modal is closed
+      setRenderModal(false)
+    }
+  }, [modalOpen])
   // close if ESC pressed
   useEffect(() => {
     const keyHandler = ({ keyCode }) => {
@@ -24,7 +35,7 @@ const ModalBasic = ({ children, title, modalOpen, setModalOpen }) => {
       {modalOpen && (
         <div className='modalBasic'>
           <BackDrop setModalOpen={setModalOpen} />
-          <div className={`modalContainer`}>
+          <div className={`modalContainer${renderModal ? ' show' : ''}`}>
             <div className='header'>
               <div className='title'>{title}</div>
               <div
