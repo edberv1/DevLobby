@@ -21,31 +21,29 @@ const ModalDemo = () => {
       >
         Open Confirm modal
       </button>
-      {basicModalOpen && (
-        <ModalBasic
-          modalOpen={basicModalOpen}
-          setModalOpen={setBasicModalOpen}
-          title={'Hello Wolrd'}
-        >
-          Hello World bla bla bla Hello World bla bla bla Hello World bla bla
-          bla Hello World bla bla bla Hello World bla bla bla Hello World bla
-          bla bla Hello World bla bla bla Hello World bla bla bla
-        </ModalBasic>
-      )}
-      {confirmModalOpen && (
-        <ModalConfirm
-          modalOpen={confirmModalOpen}
-          setModalOpen={setConfirmModalOpen}
-          title={'Hello Wolrd'}
-          confirmHandler={() => {
-            alert('Confirmed')
-          }}
-        >
-          Hello World bla bla bla Hello World bla bla bla Hello World bla bla
-          bla Hello World bla bla bla Hello World bla bla bla Hello World bla
-          bla bla Hello World bla bla bla Hello World bla bla bla
-        </ModalConfirm>
-      )}
+
+      <ModalBasic
+        modalOpen={basicModalOpen}
+        setModalOpen={setBasicModalOpen}
+        title={'Hello Wolrd'}
+      >
+        Hello World bla bla bla Hello World bla bla bla Hello World bla bla bla
+        Hello World bla bla bla Hello World bla bla bla Hello World bla bla bla
+        Hello World bla bla bla Hello World bla bla bla
+      </ModalBasic>
+
+      <ModalConfirm
+        modalOpen={confirmModalOpen}
+        setModalOpen={setConfirmModalOpen}
+        title={'Hello Wolrd'}
+        confirmHandler={() => {
+          alert('Confirmed')
+        }}
+      >
+        Hello World bla bla bla Hello World bla bla bla Hello World bla bla bla
+        Hello World bla bla bla Hello World bla bla bla Hello World bla bla bla
+        Hello World bla bla bla Hello World bla bla bla
+      </ModalConfirm>
     </div>
   )
 }
