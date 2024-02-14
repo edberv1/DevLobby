@@ -17,9 +17,11 @@ const Navbar = () => {
   return (
     <>
       <nav className={`navbar ${isMenuOpen ? "menu-open" : ""}`}>
-        <div className="navbar-logo">
-          <img src={devLobbylogo} alt="DevLoby Logo" />
-        </div>
+        <Link to="/">
+          <div className="navbar-logo">
+            <img src={devLobbylogo} alt="DevLoby Logo" />
+          </div>
+        </Link>
         {/* Hamburger menu icon */}
         <div
           className="hamburger-menu"
