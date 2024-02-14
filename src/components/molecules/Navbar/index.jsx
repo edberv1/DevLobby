@@ -19,7 +19,7 @@ const Navbar = () => {
       <nav className={`navbar ${isMenuOpen ? "menu-open" : ""}`}>
         <Link to="/">
           <div className="navbar-logo">
-            <img src={devLobbylogo} alt="DevLoby Logo" />
+            <img src={devLobbylogo} alt="DevLoby Logo" onClick={closeMenu} />
           </div>
         </Link>
         {/* Hamburger menu icon */}
