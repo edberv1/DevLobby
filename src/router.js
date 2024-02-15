@@ -9,6 +9,7 @@ import AdminLayout from "./components/Pages/LayoutAdmin";
 import Landing from "./components/organisms/Landing";
 import Login from "./components/organisms/Login";
 import Signup from "./components/organisms/Signup";
+import ContactUs from "./components/organisms/ContactUs";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
       {
         path: "learn-more",
         element: <LearnMore />,
+      },
+      {
+        path: "contactus",
+        element: <ContactUs />,
       },
     ],
   },

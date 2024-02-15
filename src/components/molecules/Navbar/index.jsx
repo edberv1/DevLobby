@@ -54,6 +54,9 @@ const Navbar = () => {
           <li onClick={closeMenu}>
             <Link to="/about">About</Link>
           </li>
+          <li onClick={closeMenu}>
+            <Link to="/contactus">Contact Us</Link>
+          </li>
           <div>
             <button className="butonat-nav login">
               <Link to="/login">Log in</Link>
