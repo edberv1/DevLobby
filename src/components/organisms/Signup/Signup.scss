@@ -4,6 +4,7 @@
   align-items: center;
   height: 100vh;
   padding: 2vh;
+  padding-top: 0;
   background-color: #1a1a1a;
 
   .signup-image-section img {
@@ -117,9 +118,19 @@
   }
 
   .success-message {
-    color: #38c172; /* Light green color */
-    font-size: 3rem; /* Larger font for visibility */
+    color: white; // Light green color
+    font-size: 3rem; // Larger font for visibility
     text-align: center;
+    background-color: #0e0249; //#0e0249
+    border-radius: 10px;
+    padding: 10px;
+
+    video {
+      margin-top: 20px; // Space from the success message
+      border-radius: 10px; // Rounded corners for the video
+      width: 80%; // Default width
+      height: auto; // Maintain aspect ratio
+    }
   }
 
   @media (max-width: 480px), (max-width: 1024px) {
@@ -151,6 +162,26 @@
       }
       .signup-btn {
         width: 60%;
+      }
+    }
+  }
+  @media (max-width: 480px) {
+    .success-message {
+      font-size: 1rem; // Smaller font size for mobile
+
+      video {
+        width: 95%; // Make video wider on smaller screens to utilize space
+        margin-top: 15px; // Adjust margin top for mobile
+      }
+    }
+  }
+  @media (max-width: 1024px) {
+    .success-message {
+      font-size: 1.5rem; // Adjust font size for tablets
+
+      video {
+        width: 90%; // Adjust video width for tablets
+        margin-top: 15px; // Adjust margin top for tablets
       }
     }
   }
