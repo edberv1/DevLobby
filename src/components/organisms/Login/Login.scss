@@ -1,5 +1,5 @@
 $primary-color: #191818;
-$secondary-color: #2ecc71;
+$secondary-color: #1310e9;
 
 .login-container {
   display: flex;
@@ -30,12 +30,14 @@ $secondary-color: #2ecc71;
     }
 
     .divider {
-      margin: 15px 0;
+      display: flex;
+      align-items: center;
+      margin: 1rem 0;
 
       hr {
-        border: 0;
-        height: 1px;
-        background: #ddd;
+        flex-grow: 1;
+        border: none;
+        border-top: 3px solid #dfe1e5;
       }
 
       span {
