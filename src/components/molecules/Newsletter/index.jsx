@@ -43,7 +43,6 @@ const Newsletter = () => {
           </small>
         </div>
       </div>
-      <h1 style={{ color: "#282828" }}>blla</h1>
     </>
   );
 };
