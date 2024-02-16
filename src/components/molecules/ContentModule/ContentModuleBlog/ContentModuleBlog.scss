@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+.content-module-blog {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1a1a1a;
+  color: #fff;
+
+  .content-image {
+    flex: 0 1 40%; /* Adjusted flex-basis to 40%, and allow shrink but not grow */
+    text-align: center;
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: inline-block; /* Ensures the image does not take full width */
+    }
+  }
+  .devLobby {
+    color: #0070ec;
+  }
+  .content-info {
+    flex: 0 1 50%; /* Adjusted flex-basis to 50%, and allow shrink but not grow */
+    margin-left: 20px;
+    max-width: 600px; /* Set a max-width for the content to wrap */
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn-blog {
+      display: inline-block;
+      background-color: #0070ec;
+      color: #fff;
+      padding: 20px 30px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: larger;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        box-shadow: 0 0 50px #004494;
+      }
+    }
+
+    .contact-info {
+      font-size: 1rem;
+      margin-top: 1.5rem;
+
+      span {
+        display: inline-block;
+        background-color: #333;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 5px;
+      }
+    }
+  }
+}
