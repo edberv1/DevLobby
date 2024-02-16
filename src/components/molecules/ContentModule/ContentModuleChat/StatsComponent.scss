@@ -1,0 +1,44 @@
+.stats-container {
+  display: flex;
+  justify-content: space-around;
+  background: #0070ec; // Replace with the actual color code from your design
+  padding: 40px;
+  border-radius: 8px;
+  width: 80%;
+  align-items: center;
+  border: 1px solid white;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  .stat {
+    padding-left: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    border-left: 1px solid white;
+    &.first {
+      border-color: #0070ec;
+      padding-left: 0;
+    }
+
+    .stat-icon {
+      .svg-inline--fa {
+        font-size: 2rem; // Example size, adjust as needed
+        color: #ffffff; // White color for the icons
+        padding-bottom: 5px;
+      }
+    }
+
+    .stat-value {
+      font-size: 40px; // Adjust the font size as per your design
+      font-weight: bold;
+      margin: 8px 0; // Adjust spacing as needed
+    }
+
+    .stat-description {
+      font-size: 20px; // Adjust the font size as per your design
+    }
+  }
+}
