@@ -4,6 +4,7 @@ import SignupImage from "../../../assets/images/Signup-image.png";
 import DevLobbyLogoIcon from "../../../assets/images/icon.png";
 import { AuthService } from "../../../services/AuthService";
 import Navbar from "../../molecules/Navbar";
+import Animation from "../../../assets/images/boygirlanimation.mp4";
 
 const SignUp = () => {
   const [username, setUsername] = useState("");
@@ -20,7 +21,11 @@ const SignUp = () => {
 
     try {
       const response = await AuthService.signup(data);
-      if (response.error) {
+      if (typeof response === "string" && response.startsWith("Failed to")) {
+        setError(
+          "Sorry, we could not connect with the server. Please try again in a few minutes."
+        );
+      } else if (response.error) {
         setError(response.error);
       } else {
         setIsSignupSuccess(true);
@@ -37,9 +42,9 @@ const SignUp = () => {
         {/* Conditionally render the form or success message */}
         {isSignupSuccess ? (
           <div className="success-message">
-            You have successfully created an account.
+            You have successfully created an account.🥂
             <br />
-            Welcome aboard!
+            <video src={Animation} autoPlay loop muted></video>
           </div>
         ) : (
           <>
@@ -83,7 +88,6 @@ const SignUp = () => {
                 Already have an Account? <a href="/login">Sign in</a>
               </div>
             </div>
-            {/* This ensures the image is on the right */}
             <div className="signup-image-section">
               <img src={SignupImage} alt="DevLobby Signup" />
             </div>
