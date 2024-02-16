@@ -1,9 +1,23 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './SearchBar.scss'
 
 const SearchBar = ({ placeholder, data }) => {
-  const [filter, setFilter] = useState([])
   const [query, setQuery] = useState('')
+  const [filteredData, setFilteredData] = useState([])
+  const resultRef = useRef(null)
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleOutsideClick)
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick)
+    }
+  })
+
+  const handleOutsideClick = e => {
+    if (resultRef.current && !resultRef.current.contains(e.target)) {
+      setFilteredData([])
+    }
+  }
 
   const handleChange = e => {
     setQuery(e.target.value.toLowerCase())
@@ -16,9 +30,9 @@ const SearchBar = ({ placeholder, data }) => {
       )
     })
     if (query.length < 2) {
-      setFilter([])
+      setFilteredData([])
     } else {
-      setFilter(queryResult)
+      setFilteredData(queryResult)
     }
   }
 
@@ -54,7 +68,7 @@ const SearchBar = ({ placeholder, data }) => {
             <div onClick={() => setQuery('')} className='closeButton'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
-                class='icon icon-tabler icon-tabler-x'
+                className='icon icon-tabler icon-tabler-x'
                 width='18'
                 height='18'
                 viewBox='0 0 24 24'
@@ -73,9 +87,9 @@ const SearchBar = ({ placeholder, data }) => {
         </div>
       </div>
 
-      {filter.length !== 0 && (
-        <div className='searchResult'>
-          {filter.slice(0, 10).map((value, key) => {
+      {filteredData.length !== 0 && (
+        <div ref={resultRef} className='searchResult'>
+          {filteredData.slice(0, 10).map((value, key) => {
             return (
               <div key={key}>
                 <p>{`${value.firstName} (@${value.username})`}</p>
