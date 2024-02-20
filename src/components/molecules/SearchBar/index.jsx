@@ -22,14 +22,10 @@ const SearchBar = ({ placeholder, data }) => {
   const handleChange = e => {
     setQuery(e.target.value.toLowerCase())
 
-    const queryResult = data.filter(value => {
-      return (
-        value.username.toLowerCase().includes(query) ||
-        value.firstName.toLowerCase().includes(query) ||
-        value.lastName.toLowerCase().includes(query)
-      )
+    const queryResult = data?.filter(value => {
+      return value.username.toLowerCase().includes(query)
     })
-    if (query.length < 2) {
+    if (query?.length < 2) {
       setFilteredData([])
     } else {
       setFilteredData(queryResult)
@@ -46,7 +42,7 @@ const SearchBar = ({ placeholder, data }) => {
           onChange={handleChange}
         />
         <div className='iconContainer'>
-          {query.length === 0 ? (
+          {query?.length === 0 ? (
             <div className='searchIcon'>
               <svg
                 className='icon'
@@ -87,9 +83,9 @@ const SearchBar = ({ placeholder, data }) => {
         </div>
       </div>
 
-      {filteredData.length !== 0 && (
+      {filteredData?.length !== 0 && (
         <div ref={resultRef} className='searchResult'>
-          {filteredData.slice(0, 10).map((value, key) => {
+          {filteredData?.slice(0, 10).map((value, key) => {
             return (
               <div key={key}>
                 <p>{`${value.firstName} (@${value.username})`}</p>
