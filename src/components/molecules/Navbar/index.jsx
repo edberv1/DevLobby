@@ -1,70 +1,83 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import devLobbylogo from '../../../assets/images/devlobby-logo-cut.png'
-import './Navbar.scss'
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import "./Navbar.scss";
+import devLobbylogo from "../../../assets/images/devlobby-logo-cut.png";
 
 const Navbar = () => {
-  const [isMenuOpen, setMenuOpen] = useState(false)
+  const [isMenuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
-    setMenuOpen(!isMenuOpen)
-  }
+    setMenuOpen(!isMenuOpen);
+  };
 
   const closeMenu = () => {
-    setMenuOpen(false)
-  }
+    setMenuOpen(false);
+  };
 
   return (
     <>
-      <div className='navbar'>
-        <nav className={`navbar ${isMenuOpen ? 'menu-open' : ''}`}>
-          <div className='navbar-logo'>
-            <img src={devLobbylogo} alt='DevLoby Logo' />
+      <nav className={`navbar ${isMenuOpen ? "menu-open" : ""}`}>
+        <Link to="/">
+          <div className="navbar-logo">
+            <img src={devLobbylogo} alt="DevLoby Logo" onClick={closeMenu} />
           </div>
-          {/* Hamburger menu icon */}
-          <div
-            className='hamburger-menu'
-            onClick={toggleMenu}
-            role='button'
-            tabIndex='0'
-          >
-            <div className='bar'></div>
-            <div className='bar'></div>
-            <div className='bar'></div>
+        </Link>
+        {/* Hamburger menu icon */}
+        <div
+          className="hamburger-menu"
+          onClick={toggleMenu}
+          role="button"
+          tabIndex="0"
+        >
+          <div className="bar"></div>
+          <div className="bar"></div>
+          <div className="bar"></div>
+        </div>
+        {/* Navbar links */}
+        <ul className={`navbar-links ${isMenuOpen ? "menu-open" : ""}`}>
+          <li onClick={closeMenu}>
+            <Link to="/" className="home">
+              Home
+            </Link>
+          </li>
+          <li onClick={closeMenu}>
+            <Link to="/playcodearena" className="playcodearena">
+              PlayCode Arena
+            </Link>
+          </li>
+          <li onClick={closeMenu}>
+            <Link to="/chat">Chat</Link>
+          </li>
+          <li onClick={closeMenu}>
+            <Link to="/blog">Blog</Link>
+          </li>
+          <li onClick={closeMenu}>
+            <Link to="/about">About</Link>
+          </li>
+          <li onClick={closeMenu}>
+            <Link to="/contactus">Contact Us</Link>
+          </li>
+          <div>
+            <button className="butonat-nav login">
+              <Link to="/login">Log in</Link>
+            </button>
+            <button className="butonat-nav signup" onClick={closeMenu}>
+              <Link to="/signup">Sign Up</Link>
+            </button>
           </div>
-          {/* Navbar links */}
-          <ul className={`navbar-links ${isMenuOpen ? 'menu-open' : ''}`}>
-            <li onClick={closeMenu}>
-              <Link to='/'>Home</Link>
-            </li>
-            <li onClick={closeMenu}>
-              <Link to='/playcodearena' className='playcodearena'>
-                PlayCode Arena
-              </Link>
-            </li>
-            <li onClick={closeMenu}>
-              <Link to='/chat'>Chat</Link>
-            </li>
-            <li onClick={closeMenu}>
-              <Link to='/blog'>Blog</Link>
-            </li>
-            <li onClick={closeMenu}>
-              <Link to='/about'>About</Link>
-            </li>
-            <div>
-              <button className='butonat-nav' onClick={closeMenu}><Link to='/login'>Login</Link></button>
-              <button className='butonat-nav'>Sign up</button>
-            </div>
-          </ul>
-          {/* Buttons */}
-          <div className='butonat-client'>
-            <button><Link to='/login'>Login</Link></button>
-            <button>Sign up</button>
-          </div>
-        </nav>
-      </div>
+        </ul>
+        {/* Buttons */}
+        <div className="butonat-client">
+          <button className="login">
+            <Link to="/login">Log in</Link>
+          </button>
+          <button className="signup" onClick={closeMenu}>
+            <Link to="/signup">Sign Up</Link>
+          </button>
+        </div>
+      </nav>
     </>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
