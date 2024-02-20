@@ -1,13 +1,13 @@
 import React from "react";
-import "./ContentModuleChat.scss";
-import HighTechGirl from "../../../../assets/images/hightechgirl.png";
+import "./ContentModuleContactUs.scss";
+import ContactUsRobot from "../../../../assets/images/ContactUsRobot-removebg.png";
 import { Link } from "react-router-dom";
 
-const ContentModuleChat = () => {
+const ContentModuleContactUs = () => {
   return (
     <div className="content-module-chat">
       <div className="content-image">
-        <img src={HighTechGirl} alt="High Technology Girl" />
+        <img src={ContactUsRobot} alt="Contact Us Robot" />
       </div>
       <div className="content-info">
         <h1>
@@ -21,7 +21,7 @@ const ContentModuleChat = () => {
           digital era.
         </p>
         {/* Use Link component for client-side routing */}
-        <Link to="/chat" className="btn-chat">
+        <Link to="/contactus" className="btn-chat">
           Start a Conversation
         </Link>
         <br /> <br />
@@ -31,4 +31,4 @@ const ContentModuleChat = () => {
   );
 };
 
-export default ContentModuleChat;
+export default ContentModuleContactUs;
