@@ -6,6 +6,7 @@ import SearchBar from '../../molecules/SearchBar'
 const ClientLayout = () => {
   const userData = [
     {
+      id:1,
       username: 'testUsername',
       firstName: 'Filan',
       lastName: 'Fisteku',
@@ -15,6 +16,57 @@ const ClientLayout = () => {
       dateOfBirth: ''
     },
     {
+      id:1,
+      username: 'testUsername',
+      firstName: 'Filan',
+      lastName: 'Fisteku',
+      email: 'filanf@gmail.com',
+      password: 'test',
+      isAdmin: false,
+      dateOfBirth: ''
+    },
+    {
+      id:1,
+      username: 'testUsername',
+      firstName: 'Filan',
+      lastName: 'Fisteku',
+      email: 'filanf@gmail.com',
+      password: 'test',
+      isAdmin: false,
+      dateOfBirth: ''
+    },
+    {
+      id:1,
+      username: 'testUsername',
+      firstName: 'Filan',
+      lastName: 'Fisteku',
+      email: 'filanf@gmail.com',
+      password: 'test',
+      isAdmin: false,
+      dateOfBirth: ''
+    },
+    {
+      id:1,
+      username: 'testUsername',
+      firstName: 'Filan',
+      lastName: 'Fisteku',
+      email: 'filanf@gmail.com',
+      password: 'test',
+      isAdmin: false,
+      dateOfBirth: ''
+    },
+    {
+      id:1,
+      username: 'testUsername',
+      firstName: 'Filan',
+      lastName: 'Fisteku',
+      email: 'filanf@gmail.com',
+      password: 'test',
+      isAdmin: false,
+      dateOfBirth: ''
+    },
+    {
+      id:2,
       username: 'johnDoe',
       firstName: 'John',
       lastName: 'Doe',
@@ -24,6 +76,7 @@ const ClientLayout = () => {
       dateOfBirth: '1990-05-15'
     },
     {
+      id:3,
       username: 'janeDoe',
       firstName: 'Jane',
       lastName: 'Doe',
@@ -33,6 +86,7 @@ const ClientLayout = () => {
       dateOfBirth: '1985-09-20'
     },
     {
+      id: 4,
       username: 'adminUser',
       firstName: 'Admin',
       lastName: 'User',
@@ -42,6 +96,7 @@ const ClientLayout = () => {
       dateOfBirth: '1978-03-10'
     },
     {
+      id:5,
       username: 'aliceSmith',
       firstName: 'Alice',
       lastName: 'Smith',
@@ -51,6 +106,7 @@ const ClientLayout = () => {
       dateOfBirth: '1988-12-02'
     },
     {
+      id:6,
       username: 'bobJohnson',
       firstName: 'Bob',
       lastName: 'Johnson',

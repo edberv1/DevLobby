@@ -1,10 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react'
 import './SearchBar.scss'
+import UserSearchrow from '../../atoms/UserSearchRow'
 
 const SearchBar = ({ placeholder, data }) => {
   const [query, setQuery] = useState('')
   const [filteredData, setFilteredData] = useState([])
   const resultRef = useRef(null)
+  const inputRef = useRef(null)
 
   useEffect(() => {
     document.addEventListener('mousedown', handleOutsideClick)
@@ -22,20 +24,23 @@ const SearchBar = ({ placeholder, data }) => {
   const handleChange = e => {
     setQuery(e.target.value.toLowerCase())
 
+    // this is for testing puproses:
     const queryResult = data?.filter(value => {
-      return value.username.toLowerCase().includes(query)
+      return value && value.username.toLowerCase().includes(query)
     })
     if (query?.length < 2) {
       setFilteredData([])
     } else {
       setFilteredData(queryResult)
     }
+    // the values (if it's length is >= 3 will be sent to backend and then it'll return the filtered data)
   }
 
   return (
     <div className='userSearchBar'>
       <div className='searchInput'>
         <input
+          ref={inputRef}
           type='text'
           value={query}
           placeholder={placeholder}
@@ -87,9 +92,12 @@ const SearchBar = ({ placeholder, data }) => {
         <div ref={resultRef} className='searchResult'>
           {filteredData?.slice(0, 10).map((value, key) => {
             return (
-              <div key={key}>
-                <p>{`${value.firstName} (@${value.username})`}</p>
-              </div>
+              <UserSearchrow
+                key={key}
+                id={value?.id}
+                username={value?.username}
+                name={value?.firstName}
+              />
             )
           })}
         </div>
