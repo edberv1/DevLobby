@@ -1,65 +1,57 @@
-import React, { useState } from 'react'
-import { FaChartPie, FaLightbulb, FaTicketAlt } from 'react-icons/fa'
-import { IoIosPeople, IoMdSettings } from 'react-icons/io'
-import { MdArticle, MdOutlineSupportAgent } from 'react-icons/md'
-import Logo from '../../../assets/images/icon.png'
-import './Sidebar.scss'
+import React, { useState } from "react";
+import * as FaIcons from "react-icons/fa";
+import * as AiIcons from "react-icons/ai";
+import { Link } from "react-router-dom";
+import { SidebarData } from "./SidebarData";
+import "./Sidebar.scss";
+import Logo from "../../../assets/images/icon.png"
 
 const Sidebar = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false)
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [sidebar, setSidebar] = useState(false);
 
   const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode)
-  }
+    setIsDarkMode(!isDarkMode);
+  };
+
+  const showSidebar = () => setSidebar(!sidebar);
 
   return (
-    <div className='sidebar'>
-      <div className={`${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
-        <div className='top'>
-          <span className='logo'>
-            <img src={Logo} alt='Logo' />
-          </span>
-        </div>
-
-        <div className='center'>
-          <ul>
-            <li>
-              <FaChartPie className='icon' />
-              <span>Overview</span>
-            </li>
-
-            <li>
-              <FaLightbulb className='icon' />
-              <span>Recent</span>
-            </li>
-            <li>
-              <FaTicketAlt className='icon' />
-              <span>Tickets</span>
-            </li>
-            <li>
-              <IoIosPeople className='icon' />
-              <span>Contacts</span>
-            </li>
-            <li>
-              <MdOutlineSupportAgent className='icon' />
-              <span>Agents</span>
-            </li>
-            <li>
-              <MdArticle className='icon' />
-              <span>Articles</span>
-            </li>
-            <li>
-              <IoMdSettings className='icon' />
-              <span>Settings</span>
-            </li>
-          </ul>
-        </div>
-        <button onClick={toggleDarkMode}>
-          {isDarkMode ? 'Light Mode' : 'Dark Mode'}
-        </button>
+    <>
+      <div className={isDarkMode ? "sidebar dark-mode" : "sidebar light-mode"}>
+        <Link to="#" className="menu-bars">
+          <FaIcons.FaBars onClick={showSidebar} />
+        </Link>
       </div>
-    </div>
-  )
-}
+      <div className={sidebar ? "sidebar-menu active" : "sidebar-menu"}>
+        <ul className="sidebar-menu-items" onClick={showSidebar}>
+          
+          <li className="sidebar-toggle">
+            <Link to="#" className="menu-bars">
+              <AiIcons.AiOutlineClose />
+            </Link>
+          </li>
+         <img src={Logo} alt="Logo" />
 
-export default Sidebar
+          {SidebarData.map((item, index) => {
+            return (
+              <li key={index} className={item.cName}>
+                <Link to={item.path}>
+                  {item.icon}
+                  <span>{item.title}</span>
+                </Link>
+              </li>
+            );
+          })}
+         <div className="dark-mode-button-container">
+            <button onClick={toggleDarkMode}>
+              {isDarkMode ? "Light Mode" : "Dark Mode"}
+            </button>
+          </div>
+        </ul>
+      </div>
+    </>
+  );
+};
+
+export default Sidebar;
