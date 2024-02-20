@@ -1,6 +1,6 @@
 import React from 'react';
 import './AdminHeaderComponent.scss';
-import graphImage from '../../../assets/images/graph_image.png'; // Corrected import path
+import graphImage from '../../../assets/images/graph_image.png';
 
 function AdminHeaderComponent() {
     return (

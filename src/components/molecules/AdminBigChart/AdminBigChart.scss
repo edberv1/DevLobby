@@ -37,3 +37,34 @@
       margin-left: 2rem;    
     }
   }
+
+  @media only screen and (min-width: 601px) and (max-width: 1024px) {
+    .chart-and-stats {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .admin-big-chart-container{
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-left: 0;
+    }
+
+    .admin-big-chart {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 500px;
+        height: auto;
+    }
+    .admin-big-chart canvas{
+      width: 100%;
+  }
+
+}
