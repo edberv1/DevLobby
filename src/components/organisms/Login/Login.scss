@@ -6,24 +6,35 @@ $secondary-color: #1310e9;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: $primary-color;
+  padding: 2vh;
+  padding-top: 0;
+  background-color: #1a1a1a;
+
+  .login-image-section img {
+    height: 90vh;
+    width: 80%;
+    max-width: 700px;
+    max-height: 620px;
+    border-radius: 10px;
+  }
 
   .login-form {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-left: 290px;
+    width: 100%;
+    max-width: 400px;
     text-align: center;
+    img {
+      width: 320px;
+    }
 
     h2 {
       color: $primary-color;
     }
 
-    img {
-      max-width: 100%;
-      height: auto;
-      margin-bottom: 15px;
-    }
+  
 
     p {
       color: #666;
@@ -37,13 +48,21 @@ $secondary-color: #1310e9;
       hr {
         flex-grow: 1;
         border: none;
-        border-top: 3px solid #dfe1e5;
+        border-top: 1px solid #dfe1e5;
       }
 
-      span {
-        display: inline-block;
-        margin: 0 10px;
-        color: #888;
+      &:before,
+      &:after {
+        content: "";
+        flex-grow: 1;
+      }
+
+      &:before {
+        margin-right: 1rem;
+      }
+
+      &:after {
+        margin-left: 1rem;
       }
     }
 
@@ -54,25 +73,27 @@ $secondary-color: #1310e9;
 
       input {
         width: 100%;
-        padding: 10px;
-        margin: 10px 0;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        outline: none;
+        padding: 1rem;
+        margin: 0.5rem 0;
+        border: 1px solid #dfe1e5;
+        border-radius: 5px;
+        box-sizing: border-box;
       }
+     
 
-      button.login-btn {
-        background-color: $secondary-color;
-        color: #fff;
-        padding: 10px 20px;
+      .login-btn {
+        background-color: #0070ec;
+        color: white;
+        padding: 1rem 2rem;
         border: none;
-        border-radius: 4px;
+        border-radius: 5px;
+        margin-top: 1rem;
         cursor: pointer;
-        transition: background-color 0.3s;
-
-        &:hover {
-          background-color: darken($secondary-color, 10%);
-        }
+        width: 100%;
+      }
+      .login-btn:hover {
+        background-color: blue;
+        transition: 0.5s;
       }
     }
 
@@ -104,4 +125,5 @@ $secondary-color: #1310e9;
       height: auto;
     }
   }
+ 
 }
