@@ -2,7 +2,10 @@ import React from 'react'
 
 import ModalDemo from '../../organisms/ModalDemo'
 import AdminHeaderComponent from '../../molecules/AdminHeaderComponent/index'
-import Sidebar from '../../molecules/Sidebar/index'
+import Sidebar from '../../molecules/Sidebar'
+import BigChartAndStats from '../../organisms/BigChartAndStats'
+
+
 
 const AdminLayout = () => {
   return (
@@ -10,6 +13,7 @@ const AdminLayout = () => {
       <Sidebar/>
       <ModalDemo />
       <AdminHeaderComponent />
+      <BigChartAndStats />
     </div>
   )
 }

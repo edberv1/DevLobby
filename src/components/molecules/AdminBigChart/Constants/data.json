@@ -1,0 +1,9 @@
+[
+    { "week": "Week 1", "registrations": 20 },
+    { "week": "Week 2", "registrations": 35 },
+    { "week": "Week 3", "registrations": 28 },
+    { "week": "Week 4", "registrations": 42 },
+    { "week": "Week 5", "registrations": 70 },
+    { "week": "Week 6", "registrations": 30 }
+  ]
+  
