@@ -25,6 +25,7 @@
   left: -100%;
   transition: 850ms;
   z-index: 5;
+
 }
 
 .sidebar-menu.active {
@@ -108,7 +109,6 @@ span {
   @media screen and (max-width: 768px) {
     .sidebar-menu {
       width: 200px; 
-
       img{
       display: none;
     }
