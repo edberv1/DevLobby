@@ -1,0 +1,29 @@
+{
+    "userLogins": [
+      { "date": "2024-02-01", "logins": 50 },
+      { "date": "2024-02-02", "logins": 55 },
+      { "date": "2024-02-03", "logins": 60 },
+      { "date": "2024-02-04", "logins": 70 },
+      { "date": "2024-02-05", "logins": 75 },
+      { "date": "2024-02-06", "logins": 80 },
+      { "date": "2024-02-07", "logins": 85 }
+    ],
+    "userPayments": [
+      { "date": "2024-02-01", "payments": 20 },
+      { "date": "2024-02-02", "payments": 25 },
+      { "date": "2024-02-03", "payments": 30 },
+      { "date": "2024-02-04", "payments": 35 },
+      { "date": "2024-02-05", "payments": 40 },
+      { "date": "2024-02-06", "payments": 45 },
+      { "date": "2024-02-07", "payments": 50 }
+    ],
+    "userFeedbacks": [
+      { "date": "2024-02-01", "feedbacks": 5 },
+      { "date": "2024-02-02", "feedbacks": 7 },
+      { "date": "2024-02-03", "feedbacks": 8 },
+      { "date": "2024-02-04", "feedbacks": 6 },
+      { "date": "2024-02-05", "feedbacks": 10 },
+      { "date": "2024-02-06", "feedbacks": 9 },
+      { "date": "2024-02-07", "feedbacks": 12 }
+    ]
+  }
