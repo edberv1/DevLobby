@@ -21,7 +21,7 @@ const ContentModuleContactUs = () => {
           digital era.
         </p>
         {/* Use Link component for client-side routing */}
-        <Link to="/contactus" className="btn-chat">
+        <Link to="/contactus" className="btn-contact">
           Start a Conversation
         </Link>
         <br /> <br />
