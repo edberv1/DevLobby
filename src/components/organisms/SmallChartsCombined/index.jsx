@@ -8,7 +8,7 @@ const SmallChartsCombined = () => {
     <div className='charts-container'>
       <Chart data={jsonData.userLogins} title="User Logins" lineColor="255, 99, 132" fillColor="255, 99, 132" />
       <Chart data={jsonData.userPayments} title="User Payments" lineColor="255, 159, 64" fillColor="255, 159, 64" />
-      <Chart data={jsonData.userFeedbacks} title="User Feedbacks" lineColor="75, 192, 192" fillColor="75, 192, 192" />
+      <Chart data={jsonData.userFeedbacks} title="User Feedback" lineColor="75, 192, 192" fillColor="75, 192, 192" />
     </div>
   );
 };
