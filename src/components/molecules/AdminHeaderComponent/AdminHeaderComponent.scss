@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
 .dashboard-header {
     max-width: 700px;
     margin: 20px 280px; 
@@ -6,6 +8,7 @@
     border-radius: 15px;
     position: relative;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    font-family: poppins;
 }
 
 .left-content {
