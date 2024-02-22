@@ -1,30 +1,41 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
-.content-module-chat {
+
+.content-module-contact-us {
   font-family: "Poppins", sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #1a1a1a;
   color: #fff;
+  flex-direction: row;
 
+  .idea-pic {
+    display: flex;
+    align-items: center;
+    img {
+      width: 100px;
+    }
+  }
   .content-image {
-    flex: 0 1 40%; /* Adjusted flex-basis to 40%, and allow shrink but not grow */
+    width: 40%;
     text-align: center;
 
     img {
       max-width: 100%;
       height: auto;
-      display: inline-block; /* Ensures the image does not take full width */
-      padding-right: 40px;
+      display: inline-block;
+      max-width: 400px;
     }
   }
+
   .devLobby {
     color: #0070ec;
+    margin-left: 8px;
   }
+
   .content-info {
-    flex: 0 1 50%; /* Adjusted flex-basis to 50%, and allow shrink but not grow */
+    width: 50%;
     margin-left: 20px;
-    max-width: 600px; /* Set a max-width for the content to wrap */
 
     h1 {
       font-size: 2.5rem;
@@ -50,17 +61,65 @@
         box-shadow: 0 0 50px #004494;
       }
     }
+  }
 
-    .contact-info {
-      font-size: 1rem;
-      margin-top: 1.5rem;
+  @media (max-width: 768px) {
+    .idea-pic {
+      align-items: center;
+      justify-content: center;
+    }
+    .content-image img {
+      max-height: 500px;
+    }
 
-      span {
-        display: inline-block;
-        background-color: #333;
-        color: #fff;
-        padding: 5px 10px;
-        border-radius: 5px;
+    flex-direction: column;
+    text-align: center;
+
+    .content-image,
+    .content-info {
+      width: 80%;
+      margin-left: 0;
+      margin-top: 0;
+    }
+
+    .content-info {
+      h1 {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .btn-contact {
+        padding: 15px 25px;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .content-image img {
+      max-height: 300px;
+    }
+
+    .content-image,
+    .content-info {
+      width: 90%;
+      margin-top: 10px;
+    }
+
+    .content-info {
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      p {
+        font-size: 0.9rem;
+      }
+
+      .btn-contact {
+        padding: 10px 20px;
+        font-size: medium;
       }
     }
   }

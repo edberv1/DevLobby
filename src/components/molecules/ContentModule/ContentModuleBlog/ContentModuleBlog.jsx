@@ -18,7 +18,6 @@ const ContentModuleBlog = () => {
             snippets of code to comprehensive tutorials, your knowledge can
             empower a legion of developers.
           </p>
-          {/* Use Link component for client-side routing */}
           <Link to="/blog" className="btn-blog">
             Post your first Blog
           </Link>

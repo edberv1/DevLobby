@@ -1,7 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
 .stats-container {
   display: flex;
   justify-content: space-around;
-  background: #0070ec; // Replace with the actual color code from your design
+  background: #0070ec;
   padding: 40px;
   border-radius: 8px;
   width: 80%;
@@ -9,6 +11,16 @@
   border: 1px solid white;
   margin-top: 20px;
   margin-bottom: 20px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  font-family: "poppins";
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 
   .stat {
     padding-left: 10%;
@@ -18,27 +30,42 @@
     justify-content: center;
     color: #ffffff;
     border-left: 1px solid white;
+
     &.first {
-      border-color: #0070ec;
+      border-color: transparent;
       padding-left: 0;
     }
 
     .stat-icon {
       .svg-inline--fa {
-        font-size: 2rem; // Example size, adjust as needed
-        color: #ffffff; // White color for the icons
+        font-size: 2rem;
+        color: #ffffff;
         padding-bottom: 5px;
       }
     }
 
     .stat-value {
-      font-size: 40px; // Adjust the font size as per your design
+      font-size: 40px;
       font-weight: bold;
-      margin: 8px 0; // Adjust spacing as needed
+      margin: 8px 0;
     }
 
     .stat-description {
-      font-size: 20px; // Adjust the font size as per your design
+      font-size: 20px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-container {
+    width: auto;
+    padding: 20px;
+    justify-content: flex-start;
+    border-radius: 0;
+
+    .stat {
+      padding-left: 10px;
+      min-width: 160px;
     }
   }
 }

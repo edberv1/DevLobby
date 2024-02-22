@@ -10,7 +10,7 @@ const ContentModuleChat = () => {
         <img src={HighTechGirl} alt="High Technology Girl" />
       </div>
       <div className="content-info">
-        <h1>
+        <h1 className="chat-header">
           Communicate with all the devs. that chose
           <span className="devLobby">DevLobby</span> as their safe space
         </h1>
@@ -20,7 +20,6 @@ const ContentModuleChat = () => {
           technology and an expert team, we ensure your peace of mind in the
           digital era.
         </p>
-        {/* Use Link component for client-side routing */}
         <Link to="/chat" className="btn-chat">
           Start a Conversation
         </Link>
