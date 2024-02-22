@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
 .content-module-chat {
   font-family: "Poppins", sans-serif;
   display: flex;
@@ -6,26 +7,29 @@
   justify-content: center;
   background-color: #1a1a1a;
   color: #fff;
+  flex-direction: row;
 
   .content-image {
-    flex: 0 1 40%; /* Adjusted flex-basis to 40%, and allow shrink but not grow */
+    width: 40%;
     text-align: center;
 
     img {
       max-width: 100%;
       height: auto;
-      display: inline-block; /* Ensures the image does not take full width */
+      display: inline-block;
     }
   }
+
   .devLobby {
     color: #0070ec;
+    margin-left: 8px;
   }
-  .content-info {
-    flex: 0 1 50%; /* Adjusted flex-basis to 50%, and allow shrink but not grow */
-    margin-left: 20px;
-    max-width: 600px; /* Set a max-width for the content to wrap */
 
-    h1 {
+  .content-info {
+    width: 50%;
+    margin-left: 20px;
+
+    .chat-header {
       font-size: 2.5rem;
       margin-bottom: 1rem;
     }
@@ -49,17 +53,60 @@
         box-shadow: 0 0 50px #004494;
       }
     }
+  }
 
-    .contact-info {
-      font-size: 1rem;
-      margin-top: 1.5rem;
+  .content-info {
+    margin-left: 0 !important;
+  }
 
-      span {
-        display: inline-block;
-        background-color: #333;
-        color: #fff;
-        padding: 5px 10px;
-        border-radius: 5px;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+
+    .content-image,
+    .content-info {
+      width: 80%;
+      margin-left: 0;
+      margin-top: 0;
+      padding-right: 0;
+    }
+    .content-image img {
+      max-height: 500px;
+    }
+    .content-info {
+      .chat-header {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .btn-chat {
+        padding: 15px 25px;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .content-image,
+    .content-info {
+      width: 90%;
+      margin-top: 10px;
+    }
+
+    .content-info {
+      .chat-header {
+        font-size: 1.5rem;
+      }
+
+      p {
+        font-size: 0.9rem;
+      }
+
+      .btn-chat {
+        padding: 10px 20px;
+        font-size: medium;
       }
     }
   }

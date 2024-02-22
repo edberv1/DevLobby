@@ -1,4 +1,5 @@
 import React from "react";
+import "./ContentModule.scss";
 import ContentModuleChat from "./ContentModuleChat/ContentModuleChat";
 import StatsComponent from "./ContentModuleChat/StatsComponent";
 import ContentModuleBlog from "./ContentModuleBlog/ContentModuleBlog";

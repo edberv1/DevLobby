@@ -1,11 +1,10 @@
 import React from "react";
-import "./ContentModuleAbout.scss"; // Import the SCSS for styling
+import "./ContentModuleAbout.scss";
 import Magnifier from "../../../../assets/images/magnifier1.png";
 import Screen from "../../../../assets/images/screen.png";
 import Create from "../../../../assets/images/create.png";
 import Analyze from "../../../../assets/images/analyze.png";
 
-// This is a functional component for a single content block
 const ContentBlock = ({ icon, title, description, btndscp }) => {
   return (
     <div className="content-block">
@@ -17,9 +16,7 @@ const ContentBlock = ({ icon, title, description, btndscp }) => {
   );
 };
 
-// The main component that renders multiple ContentBlocks
 function ContentModuleAbout() {
-  // You might want to define your content blocks here or fetch them from an API
   const contentBlocks = [
     {
       icon: (
@@ -28,7 +25,7 @@ function ContentModuleAbout() {
           style={{ width: "55px", height: "50px" }}
           alt="Magnifier"
         />
-      ), // Replace with your actual icon component
+      ),
       title: "Search",
       description:
         "Search and filter through the users and gain a chance to know more about your coworkers.",
@@ -41,7 +38,7 @@ function ContentModuleAbout() {
           style={{ width: "60px", height: "50px" }}
           alt="Screen"
         />
-      ), // Replace with your actual icon component
+      ),
       title: "Compete and Connect",
       description:
         "Dive into a world of competitive gaming where every match is an opportunity to prove your skills.",
@@ -54,7 +51,7 @@ function ContentModuleAbout() {
           style={{ width: "60px", height: "50px" }}
           alt="Screen"
         />
-      ), // Replace with your actual icon component
+      ),
       title: "Craft Your Thoughts",
       description:
         "Unleash your creativity and share your unique perspective with the world. Ready to make your mark?",
@@ -67,7 +64,7 @@ function ContentModuleAbout() {
           style={{ width: "60px", height: "50px" }}
           alt="Screen"
         />
-      ), // Replace with your actual icon component
+      ),
       title: "Level Up Your Game",
       description:
         "Engage in challenges that test your skills, and unlock achievements as you ascend to higher levels.",

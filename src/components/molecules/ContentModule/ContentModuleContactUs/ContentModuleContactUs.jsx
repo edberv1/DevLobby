@@ -2,30 +2,37 @@ import React from "react";
 import "./ContentModuleContactUs.scss";
 import ContactUsRobot from "../../../../assets/images/ContactUsRobot-removebg.png";
 import { Link } from "react-router-dom";
+import Idea from "../../../../assets/images/idea.gif";
 
 const ContentModuleContactUs = () => {
   return (
-    <div className="content-module-chat">
+    <div className="content-module-contact-us">
       <div className="content-image">
         <img src={ContactUsRobot} alt="Contact Us Robot" />
       </div>
       <div className="content-info">
-        <h1>
-          Communicate with all the devs. that chose
-          <span className="devLobby">DevLobby</span> as their safe space
-        </h1>
+        <div className="idea-pic">
+          <img src={Idea} alt="idea" />
+          <h1>
+            Get in
+            <span className="devLobby">Touch</span>.
+          </h1>
+        </div>
+        <br />
         <p>
-          Your time here is valuable. Our comfort approach is designed to make
-          you feel full with a crowded space of developers. With cutting-edge
-          technology and an expert team, we ensure your peace of mind in the
-          digital era.
+          Whether you're stuck on a problem or just want to chat about the
+          latest in tech, our doors are always open. Connect with our team and
+          let us help you navigate through the tech landscape with ease.
         </p>
-        {/* Use Link component for client-side routing */}
+        <p>
+          Our team is ready and eager to provide the support, answers, and
+          conversation you need to make your tech journey smooth and enjoyable.
+        </p>
         <Link to="/contactus" className="btn-contact">
-          Start a Conversation
+          Contact Us Now
         </Link>
         <br /> <br />
-        <p>Make yourself at home, dev.</p>
+        <p>Great minds think alike!</p>
       </div>
     </div>
   );
