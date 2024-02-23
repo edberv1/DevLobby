@@ -50,14 +50,22 @@ body {
     text-decoration: none;
     color: black;
   }
+  .profile a{
+    text-decoration: none;
+    color:black;
+    margin: 0;
+    padding:0;
+  }
 
   button {
     @include button-styles(#0070ec, #ffffff, blue);
+    white-space: nowrap;
   }
 
   button:last-child {
     @include button-styles(#ffffffff, #ffffff, rgb(208, 212, 207));
     color: black;
+    white-space: nowrap;
   }
 }
 

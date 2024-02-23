@@ -10,6 +10,7 @@ import Landing from "./components/organisms/Landing";
 import Login from "./components/organisms/Login";
 import Signup from "./components/organisms/Signup";
 import ContactUs from "./components/organisms/ContactUs";
+import Profile from "./components/organisms/Profile";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
       {
         path: "contactus",
         element: <ContactUs />,
+      },
+      {
+        path: "profile",
+        element: <Profile/>,
       },
     ],
   },

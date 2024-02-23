@@ -57,7 +57,6 @@ const Navbar = () => {
           <li onClick={closeMenu}>
             <Link to="/contactus">Contact Us</Link>
           </li>
-          
         </ul>
         {/* Buttons */}
         <div className="butonat-client">
@@ -66,6 +65,9 @@ const Navbar = () => {
           </button>
           <button className="signup" onClick={closeMenu}>
             <Link to="/signup">Sign Up</Link>
+          </button>
+          <button className="profile" onClick={closeMenu}>
+            <Link to="/profile">Profile</Link>
           </button>
         </div>
       </nav>
