@@ -12,7 +12,6 @@ const AdminLayout = () => {
   return (
     <div className='adminLayout'>
       <Sidebar/>
-      <ModalDemo />
       <AdminHeaderComponent />
       <BigChartAndStats />
       <SmallChartsCombined />
