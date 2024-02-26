@@ -2,15 +2,18 @@
   position: relative;
   background-color: #1a1a1a;
   height: 100vh;
+  width: 100vw;
   color: white;
 
   .container {
-    padding-top: 3rem;
+    position: relative;
+    padding-top: 5rem;
     justify-content: center;
     align-items: center;
     display: flex;
     flex-direction: column;
     gap: 16px;
+    z-index: 1;
 
     #errCode {
       font-size: 60px;
@@ -26,36 +29,47 @@
       font-size: larger;
       font-size: 2rem;
     }
+
+    .guide {
+      margin-top: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      a,
+      a:hover,
+      a:focus,
+      a:active {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .homeBtn {
+        display: inline-block;
+        background-color: #0070ec;
+        color: #fff;
+        padding: 20px 30px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: larger;
+        transition: background-color 0.3s ease;
+        transition: box-shadow 0.3s ease;
+
+        &:hover {
+          box-shadow: 0 0 50px #004494;
+        }
+      }
+    }
   }
 
-  .guide {
-    margin-top: 74px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .imgContainer {
+    position: absolute;
+    left: 94px;
+    bottom: 16px;
+    z-index: 0;
 
-    a,
-    a:hover,
-    a:focus,
-    a:active {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .homeBtn {
-      display: inline-block;
-      background-color: #0070ec;
-      color: #fff;
-      padding: 20px 30px;
-      text-decoration: none;
-      border-radius: 5px;
-      font-size: larger;
-      transition: background-color 0.3s ease;
-      transition: box-shadow 0.3s ease;
-
-      &:hover {
-        box-shadow: 0 0 50px #004494;
-      }
+    img {
+      width: 64%;
     }
   }
 }
@@ -76,14 +90,20 @@
     .text2 {
       font-size: 1.5rem; /* Adjusted font size for smaller screens */
     }
+
+    .guide {
+      margin-top: 48px; /* Adjusted margin for smaller screens */
+
+      .homeBtn {
+        padding: 15px 25px; /* Adjusted padding for smaller screens */
+        font-size: medium; /* Adjusted font size for smaller screens */
+      }
+    }
   }
 
-  .guide {
-    margin-top: 48px; /* Adjusted margin for smaller screens */
-
-    .homeBtn {
-      padding: 15px 25px; /* Adjusted padding for smaller screens */
-      font-size: medium; /* Adjusted font size for smaller screens */
+  .imgContainer {
+    img {
+      width: 12px;
     }
   }
 }
