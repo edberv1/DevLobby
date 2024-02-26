@@ -11,6 +11,7 @@ import Login from "./components/organisms/Login";
 import Signup from "./components/organisms/Signup";
 import ContactUs from "./components/organisms/ContactUs";
 import Polls from "./components/molecules/Polls";
+import ProfileCard from "./components/organisms/Profile";
 
 const router = createBrowserRouter([
   {
@@ -59,7 +60,7 @@ const router = createBrowserRouter([
       },
       {
         path: "profile",
-        element: <Profile/>,
+        element: <ProfileCard/>,
       },
     ],
   },

@@ -3,20 +3,21 @@ import './Profile.scss';
 
 const ProfileCard = () => {
   return (
-    <div className="profile-card">
-      <header className="profile-header">
-        <img src="https://www.svgrepo.com/show/382100/female-avatar-girl-face-woman-user-7.svg" alt="Profile" className="profile-image" />
-        <h1 className="profile-name">Sara</h1>
-        <p className="profile-username">@Sara</p>
-        <p className="profile-description">A student of CSE Department at UBT</p>
-        <div className="profile-social-links">
-          <button className="social-link"><i className="fab fa-twitter"></i></button>
-          <button className="social-link"><i className="fab fa-linkedin-in"></i></button>
-          <button className="social-link"><i className="fab fa-github"></i></button>
-        </div>
-      </header>
-      <div className="body">
-        <div className="profile-body">
+    <div className="profile-container">
+      <div className="profile-card">
+        <header className="profile-header">
+          <img src="https://www.svgrepo.com/show/382100/female-avatar-girl-face-woman-user-7.svg" alt="Profile" className="profile-image" />
+          <h1 className="profile-name">Sara</h1>
+          <p className="profile-username">@Sara</p>
+          <p className="profile-description">A student of CSE Department at UBT</p>
+          <div className="profile-social-links">
+            <button className="social-link twitter"><i className="fab fa-twitter"></i></button>
+            <button className="social-link linkedin"><i className="fab fa-linkedin-in"></i></button>
+            <button className="social-link github"><i className="fab fa-github"></i></button>
+          </div>
+        </header>
+      </div>
+      <div className="profile-body">
           <section className="profile-about">
             <h2>About</h2>
             <p>Expected year of Graduation: 2024</p>
@@ -39,11 +40,10 @@ const ProfileCard = () => {
               <div className="skill verified">React JS</div>
             </div>
           </section>
-          <section className="profile-experience">
+        <section className="profile-experience">
             <h2>Work Experience</h2>
             <button className="add-experience-btn">Starlabs</button>
-          </section>
-        </div>
+        </section>
       </div>
     </div>
   );

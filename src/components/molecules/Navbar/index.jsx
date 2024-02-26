@@ -75,8 +75,10 @@ const Navbar = () => {
             <Link to="/signup">Sign Up</Link>
           </button>
           <button className="profile" onClick={closeMenu}>
-            <Link to="/profile">Profile</Link>
-          </button>
+          <Link to="/profile">
+            <i className="fas fa-user-circle fa-2x"></i>
+          </Link>
+        </button>
         </div>
       </nav>
     </>
