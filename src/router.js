@@ -11,6 +11,7 @@ import Login from "./components/organisms/Login";
 import Signup from "./components/organisms/Signup";
 import ContactUs from "./components/organisms/ContactUs";
 import Polls from "./components/molecules/Polls";
+import PageNotFound from "./components/organisms/PageNotFound";
 
 const router = createBrowserRouter([
   {
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
   {
     path: "admin",
     element: <AdminLayout />,
+  },
+  {
+    path: "*",
+    element: <PageNotFound />
   },
 ]);
 
