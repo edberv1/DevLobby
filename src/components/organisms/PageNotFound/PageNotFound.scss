@@ -1,6 +1,73 @@
 .pageNotFound {
-  color: wheat;
+  position: relative;
+  background-color: #1a1a1a;
+  height: 100vh;
+  color: white;
 
-  .goBackBtn {
+  .container {
+    padding-top: 3rem;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .imageContainer {
+      width: 20%;
+      text-align: center;
+
+      img {
+        border-radius: 12px;
+        max-width: 100%;
+        height: auto;
+        display: inline-block;
+      }
+    }
+
+    #errCode {
+      font-size: 60px;
+    }
+
+    .text1 {
+      letter-spacing: 1px;
+      margin-top: 36px;
+    }
+
+    .text2 {
+      margin-top: 36px;
+      font-size: larger;
+      font-size: 2rem;
+    }
+  }
+
+  .guide {
+    margin-top: 74px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    a,
+    a:hover,
+    a:focus,
+    a:active {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .homeBtn {
+      display: inline-block;
+      background-color: #0070ec;
+      color: #fff;
+      padding: 20px 30px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: larger;
+      transition: background-color 0.3s ease;
+      transition: box-shadow 0.3s ease;
+
+      &:hover {
+        box-shadow: 0 0 50px #004494;
+      }
+    }
   }
 }

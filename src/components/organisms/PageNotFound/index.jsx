@@ -5,9 +5,14 @@ import './PageNotFound.scss'
 const PageNotFound = () => {
   return (
     <div className='pageNotFound'>
-      <h1>Page not found.</h1>
-      <div className='goBackBtn'>
-        <Link to='/'>Go back home</Link>
+      <div className='container'>
+        <div id='errCode'>404 not found :(</div>
+        <div className='text2'>The page you're looking for doesn't exist.</div>
+      </div>
+      <div className='guide'>
+        <div className='homeBtn'>
+          <Link to='/'>Go back home</Link>
+        </div>
       </div>
     </div>
   )
