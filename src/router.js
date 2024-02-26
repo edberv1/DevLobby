@@ -10,7 +10,7 @@ import Landing from "./components/organisms/Landing";
 import Login from "./components/organisms/Login";
 import Signup from "./components/organisms/Signup";
 import ContactUs from "./components/organisms/ContactUs";
-import Profile from "./components/organisms/Profile";
+import Polls from "./components/molecules/Polls";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: "playcodearena",
         element: <PlayCodeArena />,
+      },
+      {
+        path: "polls",
+        element: <Polls />,
       },
       {
         path: "blog",
