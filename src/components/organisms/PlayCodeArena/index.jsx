@@ -1,10 +1,12 @@
 import React from 'react'
+import PlayArenaCards from '../../molecules/PlayArenaCards'
+import PlayArenaHeading from '../../atoms/PlayArenaHeading'
 
 const PlayCodeArena = () => {
   return (
     <div>
-      <h1>PlayCode Arena Page</h1>
-      <p>Welcome to the PlayCode Arena page!</p>
+      <PlayArenaHeading />
+      <PlayArenaCards />
     </div>
   )
 }
