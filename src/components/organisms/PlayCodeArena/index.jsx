@@ -15,6 +15,7 @@ const PlayCodeArena = () => {
       <p>Welcome to the PlayCode Arena page!</p>
     </div>
   );
+  
 }
 
 export default PlayCodeArena;
