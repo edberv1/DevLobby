@@ -11,7 +11,7 @@ const PageNotFound = () => {
       </div>
       <div className='guide'>
         <div className='homeBtn'>
-          <Link to='/'>Go back home</Link>
+          <Link to='/'>Go back to Lobby</Link>
         </div>
       </div>
     </div>
