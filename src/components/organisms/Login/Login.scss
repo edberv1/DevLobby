@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
 $primary-color: #191818;
 $secondary-color: #1310e9;
 
@@ -9,6 +10,7 @@ $secondary-color: #1310e9;
   padding: 2vh;
   padding-top: 0;
   background-color: #1a1a1a;
+  font-family: "Poppins";
 
   .login-image-section img {
     height: 90vh;
@@ -16,6 +18,12 @@ $secondary-color: #1310e9;
     max-width: 700px;
     max-height: 620px;
     border-radius: 10px;
+  }
+
+  .error-message {
+    color: #ff6b6b; // Set the error message color
+    margin: 10px 0; // Add some spacing around the message for visibility
+    // Add any additional styling here
   }
 
   .login-form {
@@ -33,8 +41,6 @@ $secondary-color: #1310e9;
     h2 {
       color: $primary-color;
     }
-
-  
 
     p {
       color: #666;
@@ -79,7 +85,6 @@ $secondary-color: #1310e9;
         border-radius: 5px;
         box-sizing: border-box;
       }
-     
 
       .login-btn {
         background-color: #0070ec;
@@ -125,5 +130,4 @@ $secondary-color: #1310e9;
       height: auto;
     }
   }
- 
 }
