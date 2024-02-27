@@ -105,7 +105,7 @@ const Navbar = () => {
           {isLoggedIn ? (
             <>
               <span className="navbar-username" style={{ color: "white" }}>
-                {username}
+                Welcome, {username}
               </span>
               <button
                 onClick={handleLogout}
