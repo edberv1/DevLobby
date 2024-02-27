@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './PageNotFound.scss'
-import Void from '../../../assets/images/void.svg'
 
 const PageNotFound = () => {
   return (
@@ -14,9 +13,6 @@ const PageNotFound = () => {
             <div className='homeBtn'>Go back to Lobby</div>
           </Link>
         </div>
-      </div>
-      <div className='imgContainer'>
-        <img src={Void} alt='lost' />
       </div>
     </div>
   )
