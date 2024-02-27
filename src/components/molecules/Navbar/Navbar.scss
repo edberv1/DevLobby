@@ -173,9 +173,15 @@ body {
       }
     }
   }
-
+  .butonat button {
+    display: none;
+  }
   // per tableta
   @media screen and (max-width: 1024px) {
+    .butonat button {
+      display: block;
+      margin-bottom: 10px;
+    }
     .butonat-client {
       display: none;
     }
@@ -217,6 +223,12 @@ body {
         text-decoration: none;
         color: white;
         border-bottom: none;
+      }
+      .butonat-nav.login {
+        &:first-child {
+          background-color: rgb(35, 35, 208);
+          color: white;
+        }
       }
       .butonat-nav.signup a {
         text-decoration: none;
