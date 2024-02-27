@@ -78,9 +78,11 @@ const Navbar = () => {
             <Link to="/contactus">Contact Us</Link>
           </li>
           {/* Conditionally render user info and sign out if logged in */}
-          <div className="butonat-nav">
+          <div className="butonat">
             {isLoggedIn ? (
-              <li onClick={handleLogout}>{username} | Sign Out</li>
+              <button onClick={handleLogout}>
+                Welcome, {username} | Sign Out
+              </button>
             ) : (
               <>
                 <li>
