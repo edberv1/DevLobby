@@ -80,13 +80,15 @@ const Navbar = () => {
           {/* Conditionally render user info and sign out if logged in */}
           <div className="butonat">
             {isLoggedIn ? (
-              <button onClick={handleLogout}>
-                Welcome, {username} | Sign Out
-              </button>
+              <button onClick={handleLogout}>Sign out of {username}</button>
             ) : (
               <>
                 <li>
-                  <button className="butonat-nav login" onClick={closeMenu}>
+                  <button
+                    className="butonat-nav login"
+                    onClick={closeMenu}
+                    style={{ backgroundColor: "#0070ec" }}
+                  >
                     <Link to="/login">Log in</Link>
                   </button>
                 </li>

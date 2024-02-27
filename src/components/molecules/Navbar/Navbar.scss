@@ -223,7 +223,7 @@ body {
         color: white;
         border-bottom: none;
       }
-      .butonat-nav.login {
+      .butonat-nav.login button {
         &:first-child {
           background-color: rgb(35, 35, 208);
           color: white;
@@ -292,6 +292,12 @@ body {
   }
   // per telefona
   @media screen and (max-width: 480px) {
+    .butonat-nav.login {
+      &:first-child {
+        background-color: rgb(35, 35, 208);
+        color: white;
+      }
+    }
     .hamburger-menu {
       display: block;
     }
