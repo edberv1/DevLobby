@@ -180,6 +180,7 @@ body {
     .butonat button {
       display: block;
       margin-bottom: 10px;
+      @include button-styles(#0070ec, #ffffff, blue);
     }
     .butonat-client {
       display: none;

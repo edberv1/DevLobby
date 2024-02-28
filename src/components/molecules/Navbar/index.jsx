@@ -80,7 +80,11 @@ const Navbar = () => {
           {/* Conditionally render user info and sign out if logged in */}
           <div className="butonat">
             {isLoggedIn ? (
-              <button onClick={handleLogout}>Sign out of {username}</button>
+              <>
+                <button onClick={handleLogout} className="signout-btn-mobile">
+                  Sign out
+                </button>
+              </>
             ) : (
               <>
                 <li>
@@ -122,6 +126,7 @@ const Navbar = () => {
             </>
           ) : (
             <>
+              {/* qetu shtini butonat mrena linkav jo linkat mrena butonit*/}
               <button className="login" onClick={closeMenu}>
                 <Link to="/login">Log in</Link>
               </button>
