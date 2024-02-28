@@ -1,10 +1,10 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 
 const AuthContext = createContext({})
 
 export default function AuthProvider({ children }) {
   const [token, setToken] = useState(localStorage.getItem('token') || null)
-  const [isLoggedIn, setIsLoggedIn] = useState()
+  const [isLoggedIn, setIsLoggedIn] = useState(!!token)
 
   useEffect(() => {
     localStorage.setItem('token', token)
