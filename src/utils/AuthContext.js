@@ -4,15 +4,15 @@ const AuthContext = createContext({})
 
 export default function AuthProvider({ children }) {
   const [token, setToken] = useState(localStorage.getItem('token') || null)
-  const [isLoggedIn, setIsLoggedIn] = useState(!!token)
+  const [isLoggedIn, setIsLoggedIn] = useState(token)
 
   useEffect(() => {
-    localStorage.setItem('token', token)
-    setIsLoggedIn(!!token)
+    setIsLoggedIn(token)
   }, [token])
 
   const login = (newToken) => {
     setToken(newToken)
+    localStorage.setItem("token", newToken)
   }
 
   const logout = () => {

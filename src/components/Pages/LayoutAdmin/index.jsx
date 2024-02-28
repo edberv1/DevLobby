@@ -10,7 +10,6 @@ import { Navigate } from 'react-router-dom'
 const AdminLayout = () => {
   const { isLoggedIn, logout } = useContext(AuthContext)
 
-  console.log('LayoutAdmin', isLoggedIn)
   return (
     <>
       {isLoggedIn ? (

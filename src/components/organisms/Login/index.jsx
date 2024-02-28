@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { AuthService } from '../../../services/AuthService'
 import './Login.scss'
 import Logo from '../../../assets/images/logo.png'
@@ -13,7 +13,14 @@ const Login = () => {
   const [error, setError] = useState('')
   const navigate = useNavigate() // To redirect after login
 
-  const { login } = useContext(AuthContext)
+  const { login, isLoggedIn } = useContext(AuthContext)
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate('/admin')
+    }
+    // eslint-disable-next-line
+  }, [isLoggedIn])
 
   const handleLogin = async e => {
     e.preventDefault()
@@ -28,7 +35,6 @@ const Login = () => {
         console.log('Login was successful', response)
         login(response.token)
         setError('') // Clear any existing errors
-        navigate('/admin') // Redirect to home page or another page
       }
     } catch (error) {
       setError('Failed to login. Please try again.')
