@@ -1,22 +1,28 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
-import ModalDemo from '../../organisms/ModalDemo'
+import { AuthContext } from '../../../utils/AuthContext'
 import AdminHeaderComponent from '../../molecules/AdminHeaderComponent/index'
 import Sidebar from '../../molecules/Sidebar'
 import BigChartAndStats from '../../organisms/BigChartAndStats'
 import SmallChartsCombined from '../../organisms/SmallChartsCombined'
-
-
+import { Navigate } from 'react-router-dom'
 
 const AdminLayout = () => {
+  const { token, isLoggedIn, login, logout } = useContext(AuthContext)
+
   return (
-    <div className='adminLayout'>
-      <Sidebar/>
-      <ModalDemo />
-      <AdminHeaderComponent />
-      <BigChartAndStats />
-      <SmallChartsCombined />
-    </div>
+    <>
+      {token === 'test' ? (
+        <div className='adminLayout'>
+          <Sidebar />
+          <AdminHeaderComponent />
+          <BigChartAndStats />
+          <SmallChartsCombined />
+        </div>
+      ) : (
+        <Navigate to='/login' />
+      )}
+    </>
   )
 }
 
