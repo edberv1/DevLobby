@@ -51,11 +51,11 @@ body {
     text-decoration: none;
     color: black;
   }
-  .profile a{
+  .profile a {
     text-decoration: none;
-    color:black;
+    color: black;
     margin: 0;
-    padding:0;
+    padding: 0;
   }
 
   button {
@@ -79,7 +79,6 @@ body {
   padding: 1rem 2rem;
   border-bottom: 1px solid white;
   max-height: 70px;
-
   &.menu-open {
     position: relative;
     top: 0;
@@ -94,10 +93,15 @@ body {
     transform: translateX(-100%);
     z-index: 30;
   }
+  .user-greeting {
+    display: flex;
+    .profile {
+      max-width: 60px;
+    }
+  }
   .butonat-client {
     max-width: $logo-max-width;
   }
-
   &-logo {
     height: auto;
     max-width: 236px;
@@ -109,6 +113,9 @@ body {
       width: $logo-max-width;
       height: auto;
     }
+  }
+  .navbar-logout {
+    display: none;
   }
   &-links {
     list-style: none;
@@ -185,6 +192,28 @@ body {
   }
   // per tableta
   @media screen and (max-width: 1024px) {
+    .navbar-logout {
+      display: block;
+    }
+
+    .butonat-nav.login {
+      @include button-styles(
+        #0070ec,
+        #ffffff,
+        darken(#0070ec, 10%)
+      ); // Using your mixin for button styles
+      a {
+        text-decoration: none;
+        color: inherit; // Ensures the text color is the same as the button
+        display: block; // Makes the link fill the button for better clickability
+      }
+    }
+    .navbar-logout {
+      @include button-styles(#0070ec, #ffffff, darken(#0070ec, 10%));
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
     .butonat button {
       display: block;
       margin-bottom: 10px;
