@@ -23,8 +23,11 @@ const Login = () => {
       } else {
         console.log("Login was successful", response);
         localStorage.setItem("token", response.token); // Save the token
-        // Assuming the username is part of the response, otherwise adjust accordingly
-        localStorage.setItem("username", response.username || "Username");
+        // Split the email at the '@', take the first part as the username, and capitalize the first letter
+        const username = email.split("@")[0];
+        const capitalizedUsername =
+          username.charAt(0).toUpperCase() + username.slice(1);
+        localStorage.setItem("username", capitalizedUsername);
         setError(""); // Clear any existing errors
         navigate("/"); // Redirect to home page or another page
       }
