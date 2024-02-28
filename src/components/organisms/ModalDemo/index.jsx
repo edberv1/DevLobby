@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import ModalBasic from '../../molecules/ModalBasic'
-import ModalConfirm from '../../molecules/ModalConfirm'
+// import ModalConfirm from '../../molecules/ModalConfirm'
 import ModalDelete from '../../molecules/ModalDelete'
 
 const ModalDemo = () => {
