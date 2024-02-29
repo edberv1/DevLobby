@@ -4,7 +4,7 @@ import BackDrop from '../../atoms/BackDrop'
 
 const ModalConfirm = ({
   children,
-  title,
+  title = 'Confirm',
   modalOpen,
   setModalOpen,
   confirmHandler
@@ -13,16 +13,16 @@ const ModalConfirm = ({
   // prevent screen from scrolling
   useEffect(() => {
     if (modalOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden'
       // After a brief delay, set renderModal to true
       const timeoutId = setTimeout(() => {
-        setRenderModal(true);
-      }, 0); // Adjust this delay as needed
-      return () => clearTimeout(timeoutId);
+        setRenderModal(true)
+      }, 0) // Adjust this delay as needed
+      return () => clearTimeout(timeoutId)
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = 'unset'
       // Set renderModal to false immediately when modal is closed
-      setRenderModal(false);
+      setRenderModal(false)
     }
   }, [modalOpen])
 

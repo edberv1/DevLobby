@@ -8,12 +8,13 @@ import SmallChartsCombined from '../../organisms/SmallChartsCombined'
 import { Navigate } from 'react-router-dom'
 
 const AdminLayout = () => {
-  const { token, isLoggedIn, login, logout } = useContext(AuthContext)
+  const { isLoggedIn, logout } = useContext(AuthContext)
 
   return (
     <>
-      {token === 'test' ? (
+      {isLoggedIn ? (
         <div className='adminLayout'>
+          <button onClick={logout}>Logout</button>
           <Sidebar />
           <AdminHeaderComponent />
           <BigChartAndStats />
