@@ -13,6 +13,7 @@ import ContactUs from "./components/organisms/ContactUs";
 import Polls from "./components/molecules/Polls";
 import PageNotFound from "./components/organisms/PageNotFound";
 import ProfileCard from "./components/organisms/Profile";
+import Testimonials from "./components/molecules/Testimonials";
 
 const router = createBrowserRouter([
   {
@@ -56,12 +57,16 @@ const router = createBrowserRouter([
         element: <LearnMore />,
       },
       {
+        path: "testimonials",
+        element: <Testimonials />,
+      },
+      {
         path: "contactus",
         element: <ContactUs />,
       },
       {
         path: "profile",
-        element: <ProfileCard/>,
+        element: <ProfileCard />,
       },
     ],
   },
