@@ -28,14 +28,13 @@ const Login = () => {
 
     try {
       const response = await AuthService.login(data)
-      if (response.error) {
+      if (response === 'Failed to fetch' || response.error) {
         setError(response.error)
         return
       } else {
-        console.log('Login was successful', response)
-        login(response.token)
         setError('') // Clear any existing errors
       }
+      login(response.token)
     } catch (error) {
       setError('Failed to login. Please try again.')
     }

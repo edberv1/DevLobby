@@ -78,7 +78,7 @@ const Navbar = () => {
         <li onClick={closeMenu}>
           <Link to='/contactus'>Contact Us</Link>
         </li>
-        {!isLoggedIn && (
+        {isLoggedIn && (
           <div
             className={`buttons-container ${isMenuOpen ? 'menu-active' : ''}`}
           >
