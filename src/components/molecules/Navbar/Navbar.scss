@@ -102,7 +102,7 @@ body {
       top: 100%;
       right: 0;
       background-color: #fff;
-      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 0 50px #004494;
       z-index: 100;
       width: 236px;
       border-radius: 20px;
@@ -131,6 +131,7 @@ body {
         width: 236px; // Adjust width to account for padding, ensuring button is centered
         box-sizing: border-box; // Ensure the width accounts for padding
         margin-left: 0;
+        font-size: 16px;
       }
     }
   }
