@@ -89,6 +89,18 @@ const Navbar = () => {
         <li onClick={closeMenu}>
           <Link to="/contactus">Contact Us</Link>
         </li>
+        {!isLoggedIn && (
+          <div
+            className={`buttons-container ${isMenuOpen ? "menu-active" : ""}`}
+          >
+            <button className="butonat-nav login" onClick={closeMenu}>
+              <Link to="/login">Log in</Link>
+            </button>
+            <button className="butonat-nav signup" onClick={closeMenu}>
+              <Link to="/signup">Sign Up</Link>
+            </button>
+          </div>
+        )}
         {isLoggedIn && (
           <li className="navbar-logout" onClick={handleLogout}>
             Sign Out
