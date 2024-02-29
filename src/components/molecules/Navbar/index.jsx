@@ -6,7 +6,7 @@ import devLobbylogo from "../../../assets/images/devlobby-logo-cut.png";
 const Navbar = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [username, setUsername] = useState("");
+  const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -14,11 +14,19 @@ const Navbar = () => {
     const storedUsername = localStorage.getItem("username");
     if (token && storedUsername) {
       setIsLoggedIn(true);
-      setUsername(storedUsername);
     } else {
       setIsLoggedIn(false);
     }
-  }, []);
+
+    const handleOutsideClick = (event) => {
+      if (showDropdown && !event.target.closest(".user-greeting")) {
+        setShowDropdown(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => document.removeEventListener("mousedown", handleOutsideClick);
+  }, [showDropdown]);
 
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
@@ -26,6 +34,7 @@ const Navbar = () => {
 
   const closeMenu = () => {
     setMenuOpen(false);
+    setShowDropdown(false);
   };
 
   const handleLogout = () => {
@@ -33,6 +42,11 @@ const Navbar = () => {
     localStorage.removeItem("username");
     setIsLoggedIn(false);
     navigate("/login");
+    closeMenu();
+  };
+
+  const toggleDropdown = () => {
+    setShowDropdown(!showDropdown);
   };
 
   return (
@@ -54,10 +68,14 @@ const Navbar = () => {
       </div>
       <ul className={`navbar-links ${isMenuOpen ? "menu-open" : ""}`}>
         <li onClick={closeMenu}>
-          <Link to="/">Home</Link>
+          <Link to="/" className="home">
+            Home
+          </Link>
         </li>
         <li onClick={closeMenu}>
-          <Link to="/playcodearena">PlayCode Arena</Link>
+          <Link to="/playcodearena" className="playcodearena">
+            PlayCode Arena
+          </Link>
         </li>
         <li onClick={closeMenu}>
           <Link to="/chat">Chat</Link>
@@ -71,23 +89,10 @@ const Navbar = () => {
         <li onClick={closeMenu}>
           <Link to="/contactus">Contact Us</Link>
         </li>
-        {isLoggedIn ? (
+        {isLoggedIn && (
           <li className="navbar-logout" onClick={handleLogout}>
             Sign Out
           </li>
-        ) : (
-          <>
-            <li className="butonat-nav login">
-              <Link to="/login" onClick={closeMenu}>
-                Log in
-              </Link>
-            </li>
-            <li className="butonat-nav signup">
-              <Link to="/signup" onClick={closeMenu}>
-                Sign Up
-              </Link>
-            </li>
-          </>
         )}
       </ul>
       <div className="butonat-client">
@@ -103,14 +108,24 @@ const Navbar = () => {
         )}
         {isLoggedIn && (
           <div className="user-greeting">
-            <button onClick={handleLogout} className="signout-btn">
-              Sign Out
+            <button onClick={toggleDropdown} className="profile">
+              <i className="fas fa-user-circle fa-2x"></i>
             </button>
-            <button className="profile" onClick={closeMenu}>
-              <Link to="/profile">
-                <i className="fas fa-user-circle fa-2x"></i>
-              </Link>
-            </button>
+            {showDropdown && (
+              <div
+                className={`dropdown-menu ${
+                  showDropdown ? "dropdown-menu-active" : ""
+                }`}
+              >
+                <Link to="/profile" onClick={closeMenu}>
+                  Profile
+                </Link>
+                <Link to="/settings" onClick={closeMenu}>
+                  Settings
+                </Link>
+                <button onClick={handleLogout}>Log out</button>
+              </div>
+            )}
           </div>
         )}
       </div>
