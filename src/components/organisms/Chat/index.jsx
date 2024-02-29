@@ -1,12 +1,12 @@
-import React from "react";
+import ChatBody from "../../molecules/ChatUIComponents/ChatBody";
+import "./Chat.scss";
 
-const Chat = () => {
+const App = () => {
   return (
-    <div>
-      <h1>Chat Page</h1>
-      <p>Welcome to the chat page!</p>
+    <div className="main_chat">
+      <ChatBody/>
     </div>
   );
 };
 
-export default Chat;
+export default App
