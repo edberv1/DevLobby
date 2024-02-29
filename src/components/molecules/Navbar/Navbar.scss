@@ -237,7 +237,30 @@ body {
     display: none;
   }
   // per tableta
+  .navbar-profile-icon {
+    display: flex; // Use flex to center the content inside the button
+    align-items: center;
+    justify-content: center;
+    background: transparent; // No background color for the button
+    border: none; // Remove the default button border
+    cursor: pointer; // Change mouse cursor on hover
+    padding: 0.5rem; // Add some padding for touch area
+    margin-right: 1rem; // Add some margin if needed
+    font-size: 0.85rem;
+
+    &:focus {
+      outline: none; // Remove focus outline if it's not needed or style it accordingly
+    }
+
+    i {
+      color: white; // Example color, adjust as needed
+    }
+  }
+
   @media screen and (max-width: 1024px) {
+    .navbar-profile-icon {
+      display: block; // Ensure it's displayed
+    }
     .navbar-logout {
       display: block;
     }

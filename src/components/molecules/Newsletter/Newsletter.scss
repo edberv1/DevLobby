@@ -17,7 +17,9 @@
   left: 0;
   right: 0; // These zero values work with margin: auto to center the element
   height: fit-content; // This makes the height fit the content
-
+  margin-bottom: -15px;
+  z-index: 10;
+  position: relative;
   .newsletter-content {
     max-width: 60%;
 

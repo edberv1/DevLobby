@@ -7,12 +7,19 @@ import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
   const [showDropdown, setShowDropdown] = useState(false);
   const { isLoggedIn, logout } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
   useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 1024);
+    };
+
+    window.addEventListener("resize", handleResize);
+
     const handleOutsideClick = (event) => {
       if (showDropdown && !event.target.closest(".user-greeting")) {
         setShowDropdown(false);
@@ -20,7 +27,11 @@ const Navbar = () => {
     };
 
     document.addEventListener("mousedown", handleOutsideClick);
-    return () => document.removeEventListener("mousedown", handleOutsideClick);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
   }, [showDropdown]);
 
   const toggleMenu = () => {
@@ -44,11 +55,40 @@ const Navbar = () => {
 
   return (
     <nav className={`navbar ${isMenuOpen ? "menu-open" : ""}`}>
-      <Link to="/">
-        <div className="navbar-logo">
-          <img src={devLobbylogo} alt="DevLobby Logo" onClick={closeMenu} />
-        </div>
-      </Link>
+      {(!isMenuOpen || !isMobile || !isLoggedIn) && (
+        <Link to="/">
+          <div className="navbar-logo">
+            <img src={devLobbylogo} alt="DevLobby Logo" onClick={closeMenu} />
+          </div>
+        </Link>
+      )}
+      {isLoggedIn && isMenuOpen && isMobile && (
+        <button
+          className="navbar-profile-icon user-greeting"
+          onClick={toggleDropdown}
+        >
+          <i className="fas fa-user-circle fa-2x"></i>
+          {showDropdown && (
+            <div
+              className={`dropdown-menu ${
+                showDropdown ? "dropdown-menu-active" : ""
+              }`}
+            >
+              <Link
+                to="/profile"
+                onClick={closeMenu}
+                style={{ borderBottom: "1px solid gray", borderRadius: 0 }}
+              >
+                Profile
+              </Link>
+              <Link to="/settings" onClick={closeMenu}>
+                Settings
+              </Link>
+            </div>
+          )}
+        </button>
+      )}
+
       <div
         className="hamburger-menu"
         onClick={toggleMenu}
@@ -112,7 +152,9 @@ const Navbar = () => {
           </>
         )}
         {isLoggedIn && (
-          <div className="user-greeting">
+          <div
+            className={`user-greeting ${showDropdown ? "showDropdown" : ""}`}
+          >
             <button onClick={toggleDropdown} className="profile">
               <i className="fas fa-user-circle fa-2x"></i>
             </button>
