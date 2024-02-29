@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
+// Define your primary and secondary color variables
 $primary-color: #191818;
 $secondary-color: #1310e9;
 
@@ -13,43 +15,39 @@ $secondary-color: #1310e9;
   font-family: "Poppins";
 
   .login-image-section img {
-    height: 90vh;
-    width: 80%;
-    max-width: 700px;
-    max-height: 620px;
+    height: 100vh;
+    width: 100%;
+    max-width: 660px;
+    max-height: 640px;
     border-radius: 10px;
-  }
-
-  .error-message {
-    color: #ff6b6b; // Set the error message color
-    margin: 10px 0; // Add some spacing around the message for visibility
-    // Add any additional styling here
   }
 
   .login-form {
     background: white;
     padding: 1.5rem;
     border-radius: 10px;
-    margin-left: 290px;
     width: 100%;
     max-width: 400px;
     text-align: center;
+
     img {
-      width: 320px;
+      width: 150px;
     }
 
     h2 {
-      color: $primary-color;
+      color: #4a4a4a;
+      margin-bottom: 1rem;
     }
 
     p {
-      color: #666;
+      color: #6a6f7d;
+      margin-bottom: 2rem;
     }
 
     .divider {
       display: flex;
       align-items: center;
-      margin: 1rem 0;
+      margin: 2rem 0;
 
       hr {
         flex-grow: 1;
@@ -72,62 +70,87 @@ $secondary-color: #1310e9;
       }
     }
 
-    form {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    input {
+      width: 100%;
+      padding: 1rem;
+      margin: 0.5rem 0;
+      border: 1px solid #dfe1e5;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
 
-      input {
-        width: 100%;
-        padding: 1rem;
-        margin: 0.5rem 0;
-        border: 1px solid #dfe1e5;
-        border-radius: 5px;
-        box-sizing: border-box;
-      }
+    .login-btn {
+      background-color: #0070ec;
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 5px;
+      margin-top: 1rem;
+      cursor: pointer;
+      width: 100%;
+    }
 
-      .login-btn {
-        background-color: #0070ec;
-        color: white;
-        padding: 1rem 2rem;
-        border: none;
-        border-radius: 5px;
-        margin-top: 1rem;
-        cursor: pointer;
-        width: 100%;
-      }
-      .login-btn:hover {
-        background-color: blue;
-        transition: 0.5s;
-      }
+    .login-btn:hover {
+      background-color: blue;
+      transition: 0.5s;
     }
 
     .login-redirect {
-      margin: 15px 0;
-      color: #888;
+      margin-top: 2rem;
+      color: #6a6f7d;
 
       a {
-        color: $secondary-color;
+        color: #673ab7;
         text-decoration: none;
-
-        &:hover {
-          text-decoration: underline;
-        }
       }
     }
 
     footer {
-      margin-top: 20px;
-      color: #888;
+      color: #adb5bd;
+      font-size: 0.8rem;
+    }
+
+    .error-message {
+      color: #ff6b6b;
+      font-size: 1.1rem;
+      margin-top: 1rem;
     }
   }
+}
 
-  .login-image-section {
-    flex: 1;
+@media (max-width: 1024px), (max-width: 480px) {
+  .login-container {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    height: auto;
 
-    img {
-      max-width: 100%;
-      height: auto;
+    .login-image-section {
+      display: none;
     }
+
+    .login-form {
+      width: 100%;
+      max-width: none;
+      margin: 0;
+      padding: 1rem 0;
+      border-radius: 0;
+      height: auto;
+
+      input,
+      .login-btn {
+        width: 60%;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .login-container .login-form input,
+  .login-container .login-form .login-btn {
+    width: 90%;
   }
 }
