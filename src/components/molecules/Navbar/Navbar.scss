@@ -79,6 +79,7 @@ body {
   padding: 1rem 2rem;
   border-bottom: 1px solid white;
   max-height: 70px;
+
   &.menu-open {
     position: relative;
     top: 0;
@@ -94,7 +95,52 @@ body {
     z-index: 30;
   }
   .user-greeting {
+    position: relative;
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: #fff;
+      box-shadow: 0 0 50px #004494;
+      z-index: 100;
+      width: 236px;
+      border-radius: 20px;
+      display: flex; // Set dropdown to use flex layout
+      flex-direction: column; // Stack items vertically
+      align-items: center; // Center items horizontally within the flex container
+
+      a,
+      button {
+        border-radius: 20px;
+        display: block;
+        padding: 10px;
+        color: black;
+        text-decoration: none;
+        width: 100%; // Width is reduced to allow padding to be considered within the total width
+        text-align: center;
+        box-sizing: border-box; // Include padding in the width calculation
+
+        &:hover {
+          background-color: #f1f1f1;
+        }
+      }
+
+      button {
+        @include button-styles(#0070ec, #ffffff, darken(#0070ec, 10%));
+        width: 236px; // Adjust width to account for padding, ensuring button is centered
+        box-sizing: border-box; // Ensure the width accounts for padding
+        margin-left: 0;
+        font-size: 16px;
+      }
+    }
+  }
+
+  .user-greeting {
     display: flex;
+    width: 236px;
+    align-items: center;
+    justify-content: center;
     .profile {
       max-width: 60px;
     }

@@ -10,7 +10,7 @@ const ClientLayout = () => {
         <Outlet />
       </div>
     </>
-  )
-}
+  );
+};
 
-export default ClientLayout
+export default ClientLayout;

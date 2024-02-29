@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import './Navbar.scss'
 import devLobbylogo from '../../../assets/images/devlobby-logo-cut.png'
@@ -6,7 +6,19 @@ import { AuthContext } from '../../../utils/AuthContext'
 
 const Navbar = () => {
   const [isMenuOpen, setMenuOpen] = useState(false)
+  const [showDropdown, setShowDropdown] = useState(false)
   const { isLoggedIn, logout } = useContext(AuthContext)
+
+  useEffect(() => {
+    const handleOutsideClick = event => {
+      if (showDropdown && !event.target.closest('.user-greeting')) {
+        setShowDropdown(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleOutsideClick)
+    return () => document.removeEventListener('mousedown', handleOutsideClick)
+  }, [showDropdown])
 
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen)
@@ -14,6 +26,16 @@ const Navbar = () => {
 
   const closeMenu = () => {
     setMenuOpen(false)
+    setShowDropdown(false)
+  }
+
+  const handleLogout = () => {
+    logout()
+    closeMenu()
+  }
+
+  const toggleDropdown = () => {
+    setShowDropdown(!showDropdown)
   }
 
   return (
@@ -35,10 +57,14 @@ const Navbar = () => {
       </div>
       <ul className={`navbar-links ${isMenuOpen ? 'menu-open' : ''}`}>
         <li onClick={closeMenu}>
-          <Link to='/'>Home</Link>
+          <Link to='/' className='home'>
+            Home
+          </Link>
         </li>
         <li onClick={closeMenu}>
-          <Link to='/playcodearena'>PlayCode Arena</Link>
+          <Link to='/playcodearena' className='playcodearena'>
+            PlayCode Arena
+          </Link>
         </li>
         <li onClick={closeMenu}>
           <Link to='/chat'>Chat</Link>
@@ -52,23 +78,22 @@ const Navbar = () => {
         <li onClick={closeMenu}>
           <Link to='/contactus'>Contact Us</Link>
         </li>
-        {isLoggedIn ? (
-          <li className='navbar-logout' onClick={logout}>
+        {!isLoggedIn && (
+          <div
+            className={`buttons-container ${isMenuOpen ? 'menu-active' : ''}`}
+          >
+            <button className='butonat-nav login' onClick={closeMenu}>
+              <Link to='/login'>Log in</Link>
+            </button>
+            <button className='butonat-nav signup' onClick={closeMenu}>
+              <Link to='/signup'>Sign Up</Link>
+            </button>
+          </div>
+        )}
+        {isLoggedIn && (
+          <li className='navbar-logout' onClick={handleLogout}>
             Sign Out
           </li>
-        ) : (
-          <>
-            <li className='butonat-nav login'>
-              <Link to='/login' onClick={closeMenu}>
-                Log in
-              </Link>
-            </li>
-            <li className='butonat-nav signup'>
-              <Link to='/signup' onClick={closeMenu}>
-                Sign Up
-              </Link>
-            </li>
-          </>
         )}
       </ul>
       <div className='butonat-client'>
@@ -84,14 +109,24 @@ const Navbar = () => {
         )}
         {isLoggedIn && (
           <div className='user-greeting'>
-            <button onClick={logout} className='signout-btn'>
-              Sign Out
+            <button onClick={toggleDropdown} className='profile'>
+              <i className='fas fa-user-circle fa-2x'></i>
             </button>
-            <button className='profile' onClick={closeMenu}>
-              <Link to='/profile'>
-                <i className='fas fa-user-circle fa-2x'></i>
-              </Link>
-            </button>
+            {showDropdown && (
+              <div
+                className={`dropdown-menu ${
+                  showDropdown ? 'dropdown-menu-active' : ''
+                }`}
+              >
+                <Link to='/profile' onClick={closeMenu}>
+                  Profile
+                </Link>
+                <Link to='/settings' onClick={closeMenu}>
+                  Settings
+                </Link>
+                <button onClick={handleLogout}>Log out</button>
+              </div>
+            )}
           </div>
         )}
       </div>
