@@ -3,11 +3,14 @@ import { Link } from 'react-router-dom'
 import './Navbar.scss'
 import devLobbylogo from '../../../assets/images/devlobby-logo-cut.png'
 import { AuthContext } from '../../../utils/AuthContext'
+import { useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
   const [isMenuOpen, setMenuOpen] = useState(false)
   const [showDropdown, setShowDropdown] = useState(false)
   const { isLoggedIn, logout } = useContext(AuthContext)
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     const handleOutsideClick = event => {
@@ -32,6 +35,7 @@ const Navbar = () => {
   const handleLogout = () => {
     logout()
     closeMenu()
+    navigate('/')
   }
 
   const toggleDropdown = () => {
