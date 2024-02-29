@@ -14,6 +14,7 @@ import Polls from "./components/molecules/Polls";
 import PageNotFound from "./components/organisms/PageNotFound";
 import ProfileCard from "./components/organisms/Profile";
 import Testimonials from "./components/molecules/Testimonials";
+import ChallengeArea from "./components/organisms/ChallengeArea";
 
 const router = createBrowserRouter([
   {
@@ -67,6 +68,10 @@ const router = createBrowserRouter([
       {
         path: "profile",
         element: <ProfileCard />,
+      },
+      {
+        path: "challengearea",
+        element: <ChallengeArea />,
       },
     ],
   },
