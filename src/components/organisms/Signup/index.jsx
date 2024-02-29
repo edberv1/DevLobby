@@ -87,6 +87,7 @@ const SignUp = () => {
               <div className="signin-redirect">
                 Already have an Account? <a href="/login">Sign in</a>
               </div>
+              <footer>©2024 Nexus. All rights reserved.</footer>
             </div>
             <div className="signup-image-section">
               <img src={SignupImage} alt="DevLobby Signup" />
