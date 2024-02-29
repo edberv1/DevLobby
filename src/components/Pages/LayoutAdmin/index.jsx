@@ -6,6 +6,7 @@ import Sidebar from '../../molecules/Sidebar'
 import BigChartAndStats from '../../organisms/BigChartAndStats'
 import SmallChartsCombined from '../../organisms/SmallChartsCombined'
 import { Navigate } from 'react-router-dom'
+import UserTable from "../../molecules/UserTable"
 
 const AdminLayout = () => {
   const { isLoggedIn, logout } = useContext(AuthContext)
@@ -19,6 +20,7 @@ const AdminLayout = () => {
           <AdminHeaderComponent />
           <BigChartAndStats />
           <SmallChartsCombined />
+          <UserTable></UserTable>
         </div>
       ) : (
         <Navigate to='/login' />
