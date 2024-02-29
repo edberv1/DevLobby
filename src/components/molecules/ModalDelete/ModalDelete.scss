@@ -97,7 +97,7 @@ $theme-background-dark: #282828;
       .cancelBtn {
         @include button-styles(rgb(115, 114, 114), white, rgb(87, 85, 85));
       }
-      .confirmBtn {
+      .deleteBtn {
         @include button-styles(#740000, white, #8a0000);
       }
     }

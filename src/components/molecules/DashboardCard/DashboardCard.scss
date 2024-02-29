@@ -13,6 +13,9 @@ $theme-gray-bluish: #4b506d;
 
 .dashboardCard {
   .dashboard-card {
+    width: 40%;
+    margin: auto;
+    margin-top: 24px;
     background-color: $theme-background-light;
     border: 2px solid $theme-border-light;
     font-family: sans-serif;

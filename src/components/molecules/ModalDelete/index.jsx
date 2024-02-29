@@ -99,7 +99,7 @@ const ModalDelete = ({
                   Cancel
                 </button>
                 <button
-                  className='confirmBtn'
+                  className='deleteBtn'
                   onClick={() => {
                     setModalOpen(false)
                     confirmHandler()
