@@ -4,7 +4,7 @@
     sm: 576px,
     md: 768px,
     lg: 992px,
-    xl: 1200px
+    xl: 1200px,
   );
 
   .card {
@@ -17,7 +17,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top center;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     &:hover {
       box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
       transform: rotateY(180deg);
@@ -270,8 +270,7 @@
         height: 80px;
       }
 
-
-      .front{
+      .front {
         h3 {
           font-size: 16px;
         }
