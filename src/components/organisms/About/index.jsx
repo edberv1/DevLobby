@@ -8,6 +8,7 @@ const About = () => {
     { id: 3, name: 'Leonat Krasniqi', position: 'Lead Team', gender: 'male' },
     { id: 4, name: 'Edber Vuçitërna', position: 'Web Developer', gender: 'male' },
     { id: 5, name: 'Lisa Ramizi', position: 'Web Developer', gender: 'female' },
+    { id: 5, name: 'Leon Miftari', position: 'Web Developer', gender: 'male' },
     { id: 6, name: 'Nol Ahmedi', position: 'Web Developer', gender: 'male' },
     { id: 7, name: 'Orges Isufi', position: 'Web Developer', gender: 'male' },
     { id: 8, name: 'Rrezon Curraj', position: 'Web Developer', gender: 'male' },
