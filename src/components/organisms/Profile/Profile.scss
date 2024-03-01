@@ -1,14 +1,22 @@
-@import 'https://use.fontawesome.com/releases/v5.15.1/css/all.css';
+@import "https://use.fontawesome.com/releases/v5.15.1/css/all.css";
 
 .profile-container {
   display: flex;
   max-width: 100%;
   height: 100%;
 }
-
+.profile-about h2,
+.profile-badges h2,
+.profile-skills h2,
+.profile-experience h2 {
+  text-align: left;
+  font-size: 1.25rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
 .profile-card {
   flex: 0 0 400px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   color: #333;
   background-color: #f7f7f7;
   overflow: hidden;
@@ -23,8 +31,8 @@
 }
 
 .profile-image {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   margin-bottom: 1rem;
 }
@@ -64,25 +72,21 @@
   background-color: #f7f7f7;
 }
 
-h2 {
-  font-size: 1.25rem;
-  color: #333;
-  margin-bottom: 1rem;
-}
-
-p {
+.profile-about p {
   font-size: 0.9rem;
   line-height: 1.6;
   margin-bottom: 0.5rem;
 }
 
-.badges-container, .skills-container {
+.badges-container,
+.skills-container {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
 
-.badge, .skill {
+.badge,
+.skill {
   background-color: #007bff;
   color: #fff;
   padding: 0.25rem 0.75rem;
