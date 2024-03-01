@@ -5,7 +5,7 @@ import "./PlayCodeArenaButton.scss";
 function PlayCodeArenaButton() {
   return (
     <div className="playCodeArenaButton">
-      <Link to="/playcodearena" className="btn">
+      <Link to="/playcodearena" className="playcodearena-button">
         <span></span>
         <span></span>
         <span></span>
