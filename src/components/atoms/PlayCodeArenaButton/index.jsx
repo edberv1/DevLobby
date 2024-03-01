@@ -1,10 +1,10 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './PlayCodeArenaButton.scss'
+import React from "react";
+import { Link } from "react-router-dom";
+import "./PlayCodeArenaButton.scss";
 
 function PlayCodeArenaButton() {
   return (
-    <div className='playCodeArenaButton'>
+    <div className="playCodeArenaButton">
       <Link to="/playcodearena" className="btn">
         <span></span>
         <span></span>

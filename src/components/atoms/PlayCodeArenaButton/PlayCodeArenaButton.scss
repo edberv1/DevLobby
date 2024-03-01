@@ -6,10 +6,11 @@
 .playCodeArenaButton {
   .btn {
     position: relative;
-    display: inline-block;
+    display: flex;
     padding: 15px 30px;
     color: var(--primary-color);
-    text-decoration: none;
+    text-decoration: underline;
+    text-decoration-color: #1a1a1a;
     font-size: 1.5rem;
     overflow: hidden;
     transition: 0.2s;
@@ -17,15 +18,18 @@
     background: none;
     cursor: pointer;
     margin-bottom: 2rem;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
 
     &:hover {
       color: var(--secondary-color);
       background: var(--primary-color);
       box-shadow: 0 0 10px var(--primary-color), 0 0 40px var(--primary-color),
         0 0 80px var(--primary-color), 0 0 160px var(--primary-color);
+      text-decoration-color: var(--primary-color);
       transition-delay: 1s;
     }
-
     span {
       position: absolute;
       display: block;

@@ -1,6 +1,10 @@
 import React from "react";
 import "./Profile.scss";
 import ProfileGirl from "../../../assets/images/profile_picture_demo.png";
+import LinkedInIcon from "../../../assets/images/linkedin_icon.png";
+import TwitterIcon from "../../../assets/images/twitter_icon.png";
+import GitHubIcon from "../../../assets/images/github_icon.png";
+import { Link } from "react-router-dom";
 
 const ProfileCard = () => {
   return (
@@ -14,15 +18,15 @@ const ProfileCard = () => {
             A student of CSE Department at UBT
           </p>
           <div className="profile-social-links">
-            <button className="social-link twitter">
-              <i className="fab fa-twitter"></i>
-            </button>
-            <button className="social-link linkedin">
-              <i className="fab fa-linkedin-in"></i>
-            </button>
-            <button className="social-link github">
-              <i className="fab fa-github"></i>
-            </button>
+            <Link to="twitter">
+              <img src={TwitterIcon} alt="Click to go to Twitter account" />
+            </Link>
+            <Link to="linkedin">
+              <img src={LinkedInIcon} alt="Click to go to Linkedin account" />
+            </Link>
+            <Link to="github">
+              <img src={GitHubIcon} alt="Click to go to Github account" />
+            </Link>
           </div>
         </header>
       </div>
