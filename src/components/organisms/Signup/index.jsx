@@ -20,7 +20,7 @@ const SignUp = () => {
 
   useEffect(() => {
     if (isLoggedIn) {
-      navigate('/admin')
+      navigate('/')
     }
     // eslint-disable-next-line
   }, [isLoggedIn])

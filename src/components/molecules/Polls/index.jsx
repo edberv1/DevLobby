@@ -1,260 +1,139 @@
 import React from 'react';
 import './Polls.scss';
+import { useState } from 'react';
 
-const Polls = () => {
+
+
+const Question = ({ question, options }) => {
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  const handleOptionChange = (optionId) => {
+    setSelectedOption(optionId);
+  };
+
   return (
-    <div className="poll">
-      {/* Question 1 */}
-      <div className="poll-question">
-        What version of React do you primarily use in your projects?
-      </div>
+    <div className="poll-card">
+      <p className="poll-question">{question}</p>
       <div className="poll-options">
-        <div className="poll-option">
-          <input type="radio" name="react-version" />
-          <label>React 16</label>
-        </div>
-        <div className="poll-option">
-          <input type="radio" id="react-17" name="react-version" />
-          <label htmlFor="react-17">React 17</label>
-        </div>
-        <div className="poll-option">
-          <input type="radio" id="react-18" name="react-version" />
-          <label>React 18 (if released)</label>
-        </div>
+        {options.map((option) => (
+          <Option key={option.id} option={option} isSelected={selectedOption === option.id} onSelect={handleOptionChange} />
+        ))}
       </div>
       <button className="vote-button">Vote</button>
-      <div className="poll-results">
-        <div className="poll-result">React 16</div>
-        <div className="poll-result">React 17</div>
-        <div className="poll-result">React 18 (if released)</div>
-      </div>
-
-      {/* Question 2 */}
-      <div className="poll-question">
-        What state management solution do you prefer with React?
-      </div>
-      <div className="poll-options">
-        <div className="poll-option">
-          <input type="radio" name="state-management" />
-          <label>Redux</label>
-        </div>
-        <div className="poll-option">
-          <input type="radio" id="context-api" name="state-management" />
-          <label htmlFor="context-api">React Context API</label>
-        </div>
-        <div className="poll-option">
-          <input type="radio" id="mobx" name="state-management" />
-          <label>MobX</label>
-        </div>
-      </div>
-      <button className="vote-button">Vote</button>
-      <div className="poll-results">
-        <div className="poll-result">Redux</div>
-        <div className="poll-result">React Context API</div>
-        <div className="poll-result">MobX</div>
-      </div>
-
-      {/* Question 3 */}
-      <div className="poll-question">
-        Do you prefer functional components or class components in React?
-      </div>
-      <div className="poll-options">
-        <div className="poll-option">
-          <input type="radio" name="component-type" />
-          <label>Functional Components</label>
-        </div>
-        <div className="poll-option">
-          <input type="radio" id="class-components" name="component-type" />
-          <label htmlFor="class-components">Class Components</label>
-        </div>
-        <div className="poll-option">
-          <input type="radio" id="both" name="component-type" />
-          <label>Both</label>
-        </div>
-      </div>
-      <button className="vote-button">Vote</button>
-      <div className="poll-results">
-        <div className="poll-result">Functional Components</div>
-        <div className="poll-result">Class Components</div>
-        <div className="poll-result">Both</div>
-      </div>
-
-      {/* Question 4 */}
-      <div className="poll-question">
-        Which React Hooks do you use most frequently?
-      </div>
-      <div className="poll-options">
-        <div className="poll-option">
-          <input type="checkbox" id="useState" name="hooks" />
-          <label htmlFor="useState">useState</label>
-        </div>
-        <div className="poll-option">
-          <input type="checkbox" id="useEffect" name="hooks" />
-          <label htmlFor="useEffect">useEffect</label>
-        </div>
-        <div className="poll-option">
-          <input type="checkbox" id="useContext" name="hooks" />
-          <label htmlFor="useContext">useContext</label>
-        </div>
-      </div>
-      <button className="vote-button">Vote</button>
-      <div className="poll-results">
-        <div className="poll-result">useState</div>
-        <div className="poll-result">useEffect</div>
-        <div className="poll-result">useContext</div>
-      </div>
-
-      {/* Question 5 */}
-      <div className="poll-question">
-        How do you handle routing in your React applications?
-      </div>
-      <div className="poll-options">
-        <div className="poll-option">
-          <input type="radio" name="routing" />
-          <label>React Router</label>
-        </div>
-        <div className="poll-option">
-          <input type="radio" id="reach-router" name="routing" />
-          <label htmlFor="reach-router">Reach Router</label>
-        </div>
-        <div className="poll-option">
-          <input type="radio" id="other-routing" name="routing" />
-          <label>Other</label>
-        </div>
-      </div>
-      <button className="vote-button">Vote</button>
-      <div className="poll-results">
-        <div className="poll-result">React Router</div>
-        <div className="poll-result">Reach Router</div>
-        <div className="poll-result">Other</div>
-      </div>
-
-      {/* Question 6 */}
-      <div className="poll-question">
-        What testing library do you prefer for testing React components?
-      </div>
-      <div className="poll-options">
-        <div className="poll-option">
-          <input type="radio" name="testing-library" />
-          <label>Jest</label>
-        </div>
-        <div className="poll-option">
-          <input type="radio" id="testing-library-react" name="testing-library" />
-          <label htmlFor="testing-library-react">Testing Library for React</label>
-        </div>
-        <div className="poll-option">
-          <input type="radio" id="other-testing-library" name="testing-library" />
-          <label>Other</label>
-        </div>
-      </div>
-      <button className="vote-button">Vote</button>
-      <div className="poll-results">
-        <div className="poll-result">Jest</div>
-        <div className="poll-result">Testing Library for React</div>
-        <div className="poll-result">Other</div>
-      </div>
-
-      {/* Question 7 */}
-      <div className="poll-question">
-        How do you manage styles in your React projects?
-      </div>
-      <div className="poll-options">
-        <div className="poll-option">
-          <input type="radio" name="styles-management" />
-          <label>Inline Styles</label>
-        </div>
-        <div className="poll-option">
-          <input type="radio" id="css-modules" name="styles-management" />
-          <label htmlFor="css-modules">CSS Modules</label>
-        </div>
-        <div className="poll-option">
-          <input type="radio" id="styled-components" name="styles-management" />
-          <label>Styled Components</label>
-        </div>
-      </div>
-      <button className="vote-button">Vote</button>
-      <div className="poll-results">
-        <div className="poll-result">Inline Styles</div>
-        <div className="poll-result">CSS Modules</div>
-        <div className="poll-result">Styled Components</div>
-      </div>
-
-      {/* Question 8 */}
-      <div className="poll-question">
-        What is your preferred deployment platform for React applications?
-      </div>
-      <div className="poll-options">
-        <div className="poll-option">
-          <input type="radio" name="deployment" />
-          <label>Netlify</label>
-        </div>
-        <div className="poll-option">
-          <input type="radio" id="vercel" name="deployment" />
-          <label htmlFor="vercel">Vercel</label>
-        </div>
-        <div className="poll-option">
-          <input type="radio" id="heroku" name="deployment" />
-          <label>Heroku</label>
-        </div>
-      </div>
-      <button className="vote-button">Vote</button>
-      <div className="poll-results">
-        <div className="poll-result">Netlify</div>
-        <div className="poll-result">Vercel</div>
-        <div className="poll-result">Heroku</div>
-      </div>
-
-      {/* Question 9 */}
-      <div className="poll-question">
-        Which React UI library or component library do you frequently use?
-      </div>
-      <div className="poll-options">
-        <div className="poll-option">
-          <input type="radio" name="ui-library" />
-          <label>Material-UI</label>
-        </div>
-        <div className="poll-option">
-          <input type="radio" id="ant-design" name="ui-library" />
-          <label htmlFor="ant-design">Ant Design</label>
-        </div>
-        <div className="poll-option">
-          <input type="radio" id="chakra-ui" name="ui-library" />
-          <label>Chakra UI</label>
-        </div>
-      </div>
-      <button className="vote-button">Vote</button>
-      <div className="poll-results">
-        <div className="poll-result">Material-UI</div>
-        <div className="poll-result">Ant Design</div>
-        <div className="poll-result">Chakra UI</div>
-      </div>
-
-      {/* Question 10 */}
-      <div className="poll-question">
-        How do you handle internationalization (i18n) in your React projects?
-      </div>
-      <div className="poll-options">
-        <div className="poll-option">
-          <input type="radio" name="i18n" />
-          <label>react-i18next</label>
-        </div>
-        <div className="poll-option">
-          <input type="radio" id="formatjs" name="i18n" />
-          <label htmlFor="formatjs">FormatJS (React Intl)</label>
-        </div>
-        <div className="poll-option">
-          <input type="radio" id="other-i18n" name="i18n" />
-          <label>Other</label>
-        </div>
-      </div>
-      <button className="vote-button">Vote</button>
-      <div className="poll-results">
-        <div className="poll-result">react-i18next</div>
-        <div className="poll-result">FormatJS (React Intl)</div>
-        <div className="poll-result">Other</div>
-      </div>
     </div>
   );
-}
+};
+
+const Option = ({ option, isSelected, onSelect }) => {
+  const handleChange = (event) => {
+    onSelect(option.id);
+  };
+
+  return (
+    <div className={`poll-option ${isSelected ? 'poll-option-selected' : ''}`}>
+      <input
+        type={option.type}
+        id={option.id}
+        value={option.id}
+        checked={isSelected}
+        onChange={handleChange}
+      />
+      <label htmlFor={option.id}>{option.label}</label>
+    </div>
+  );
+};
+const Polls = () => {
+  const questions = [
+    {
+      question: "What version of React do you primarily use in your projects?",
+      options: [
+        { type: "radio", id: "react-16", name: "react-version", label: "React 16" },
+        { type: "radio", id: "react-17", name: "react-version", label: "React 17" },
+        { type: "radio", id: "react-18", name: "react-version", label: "React 18 (if released)" }
+      ]
+    },
+    {
+      question: "What state management solution do you prefer with React?",
+      options: [
+        { type: "radio", id: "redux", name: "state-management", label: "Redux" },
+        { type: "radio", id: "context-api", name: "state-management", label: "React Context API" },
+        { type: "radio", id: "mobx", name: "state-management", label: "MobX" }
+      ]
+    },
+    {
+      question: "Do you prefer functional components or class components in React?",
+      options: [
+        { type: "radio", id: "functional-components", name: "component-type", label: "Functional Components" },
+        { type: "radio", id: "class-components", name: "component-type", label: "Class Components" },
+        { type: "radio", id: "both", name: "component-type", label: "Both" }
+      ]
+    },
+    {
+      question: "Which React Hooks do you use most frequently?",
+      options: [
+        { type: "checkbox", id: "useState", name: "hooks", label: "useState" },
+        { type: "checkbox", id: "useEffect", name: "hooks", label: "useEffect" },
+        { type: "checkbox", id: "useContext", name: "hooks", label: "useContext" }
+      ]
+    },
+    {
+      question: "How do you handle routing in your React applications?",
+      options: [
+        { type: "radio", id: "react-router", name: "routing", label: "React Router" },
+        { type: "radio", id: "reach-router", name: "routing", label: "Reach Router" },
+        { type: "radio", id: "other-routing", name: "routing", label: "Other" }
+      ]
+    },
+    {
+      question: "What testing library do you prefer for testing React components?",
+      options: [
+        { type: "radio", id: "jest", name: "testing-library", label: "Jest" },
+        { type: "radio", id: "testing-library-react", name: "testing-library", label: "Testing Library for React" },
+        { type: "radio", id: "other-testing-library", name: "testing-library", label: "Other" }
+      ]
+    },
+    {
+      question: "How do you manage styles in your React projects?",
+      options: [
+        { type: "radio", id: "inline-styles", name: "styles-management", label: "Inline Styles" },
+        { type: "radio", id: "css-modules", name: "styles-management", label: "CSS Modules" },
+        { type: "radio", id: "styled-components", name: "styles-management", label: "Styled Components" }
+      ]
+    },
+    {
+      question: "What is your preferred deployment platform for React applications?",
+      options: [
+        { type: "radio", id: "netlify", name: "deployment", label: "Netlify" },
+        { type: "radio", id: "vercel", name: "deployment", label: "Vercel" },
+        { type: "radio", id: "heroku", name: "deployment", label: "Heroku" }
+      ]
+    },
+    {
+      question: "Which React UI library or component library do you frequently use?",
+      options: [
+        { type: "radio", id: "material-ui", name: "ui-library", label: "Material-UI" },
+        { type: "radio", id: "ant-design", name: "ui-library", label: "Ant Design" },
+        { type: "radio", id: "chakra-ui", name: "ui-library", label: "Chakra UI" }
+      ]
+    },
+    {
+      question: "How do you handle internationalization (i18n) in your React projects?",
+      options: [
+        { type: "radio", id: "react-i18next", name: "i18n", label: "react-i18next" },
+        { type: "radio", id: "formatjs", name: "i18n", label: "FormatJS (React Intl)" },
+        { type: "radio", id: "other-i18n", name: "i18n", label: "Other" }
+      ]
+    }
+  ];
+
+  return (
+    <div className="poll">
+      <h3>Tell us what you think:</h3>
+      {questions.map((question, index) => (
+        <Question key={index} question={question.question} options={question.options} />
+      ))}
+    </div>
+  );
+};
 
 export default Polls;

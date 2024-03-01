@@ -70,7 +70,7 @@ const router = createBrowserRouter([
         element: <ProfileCard />,
       },
       {
-        path: "challengearea",
+        path: "/playcodearena/practical",
         element: <ChallengeArea />,
       },
     ],
