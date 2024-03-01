@@ -63,7 +63,7 @@ const ModalBasic = ({ children, title, modalOpen, setModalOpen }) => {
               </div>
             </div>
             <div className='body'>{children}</div>
-            <div className='footer'>
+            <div className='modalFooter'>
               <button onClick={() => setModalOpen(false)}>Close</button>
             </div>
           </div>

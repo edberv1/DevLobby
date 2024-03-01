@@ -91,7 +91,7 @@ const ModalDelete = ({
                 </div>
               </div>
               <div className='body'>{children}</div>
-              <div className='footer'>
+              <div className='modalFooter'>
                 <button
                   className='cancelBtn'
                   onClick={() => setModalOpen(false)}
