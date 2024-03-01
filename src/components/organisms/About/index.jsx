@@ -5,7 +5,7 @@ const About = () => {
   const teamMembers = [
     { id: 1, name: 'Abedin Telaku', position: 'Web Developer', gender: 'male' },
     { id: 2, name: 'Agnit Misini', position: 'Web Developer', gender: 'male' },
-    { id: 3, name: 'Leonat Johnson', position: 'Lead Team', gender: 'male' },
+    { id: 3, name: 'Leonat Krasniqi', position: 'Lead Team', gender: 'male' },
     { id: 4, name: 'Edber Vuçitërna', position: 'Web Developer', gender: 'male' },
     { id: 5, name: 'Lisa Ramizi', position: 'Web Developer', gender: 'female' },
     { id: 6, name: 'Nol Ahmedi', position: 'Web Developer', gender: 'male' },
