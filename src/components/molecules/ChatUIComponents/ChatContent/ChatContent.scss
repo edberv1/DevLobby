@@ -1,4 +1,3 @@
-
 .main__chatcontent {
   display: flex;
   flex-direction: column;
@@ -28,8 +27,7 @@
     @media only screen and (max-width: 768px) {
       margin-left: 10px;
       font-size: 14px;
-   }
-  
+    }
   }
 }
 
@@ -40,7 +38,7 @@
 }
 
 .settings .btn-nobg {
-  color: #000;
+  color: #fff;
 }
 
 .content__body {
@@ -91,7 +89,7 @@
   background: #fff;
   padding: 1px;
   @media only screen and (max-width: 768px) {
-    margin-left:5px ;
+    margin-left: 5px;
     width: 35px;
     height: 35px;
   }
@@ -115,7 +113,6 @@
   @media only screen and (max-width: 768px) {
     min-width: 50px;
     max-width: 60%;
-
   }
 }
 
@@ -135,14 +132,15 @@
   user-select: none;
   font-size: 15px;
   padding: 0 10px;
-   overflow: hidden;
-   white-space: pre-wrap;
-  
+  overflow: hidden;
+  white-space: pre-wrap;
+
   @media only screen and (max-width: 1024px) {
-    font-size:12.5px ;
+    font-size: 12.5px;
   }
   @media only screen and (max-width: 768px) {
-font-size: 9px;  }
+    font-size: 9px;
+  }
 }
 
 .chat__item.other {
@@ -161,7 +159,7 @@ font-size: 9px;  }
   margin-right: 20px;
   margin-left: 0px;
   @media only screen and (max-width: 768px) {
-    margin-right:5px ;
+    margin-right: 5px;
   }
 }
 
@@ -185,7 +183,6 @@ font-size: 9px;  }
   }
 }
 
-
 .sendNewMessage button {
   width: 36px;
   height: 36px;
@@ -202,10 +199,10 @@ font-size: 9px;  }
   transition: all 0.3s cubic-bezier(0.88, 0.19, 0.37, 1.11);
 
   @media only screen and (max-width: 768px) {
-    width: 30px; 
+    width: 30px;
     height: 30px;
     font-size: 14px;
-    line-height: 30px; 
+    line-height: 30px;
   }
 }
 
@@ -224,7 +221,7 @@ font-size: 9px;  }
   border: none;
   outline: none;
   @media only screen and (max-width: 768px) {
-     font-size: 14px;
+    font-size: 14px;
   }
 }
 
