@@ -8,13 +8,13 @@ function PlayArenaLetsgoButton({ selectedCard }) {
       {selectedCard !== null ? (
         <Link
           to={selectedCard === 0 ? '/playcodearena/theoretical' : '/playcodearena/practical'}
-          className="letsgo-button active"
+          className="letsgo-button active bn5"
         >
-          Enter Arena →
+          <span>Enter Arena →</span>
         </Link>
       ) : (
-        <button className="letsgo-button" disabled>
-          Select a Card
+        <button className="letsgo-button bn5" disabled>
+          <span>Select a Card</span> 
         </button>
       )}
     </div>
