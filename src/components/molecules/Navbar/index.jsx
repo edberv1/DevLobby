@@ -110,9 +110,11 @@ const Navbar = () => {
             PlayCode Arena
           </Link>
         </li>
-        <li onClick={closeMenu}>
-          <Link to="/chat">Chat</Link>
-        </li>
+        {isLoggedIn && (
+          <li onClick={closeMenu}>
+            <Link to="/chat">Chat</Link>
+          </li>
+        )}
         <li onClick={closeMenu}>
           <Link to="/blog">Blog</Link>
         </li>

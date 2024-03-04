@@ -4,14 +4,14 @@ import "./Login.scss";
 import Logo from "../../../assets/images/icon.png";
 import LoginImage from "../../../assets/images/Signup-image.png";
 import Navbar from "../../molecules/Navbar";
-import { useNavigate } from "react-router-dom"; // For navigation
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../utils/AuthContext";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const navigate = useNavigate(); // To redirect after login
+  const navigate = useNavigate();
 
   const { login, isLoggedIn } = useContext(AuthContext);
 
@@ -19,7 +19,6 @@ const Login = () => {
     if (isLoggedIn) {
       navigate("/");
     }
-    // eslint-disable-next-line
   }, [isLoggedIn]);
 
   const handleLogin = async (e) => {
@@ -32,7 +31,7 @@ const Login = () => {
         setError(response.error);
         return;
       } else {
-        setError(""); // Clear any existing errors
+        setError("");
       }
       login(response.token);
     } catch (error) {
@@ -42,12 +41,12 @@ const Login = () => {
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
-    setError(""); // Clear error when user starts typing
+    setError("");
   };
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
-    setError(""); // Clear error when user starts typing
+    setError("");
   };
 
   return (
