@@ -31,11 +31,11 @@ const Login = () => {
 
   const handleFocusChange = e => {
     if (emailRef.current && !emailRef.current.contains(e.target)) {
-      validateEmail(loginCreds.email)
+      validEmail(loginCreds.email)
     }
   }
 
-  function validateEmail (email) {
+  function validEmail (email) {
     const pattern =
       // eslint-disable-next-line
       /[a-zA-Z0-9]+[\.]?([a-zA-Z0-9]+)?[\@][a-z]{3,9}[\.][a-z]{2,5}/g
@@ -49,7 +49,7 @@ const Login = () => {
     }
   }
 
-  function validatePassword (password) {
+  function validPassword (password) {
     if (password.length < 8) {
       setError('Password too short.')
       return false
@@ -60,11 +60,7 @@ const Login = () => {
   }
 
   const handleLogin = async () => {
-    if (!validateEmail(loginCreds.email)) {
-      return
-    }
-
-    if (!validatePassword(loginCreds.password)) {
+    if (!validEmail(loginCreds.email) || !validPassword(loginCreds.password)) {
       return
     }
 
