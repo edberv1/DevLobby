@@ -9,14 +9,16 @@ import { AuthContext } from '../../../utils/AuthContext'
 import { useNavigate } from 'react-router-dom'
 
 const SignUp = () => {
-  const [username, setUsername] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [signupCreds, setSignupCreds] = useState({
+    username: '',
+    email: '',
+    password: ''
+  })
+  
   const [error, setError] = useState('')
   const [isSignupSuccess, setIsSignupSuccess] = useState(false)
-  const navigate = useNavigate()
-
   const { isLoggedIn } = useContext(AuthContext)
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -29,10 +31,8 @@ const SignUp = () => {
     e.preventDefault()
     setError('')
 
-    const data = { username, email, password }
-
     try {
-      const response = await AuthService.signup(data)
+      const response = await AuthService.signup(signupCreds)
       if (typeof response === 'string' && response.startsWith('Failed to')) {
         setError(
           'Sorry, we could not connect with the server. Please try again in a few minutes.'
@@ -45,6 +45,10 @@ const SignUp = () => {
     } catch (error) {
       setError('Failed to sign up. Please try again.')
     }
+  }
+
+  const handleChange = e => {
+    setSignupCreds({ ...signupCreds, [e.target.name]: e.target.value })
   }
 
   return (
@@ -69,33 +73,36 @@ const SignUp = () => {
                 <hr />
                 Sign up with Email <hr />
               </div>
-              <form onSubmit={handleSignup}>
+              <div>
                 <input
                   type='text'
                   placeholder='Username'
+                  name='username'
                   required
-                  value={username}
-                  onChange={e => setUsername(e.target.value)}
+                  value={signupCreds?.username}
+                  onChange={handleChange}
                 />
                 <input
                   type='email'
                   placeholder='Email'
+                  name='email'
                   required
-                  value={email}
-                  onChange={e => setEmail(e.target.value)}
+                  value={signupCreds?.email}
+                  onChange={handleChange}
                 />
                 <input
                   type='password'
                   placeholder='Password'
+                  name='password'
                   minLength='8'
                   required
-                  value={password}
-                  onChange={e => setPassword(e.target.value)}
+                  value={signupCreds?.password}
+                  onChange={handleChange}
                 />
-                <button type='submit' className='signup-btn'>
+                <button onClick={handleSignup} className='signup-btn'>
                   Sign Up
                 </button>
-              </form>
+              </div>
               <div className='signin-redirect'>
                 Already have an Account? <a href='/login'>Sign in</a>
               </div>
