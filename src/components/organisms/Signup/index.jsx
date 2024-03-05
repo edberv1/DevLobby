@@ -30,15 +30,6 @@ const SignUp = () => {
     // eslint-disable-next-line
   }, [isLoggedIn])
 
-  useEffect(() => {
-    document.addEventListener('mousedown', handleFocusChange)
-    return () => {
-      document.removeEventListener('mousedown', handleFocusChange)
-    }
-  })
-
-  const handleFocusChange = e => {}
-
   function isValidUsername (username) {
     // eslint-disable-next-line
     const pattern = /^[0-9A-Za-z]{4,16}$/
