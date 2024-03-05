@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { AuthService } from '../../../services/AuthService'
 import './Login.scss'
 import Logo from '../../../assets/images/icon.png'
@@ -10,9 +10,10 @@ import { AuthContext } from '../../../utils/AuthContext'
 const Login = () => {
   const [loginCreds, setLoginCreds] = useState({ email: '', password: '' })
   const [error, setError] = useState('')
-  const navigate = useNavigate()
-
   const { login, isLoggedIn } = useContext(AuthContext)
+  const emailRef = useRef(null)
+  const passRef = useRef(null)
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -21,8 +22,52 @@ const Login = () => {
     // eslint-disable-next-line
   }, [isLoggedIn])
 
-  const handleLogin = async e => {
-    e.preventDefault()
+  useEffect(() => {
+    document.addEventListener('mousedown', handleFocusChange)
+    return () => {
+      document.removeEventListener('mousedown', handleFocusChange)
+    }
+  })
+
+  const handleFocusChange = e => {
+    if (emailRef.current && !emailRef.current.contains(e.target)) {
+      validateEmail(loginCreds.email)
+    }
+  }
+
+  function validateEmail (email) {
+    const pattern =
+      // eslint-disable-next-line
+      /[a-zA-Z0-9]+[\.]?([a-zA-Z0-9]+)?[\@][a-z]{3,9}[\.][a-z]{2,5}/g
+    const result = pattern.test(email)
+    if (result !== true) {
+      setError('Not a valid email format')
+      return false
+    } else {
+      setError('')
+      return true
+    }
+  }
+
+  function validatePassword (password) {
+    if (password.length < 8) {
+      setError('Password too short.')
+      return false
+    } else {
+      setError('')
+      return true
+    }
+  }
+
+  const handleLogin = async () => {
+    if (!validateEmail(loginCreds.email)) {
+      return
+    }
+
+    if (!validatePassword(loginCreds.password)) {
+      return
+    }
+
     try {
       const response = await AuthService.login(loginCreds)
       if (response === 'Failed to fetch' || response.error) {
@@ -52,11 +97,12 @@ const Login = () => {
           <p>See your growth and get consulting support!</p>
           <div className='divider'>
             <hr />
-            Log in with Email <hr />
+            Log in with email <hr />
           </div>
           {error && <div className='error-message'>{error}</div>}
-          <form onSubmit={handleLogin} className='login-input-form'>
+          <div className='login-input-form'>
             <input
+              ref={emailRef}
               type='email'
               placeholder='Email'
               name='email'
@@ -65,6 +111,7 @@ const Login = () => {
               onChange={handleChange}
             />
             <input
+              ref={passRef}
               type='password'
               placeholder='Password'
               name='password'
@@ -73,10 +120,10 @@ const Login = () => {
               value={loginCreds?.password}
               onChange={handleChange}
             />
-            <button type='submit' className='login-btn'>
+            <button onClick={handleLogin} className='login-btn'>
               Login
             </button>
-          </form>
+          </div>
           <div className='login-redirect'>
             Not registered yet?<a href='/signup'> Create an Account</a>
           </div>
