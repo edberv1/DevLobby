@@ -59,7 +59,9 @@ const Login = () => {
     }
   }
 
-  const handleLogin = async () => {
+  const handleLogin = async e => {
+    e.preventDefault()
+
     if (!validEmail(loginCreds.email) || !validPassword(loginCreds.password)) {
       return
     }
@@ -86,7 +88,7 @@ const Login = () => {
     <>
       <Navbar />
       <div className='login-container'>
-        <div className='login-form'>
+        <form className='login-form'>
           <h2>Login</h2>
 
           <img src={Logo} alt='Logo' className='devlobby-logo' />
@@ -123,7 +125,7 @@ const Login = () => {
           <div className='login-redirect'>
             Not registered yet?<a href='/signup'> Create an Account</a>
           </div>
-        </div>
+        </form>
         <div className='login-image-section'>
           <img src={LoginImage} alt='Login' />
         </div>

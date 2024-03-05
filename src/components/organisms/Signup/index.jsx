@@ -62,7 +62,7 @@ const SignUp = () => {
   function isValidStrongPassword (password) {
     // eslint-disable-next-line
     const pattern =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&^])[A-Za-z\d@.#$!%*?&]{8,15}$/
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&^])[A-Za-z\d@.#$!%*?&]{8,36}$/
     const result = pattern.test(password)
 
     if (password.length < 8) {
@@ -79,7 +79,9 @@ const SignUp = () => {
     }
   }
 
-  const handleSignup = async () => {
+  const handleSignup = async e => {
+    e.preventDefault()
+
     if (
       !isValidUsername(signupCreds.username) ||
       !isValidEmail(signupCreds.email) ||
@@ -110,6 +112,19 @@ const SignUp = () => {
     setSignupCreds({ ...signupCreds, [e.target.name]: e.target.value })
   }
 
+  const handleFocusChange = name => {
+    switch (name) {
+      case 'username':
+        isValidUsername(signupCreds.username)
+        break
+      case 'email':
+        isValidEmail(signupCreds.email)
+        break
+      default:
+        break
+    }
+  }
+
   return (
     <>
       <Navbar />
@@ -132,7 +147,7 @@ const SignUp = () => {
                 Sign up with Email <hr />
               </div>
               {error && <div className='error-message'>{error}</div>}
-              <div>
+              <form>
                 <input
                   type='text'
                   ref={usernameRef}
@@ -141,6 +156,9 @@ const SignUp = () => {
                   required
                   value={signupCreds?.username}
                   onChange={handleChange}
+                  onBlur={e => {
+                    handleFocusChange(e.target.name)
+                  }}
                 />
                 <input
                   type='email'
@@ -150,6 +168,9 @@ const SignUp = () => {
                   required
                   value={signupCreds?.email}
                   onChange={handleChange}
+                  onBlur={e => {
+                    handleFocusChange(e.target.name)
+                  }}
                 />
                 <input
                   type='password'
@@ -164,7 +185,7 @@ const SignUp = () => {
                 <button onClick={handleSignup} className='signup-btn'>
                   Sign Up
                 </button>
-              </div>
+              </form>
               <div className='signin-redirect'>
                 Already have an Account? <a href='/login'>Sign in</a>
               </div>
