@@ -1,6 +1,5 @@
 .userSearchBar {
   position: relative;
-  padding: 40px;
 
   .searchInput {
     display: flex;
@@ -15,8 +14,12 @@
       padding: 2px;
       padding-left: 14px;
       height: 30px;
-      width: 264px;
+      width: 264px; // Default width
       transition: width 0.3s ease;
+
+      @media screen and (max-width: 768px) {
+        width: 155px; // Adjusted width for smaller screens
+      }
     }
 
     .iconContainer {
