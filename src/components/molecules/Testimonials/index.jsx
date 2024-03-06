@@ -8,7 +8,7 @@ const Testimonials = () => {
 
   useEffect(() => {
     const scrollWidth = containerRef.current.scrollWidth;
-    const animationDuration = scrollWidth / 150; 
+    const animationDuration = scrollWidth / 100;
 
     const keyframes = [
       { transform: "translateX(0)" },
