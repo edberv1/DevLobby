@@ -125,7 +125,9 @@ const Login = () => {
               value={loginCreds?.password}
               onChange={handleChange}
             />
-            {verifiedMessage && <h4>{verifiedMessage}</h4>}
+            {verifiedMessage && (
+              <div className='verificationMessage'>{verifiedMessage}</div>
+            )}
             <button onClick={handleLogin} className='login-btn'>
               Login
             </button>
