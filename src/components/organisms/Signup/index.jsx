@@ -4,9 +4,8 @@ import SignupImage from '../../../assets/images/Signup-image.png'
 import DevLobbyLogoIcon from '../../../assets/images/icon.png'
 import { AuthService } from '../../../services/AuthService'
 import Navbar from '../../molecules/Navbar'
-import Animation from '../../../assets/images/boygirlanimation.mp4'
 import { AuthContext } from '../../../utils/AuthContext'
-import { useNavigate } from 'react-router-dom'
+import { Outlet, useNavigate } from 'react-router-dom'
 
 const SignUp = () => {
   const [signupCreds, setSignupCreds] = useState({
@@ -16,7 +15,7 @@ const SignUp = () => {
   })
 
   const [error, setError] = useState('')
-  const [isSignupSuccess, setIsSignupSuccess] = useState(false)
+  const [signupSuccess, setSignupSuccess] = useState(false)
   const { isLoggedIn } = useContext(AuthContext)
   const usernameRef = useRef(null)
   const emailRef = useRef(null)
@@ -92,7 +91,7 @@ const SignUp = () => {
 
     try {
       const response = await AuthService.signup(signupCreds)
-      // TODO: must improve check
+      // TODO: must improve BELOW check
       if (typeof response === 'string' && response.startsWith('Failed to')) {
         setError(
           'Sorry, we could not connect with the server. Please try again in a few minutes.'
@@ -100,12 +99,13 @@ const SignUp = () => {
       } else if (response.error) {
         setError(response.error)
       } else {
-        setIsSignupSuccess(true)
+        setSignupSuccess(true)
+        navigate('/signup/verify')
       }
     } catch (error) {
       setError('Failed to sign up. Please try again.')
+      return false
     }
-    console.log('TeST')
   }
 
   const handleChange = e => {
@@ -127,17 +127,13 @@ const SignUp = () => {
 
   return (
     <>
-      <Navbar />
-      <div className='signup-container'>
-        {/* Conditionally render the form or success message */}
-        {isSignupSuccess ? (
-          <div className='success-message'>
-            You have successfully created an account.🥂
-            <br />
-            <video src={Animation} autoPlay loop muted></video>
-          </div>
-        ) : (
-          <>
+      {signupSuccess ? (
+        <Outlet />
+      ) : (
+        <>
+          <Navbar />
+          <div className='signup-container'>
+            {/* Conditionally render the form or success message */}
             <div className='signup-form'>
               <h2>Sign Up</h2>
               <img src={DevLobbyLogoIcon} alt='DevLobby Logo' />
@@ -194,9 +190,9 @@ const SignUp = () => {
             <div className='signup-image-section'>
               <img src={SignupImage} alt='DevLobby Signup' />
             </div>
-          </>
-        )}
-      </div>
+          </div>
+        </>
+      )}
     </>
   )
 }

@@ -15,6 +15,7 @@ import PageNotFound from "./components/organisms/PageNotFound";
 import ProfileCard from "./components/organisms/Profile";
 import Testimonials from "./components/molecules/Testimonials";
 import ChallengeArea from "./components/organisms/ChallengeArea";
+import Verification from "./components/organisms/Verification";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,12 @@ const router = createBrowserRouter([
   {
     path: "signup",
     element: <Signup />,
+    children: [
+      {
+        path: "verify",
+        element: <Verification />
+      },
+    ]
   },
   {
     path: "",
