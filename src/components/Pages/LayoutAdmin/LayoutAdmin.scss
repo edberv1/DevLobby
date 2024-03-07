@@ -1,0 +1,102 @@
+.adminLayout {
+  background-color: #282828;
+}
+
+.dark-mode {
+  //Sidebar
+  .sidebar {
+    background-color: #1a1a1a;
+  }
+  .sidebar-menu {
+    background-color: #1a1a1a;
+  }
+  .sidebar-toggle {
+    background-color: #1a1a1a;
+    .menu-bars {
+      color: white;
+    }
+  }
+  .menu-bars {
+    color: white;
+  }
+  .sidebar-text {
+    a {
+      color: white;
+    }
+  }
+
+  //Users Table
+  .table__header {
+    background-color: #1a1a1a;
+    color: white;
+  }
+
+  .main-table {
+    .controls {
+      button {
+        color: white;
+      }
+    }
+  }
+
+  .table__body {
+    background-color: #1a1a1a;
+  }
+
+  table {
+    thead th {
+      background-color: #282828;
+      color: white;
+    }
+    tbody td {
+      color: white;
+    }
+  }
+
+  .status.active {
+    color: #1a1a1a;
+  }
+
+  .status.inactive {
+    color: #1a1a1a;
+  }
+
+  .pagination {
+    button {
+      background-color: #282828;
+      border: 1px solid white;
+      color: white;
+      &:hover {
+        background-color: #0070ec;
+      }
+      
+      &.active {
+        background-color: #0070ec;
+        color: #fff;
+      }
+    }
+  }
+
+  //Generic Card
+
+  .dashboardCard {
+    .dashboard-card{
+      background-color: #1a1a1a;
+    }
+
+    header {
+      .title-container {
+        .title {
+          color: white;
+        }
+      }
+    }
+    .item-container{
+      color: white;
+    }
+  }
+
+
+
+
+}
