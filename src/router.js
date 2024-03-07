@@ -19,20 +19,6 @@ import Verification from "./components/organisms/Verification";
 
 const router = createBrowserRouter([
   {
-    path: "login",
-    element: <Login />,
-  },
-  {
-    path: "signup",
-    element: <Signup />,
-    children: [
-      {
-        path: "verify",
-        element: <Verification />
-      },
-    ]
-  },
-  {
     path: "",
     element: <ClientLayout />,
     children: [
@@ -76,6 +62,7 @@ const router = createBrowserRouter([
         path: "profile",
         element: <ProfileCard />,
       },
+
       {
         path: "/playcodearena/practical",
         element: <ChallengeArea />,
@@ -85,6 +72,18 @@ const router = createBrowserRouter([
   {
     path: "admin",
     element: <AdminLayout />,
+  },
+  {
+    path: "login",
+    element: <Login />,
+  },
+  {
+    path: "signup",
+    element: <Signup />,
+  },
+  {
+    path: "user/:id/verify/:token",
+    element: <Verification />,
   },
   {
     path: "*",

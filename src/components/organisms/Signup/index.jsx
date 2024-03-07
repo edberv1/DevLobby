@@ -5,7 +5,7 @@ import DevLobbyLogoIcon from '../../../assets/images/icon.png'
 import { AuthService } from '../../../services/AuthService'
 import Navbar from '../../molecules/Navbar'
 import { AuthContext } from '../../../utils/AuthContext'
-import { Outlet, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const SignUp = () => {
   const [signupCreds, setSignupCreds] = useState({
@@ -100,7 +100,6 @@ const SignUp = () => {
         setError(response.error)
       } else {
         setSignupSuccess(true)
-        navigate('/signup/verify')
       }
     } catch (error) {
       setError('Failed to sign up. Please try again.')
@@ -127,72 +126,70 @@ const SignUp = () => {
 
   return (
     <>
-      {signupSuccess ? (
-        <Outlet />
-      ) : (
-        <>
-          <Navbar />
-          <div className='signup-container'>
-            {/* Conditionally render the form or success message */}
-            <div className='signup-form'>
-              <h2>Sign Up</h2>
-              <img src={DevLobbyLogoIcon} alt='DevLobby Logo' />
-              <p>See your growth and get consulting support!</p>
-              <div className='divider'>
-                <hr />
-                Sign up with Email <hr />
-              </div>
-              {error && <div className='error-message'>{error}</div>}
-              <form>
-                <input
-                  type='text'
-                  ref={usernameRef}
-                  placeholder='Username'
-                  name='username'
-                  required
-                  value={signupCreds?.username}
-                  onChange={handleChange}
-                  onBlur={e => {
-                    handleFocusChange(e.target.name)
-                  }}
-                />
-                <input
-                  type='email'
-                  ref={emailRef}
-                  placeholder='Email'
-                  name='email'
-                  required
-                  value={signupCreds?.email}
-                  onChange={handleChange}
-                  onBlur={e => {
-                    handleFocusChange(e.target.name)
-                  }}
-                />
-                <input
-                  type='password'
-                  ref={passwordRef}
-                  placeholder='Password'
-                  name='password'
-                  minLength='8'
-                  required
-                  value={signupCreds?.password}
-                  onChange={handleChange}
-                />
-                <button onClick={handleSignup} className='signup-btn'>
-                  Sign Up
-                </button>
-              </form>
-              <div className='signin-redirect'>
-                Already have an Account? <a href='/login'>Sign in</a>
-              </div>
-              <footer>©2024 Nexus. All rights reserved.</footer>
-            </div>
-            <div className='signup-image-section'>
-              <img src={SignupImage} alt='DevLobby Signup' />
-            </div>
+      <Navbar />
+      <div className='signup-container'>
+        {/* Conditionally render the form or success message */}
+        <div className='signup-form'>
+          <h2>Sign Up</h2>
+          <img src={DevLobbyLogoIcon} alt='DevLobby Logo' />
+          <p>See your growth and get consulting support!</p>
+          <div className='divider'>
+            <hr />
+            Sign up with Email <hr />
           </div>
-        </>
-      )}
+          {error && <div className='error-message'>{error}</div>}
+          {signupSuccess ? (
+            <h2>Check your mail for the verification link.</h2>
+          ) : (
+            <form>
+              <input
+                type='text'
+                ref={usernameRef}
+                placeholder='Username'
+                name='username'
+                required
+                value={signupCreds?.username}
+                onChange={handleChange}
+                onBlur={e => {
+                  handleFocusChange(e.target.name)
+                }}
+              />
+              <input
+                type='email'
+                ref={emailRef}
+                placeholder='Email'
+                name='email'
+                required
+                value={signupCreds?.email}
+                onChange={handleChange}
+                onBlur={e => {
+                  handleFocusChange(e.target.name)
+                }}
+              />
+              <input
+                type='password'
+                ref={passwordRef}
+                placeholder='Password'
+                name='password'
+                minLength='8'
+                required
+                value={signupCreds?.password}
+                onChange={handleChange}
+              />
+              <button onClick={handleSignup} className='signup-btn'>
+                Sign Up
+              </button>
+            </form>
+          )}
+          <div className='signin-redirect'>
+            Already have an Account? <a href='/login'>Sign in</a>
+          </div>
+          <footer>©2024 Nexus. All rights reserved.</footer>
+        </div>
+        <div className='signup-image-section'>
+          <img src={SignupImage} alt='DevLobby Signup' />
+        </div>
+      </div>
     </>
   )
 }
