@@ -1,9 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Verification.scss'
 import { Link, useParams } from 'react-router-dom'
+import PageNotFound from '../PageNotFound'
+import { AuthService } from '../../../services/AuthService'
 
 const Verification = () => {
-  return (
+  const [validUrl, setValidUrl] = useState()
+  const param = useParams()
+
+  useEffect(() => {
+    const verifEmailUrl = async () => {
+      try {
+        const response = await AuthService.verifySignup(param.id, param.token)
+        console.log(response)
+        setValidUrl(true)
+      } catch (error) {
+        console.error(error)
+        setValidUrl(false)
+      }
+    }
+    verifEmailUrl()
+  }, [param])
+
+  return validUrl ? (
     <div className='verification'>
       <div className='container'>
         <div id='success'>Verification successful ✅</div>
@@ -15,6 +34,8 @@ const Verification = () => {
         </div>
       </div>
     </div>
+  ) : (
+    <PageNotFound />
   )
 }
 
