@@ -10,6 +10,7 @@ import { AuthContext } from '../../../utils/AuthContext'
 const Login = () => {
   const [loginCreds, setLoginCreds] = useState({ email: '', password: '' })
   const [error, setError] = useState('')
+  const [verifiedMessage, setVerifiedMessage] = useState('')
   const { login, isLoggedIn } = useContext(AuthContext)
   const emailRef = useRef(null)
   const passRef = useRef(null)
@@ -69,12 +70,18 @@ const Login = () => {
     try {
       const response = await AuthService.login(loginCreds)
       if (response === 'Failed to fetch' || response.error) {
-        setError(response.error)
+        console.log('1')
+        setError(response?.error)
+        return
+      } else if (!response?.user?.verified) {
+        console.log('user not verified', response.user.verified)
+        setVerifiedMessage(response.message)
         return
       } else {
+        console.log('3')
         setError('')
       }
-      login(response.token)
+      login(response?.token)
     } catch (error) {
       setError('Failed to login. Please try again.')
     }
@@ -118,6 +125,7 @@ const Login = () => {
               value={loginCreds?.password}
               onChange={handleChange}
             />
+            {verifiedMessage && <h4>{verifiedMessage}</h4>}
             <button onClick={handleLogin} className='login-btn'>
               Login
             </button>
