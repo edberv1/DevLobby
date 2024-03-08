@@ -7,7 +7,6 @@ import BigChartAndStats from "../../organisms/BigChartAndStats";
 import SmallChartsCombined from "../../organisms/SmallChartsCombined";
 import { Navigate } from "react-router-dom";
 import UserTable from "../../molecules/UserTable";
-import ModalDemo from "../../organisms/ModalDemo";
 import DashboardCardAndTaskManager from "../../organisms/DashboardCardAndTaskManager";
 import "./LayoutAdmin.scss";
 
@@ -20,13 +19,12 @@ const AdminLayout = () => {
       {isLoggedIn ? (
         <div className={isDarkMode ? "adminLayout dark-mode" : "adminLayout"}>
           <Sidebar />
-          <button onClick={logout}>Logout</button>
-          <ModalDemo />
+          {/* <button onClick={logout}>Logout</button> */}
           <AdminHeaderComponent />
           <BigChartAndStats />
           <SmallChartsCombined />
           <DashboardCardAndTaskManager />
-          <UserTable></UserTable>
+          <UserTable />
         </div>
       ) : (
         <Navigate to="/login" />

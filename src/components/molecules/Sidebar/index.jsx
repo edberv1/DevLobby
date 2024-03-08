@@ -5,13 +5,12 @@ import * as AiIcons from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { SidebarData } from "./SidebarData";
 import "./Sidebar.scss";
-import Logo from "../../../assets/images/icon.png";
 import { DarkModeContext } from "../../../utils/DarkModeContext"; // Update the path according to your project structure
 
 const Sidebar = () => {
   const { isDarkMode, toggleDarkMode } = useContext(DarkModeContext);
 
-  const [sidebar, setSidebar] = useState(false);
+  const [sidebar, setSidebar] = useState(true);
 
   const showSidebar = () => setSidebar(!sidebar);
 
@@ -23,13 +22,12 @@ const Sidebar = () => {
         </Link>
       </div>
       <div className={sidebar ? "sidebar-menu active" : "sidebar-menu"}>
-        <ul className="sidebar-menu-items" onClick={showSidebar}>
+        <ul className="sidebar-menu-items">
           <li className="sidebar-toggle">
             <Link to="#" className="menu-bars">
-              <AiIcons.AiOutlineClose />
+              <AiIcons.AiOutlineClose onClick={showSidebar} />
             </Link>
           </li>
-          <img src={Logo} alt="Logo" />
 
           {SidebarData.map((item, index) => {
             return (

@@ -1,6 +1,21 @@
 .adminLayout {
   background-color: #282828;
+  padding-left: 250px;
+
+  @media screen and (max-width: 768px) {
+    padding-left: 0;
+  }
+
+  @media screen and (max-width: 1024px) {
+    padding-left: 0;
+  }
+
+  
 }
+
+
+
+
 
 .dark-mode {
   //Sidebar
@@ -97,6 +112,21 @@
   }
 
 
+  //Task Manager
+  .dashboard-task-manager {
+    background-color: #1a1a1a;
+    header {
+      .title-container {
+        .title {
+          color: white;
+
+        }
+      }
+    }
+      .task-text {
+        color: white;
+      }
+  }
 
 
 }
