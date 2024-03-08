@@ -3,7 +3,6 @@ import { AuthService } from '../../../services/AuthService'
 import './Login.scss'
 import Logo from '../../../assets/images/icon.png'
 import LoginImage from '../../../assets/images/Signup-image.png'
-import Navbar from '../../molecules/Navbar'
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../../utils/AuthContext'
 import { Link } from 'react-router-dom'
@@ -94,7 +93,6 @@ const Login = () => {
 
   return (
     <>
-      <Navbar />
       <div className='login-container'>
         <form className='login-form'>
           <h2>Login</h2>

@@ -28,6 +28,22 @@ const router = createBrowserRouter([
         element: <Landing />,
       },
       {
+        path: "signup",
+        element: <Signup />,
+      },
+      {
+        path: "login",
+        children: [
+          {
+            index: true,
+            element: <Login />
+          }, {
+            path: "reset",
+            element: <PasswordReset />
+          }
+        ]
+      },
+      {
         path: "about",
         element: <About />,
       },
@@ -73,22 +89,6 @@ const router = createBrowserRouter([
   {
     path: "admin",
     element: <AdminLayout />,
-  },
-  {
-    path: "login",
-    children: [
-      {
-        index: true,
-        element: <Login />
-      }, {
-        path: "reset",
-        element: <PasswordReset />
-      }
-    ]
-  },
-  {
-    path: "signup",
-    element: <Signup />,
   },
   {
     path: "user/:id/verify/:token",
