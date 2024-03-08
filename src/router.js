@@ -16,7 +16,7 @@ import ProfileCard from "./components/organisms/Profile";
 import Testimonials from "./components/molecules/Testimonials";
 import ChallengeArea from "./components/organisms/ChallengeArea";
 import Verification from "./components/organisms/Verification";
-import PasswordReset from "./components/molecules/PasswordReset";
+import PasswordReset from "./components/organisms/PasswordReset";
 
 const router = createBrowserRouter([
   {
