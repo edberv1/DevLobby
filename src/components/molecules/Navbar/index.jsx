@@ -12,7 +12,20 @@ const Navbar = () => {
   const { isLoggedIn, logout } = useContext(AuthContext);
 
   const navigate = useNavigate();
+  const handleLoginClick = () => {
+    navigate("/login");
+  };
 
+  const handleSignupClick = () => {
+    navigate("/signup");
+  };
+
+  const handleCloseMenuAndRedirect = (redirectFunction) => {
+    return () => {
+      closeMenu();
+      redirectFunction();
+    };
+  };
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 1024);
@@ -145,11 +158,17 @@ const Navbar = () => {
       <div className="butonat-client">
         {!isLoggedIn && (
           <>
-            <button className="login" onClick={closeMenu}>
-              <Link to="/login">Log in</Link>
+            <button
+              className="login"
+              onClick={handleCloseMenuAndRedirect(handleLoginClick)}
+            >
+              Log in
             </button>
-            <button className="signup" onClick={closeMenu}>
-              <Link to="/signup">Sign Up</Link>
+            <button
+              className="signup"
+              onClick={handleCloseMenuAndRedirect(handleSignupClick)}
+            >
+              Sign Up
             </button>
           </>
         )}

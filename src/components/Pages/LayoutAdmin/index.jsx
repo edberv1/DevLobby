@@ -7,10 +7,11 @@ import BigChartAndStats from '../../organisms/BigChartAndStats'
 import SmallChartsCombined from '../../organisms/SmallChartsCombined'
 import { Navigate } from 'react-router-dom'
 import UserTable from '../../molecules/UserTable'
-import DashboardCard from '../../molecules/DashboardCard'
+import DashboardCardAndTaskManager from "../../organisms/DashboardCardAndTaskManager"
 import ModalDemo from '../../organisms/ModalDemo'
 import DashboardHeader from '../../organisms/DashboardHeader'
 import "./LayoutAdmin.scss"
+
 
 const AdminLayout = () => {
   const { isLoggedIn } = useContext(AuthContext);
@@ -26,7 +27,7 @@ const AdminLayout = () => {
           <AdminHeaderComponent />
           <BigChartAndStats />
           <SmallChartsCombined />
-          <DashboardCard title={"Generic card"} />
+          <DashboardCardAndTaskManager />
           <UserTable></UserTable>
         </div>
       ) : (

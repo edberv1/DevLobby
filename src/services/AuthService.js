@@ -8,4 +8,8 @@ export class AuthService {
   static async signup(data) {
     return await Api.request("POST", "/user/signup", data)
   }
+
+  static async verifySignup(id, token) {
+    return await Api.request("GET", `/user/${id}/verify/${token}`)
+  }
 }
