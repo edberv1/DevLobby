@@ -7,7 +7,10 @@ const PageNotFound = () => {
     <div className='pageNotFound'>
       <div className='container'>
         <div id='errCode'>404 not found :(</div>
-        <div className='text2'>The page you're looking for doesn't exist.</div>
+        <div className='text2'>This page doesn't exist.</div>
+        <div className='text1'>
+          The link that brought you here may have been broken 💔
+        </div>
         <div className='guide'>
           <Link to='/'>
             <div className='homeBtn'>Go back to Lobby</div>
