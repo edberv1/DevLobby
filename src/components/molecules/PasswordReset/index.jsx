@@ -1,16 +1,28 @@
 import React, { useState } from 'react'
 import './PasswordReset.scss'
-import Logo from '../../../assets/images/icon.png'
 
 const PasswordReset = () => {
   const [identity, setIdentity] = useState('')
-  function handleChange () {}
+  const [error, setError] = useState('')
+  const [accountNotFound, setAccountNotFound] = useState(true)
+
+  function handleChange (e) {
+    setIdentity(e.target.value)
+  }
+
+  const handleVerification = () => {
+    if (identity.length < 4) {
+      setError('Enter a valid username or email')
+    } else {
+      console.log('good to go')
+      setError('')
+    }
+  }
 
   return (
     <>
       <div className='reset-container'>
-        <form className='reset-form'>
-          <img src={Logo} alt='Logo' className='devlobby-logo' />
+        <div className='reset-form'>
           <div className='divider'>
             <hr />
             Find your DevLobby account <hr />
@@ -19,6 +31,7 @@ const PasswordReset = () => {
             Enter the email, or username associated with your account to change
             your password.
           </p>
+          {error && <div className='error-message'>{error}</div>}
           <div className='email-input'>
             <input
               type='text'
@@ -29,8 +42,15 @@ const PasswordReset = () => {
               onChange={handleChange}
             />
           </div>
-          <button className='next-btn'>Next</button>
-        </form>
+          {accountNotFound && (
+            <div className='accountNotFound'>
+              {'Sorry, we could not find your account'}
+            </div>
+          )}
+          <button onClick={handleVerification} className='next-btn'>
+            Next
+          </button>
+        </div>
       </div>
     </>
   )
