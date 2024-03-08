@@ -114,10 +114,10 @@ const SignUp = () => {
   const handleFocusChange = name => {
     switch (name) {
       case 'username':
-        isValidUsername(signupCreds.username)
+        signupCreds.username.length && isValidUsername(signupCreds.username)
         break
       case 'email':
-        isValidEmail(signupCreds.email)
+        signupCreds.email.length && isValidEmail(signupCreds.email)
         break
       default:
         break

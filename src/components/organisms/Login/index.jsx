@@ -6,6 +6,7 @@ import LoginImage from '../../../assets/images/Signup-image.png'
 import Navbar from '../../molecules/Navbar'
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../../utils/AuthContext'
+import { Link } from 'react-router-dom'
 
 const Login = () => {
   const [loginCreds, setLoginCreds] = useState({ email: '', password: '' })
@@ -32,7 +33,7 @@ const Login = () => {
 
   const handleFocusChange = e => {
     if (emailRef.current && !emailRef.current.contains(e.target)) {
-      validEmail(loginCreds.email)
+      loginCreds.email.length && validEmail(loginCreds.email)
     }
   }
 
@@ -132,8 +133,8 @@ const Login = () => {
               Login
             </button>
           </div>
-          <div className='login-redirect'>
-            Not registered yet?<a href='/signup'> Create an Account</a>
+          <div className='reset-redirect'>
+            Forgot password? <Link to='/login/reset'> Reset password</Link>
           </div>
         </form>
         <div className='login-image-section'>
