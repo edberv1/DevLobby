@@ -1,22 +1,22 @@
 .about {
   text-align: center;
-  font-family: "Arial", sans-serif;
   color: white;
 
   .company-info {
     padding: 3rem 1rem;
-    background-color: #dfd5d5;
+    background-color: #1a1a1a;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
     h2 {
       font-size: 2.8rem;
       color: #005792;
       margin-bottom: 1rem;
+      text-transform: uppercase;
     }
 
     p {
       font-size: 1.2rem;
-      color: #666;
+      color: #ffffff;
       max-width: 600px;
       margin: auto;
       line-height: 1.6;

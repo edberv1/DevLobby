@@ -12,8 +12,11 @@ $theme-gray-bluish: #4b506d;
 }
 
 .dashboardCard {
+  width: 50%;
+  padding: 3%;
+
   .dashboard-card {
-    width: 40%;
+    width: 100%;
     margin: auto;
     margin-top: 24px;
     background-color: $theme-background-light;
@@ -21,6 +24,7 @@ $theme-gray-bluish: #4b506d;
     font-family: sans-serif;
     border-radius: 8px;
     padding-bottom: 10px;
+    height: 100%;
   }
 
   header {
@@ -72,5 +76,12 @@ $theme-gray-bluish: #4b506d;
     .size {
       color: $theme-gray-light;
     }
+  }
+}
+
+
+@media (max-width: 760px) {
+  .dashboardCard{
+    width: 90%;
   }
 }

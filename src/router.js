@@ -15,17 +15,10 @@ import PageNotFound from "./components/organisms/PageNotFound";
 import ProfileCard from "./components/organisms/Profile";
 import Testimonials from "./components/molecules/Testimonials";
 import ChallengeArea from "./components/organisms/ChallengeArea";
+import Verification from "./components/organisms/Verification";
 import ChallengeCode from "./components/atoms/ChallengeCode";
 
 const router = createBrowserRouter([
-  {
-    path: "login",
-    element: <Login />,
-  },
-  {
-    path: "signup",
-    element: <Signup />,
-  },
   {
     path: "",
     element: <ClientLayout />,
@@ -70,6 +63,7 @@ const router = createBrowserRouter([
         path: "profile",
         element: <ProfileCard />,
       },
+
       {
         path: "/playcodearena/practical",
         element: <ChallengeArea />,
@@ -83,6 +77,18 @@ const router = createBrowserRouter([
   {
     path: "admin",
     element: <AdminLayout />,
+  },
+  {
+    path: "login",
+    element: <Login />,
+  },
+  {
+    path: "signup",
+    element: <Signup />,
+  },
+  {
+    path: "user/:id/verify/:token",
+    element: <Verification />,
   },
   {
     path: "*",

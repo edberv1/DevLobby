@@ -1,16 +1,23 @@
 import React, { useState } from "react";
-import { FaSortAmountUp, FaFilter, FaEdit } from "react-icons/fa";
+import {
+  FaSortAmountUp,
+  FaSortAmountDown,
+  FaEdit,
+  FaSearch,
+} from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 import "./UserTable.scss";
 import ModalDelete from "../ModalDelete/index";
 import data from "./data";
-
 
 const UserTable = () => {
   const itemsPerPage = 6;
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [selectedUserId, setSelectedUserId] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredData, setFilteredData] = useState(data);
+  const [sortDirection, setSortDirection] = useState("asc");
 
   const handleDelete = () => {
     // DELETE LOGIC
@@ -18,12 +25,34 @@ const UserTable = () => {
     setShowDeleteModal(false);
   };
 
+  const handleSort = () => {
+    const sortedData = [...filteredData].sort((a, b) => {
+      if (sortDirection === "asc") {
+        return b.id - a.id; 
+      } else {
+        return a.id - b.id; 
+      }
+    });
+
+    setFilteredData(sortedData);
+    setSortDirection(sortDirection === "asc" ? "desc" : "asc"); // Toggle sort direction
+  };
+
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
 
-  const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  const handleSearch = (e) => {
+    const term = e.target.value;
+    setSearchTerm(term);
+    const filtered = data.filter((item) =>
+      item.userDetails.toLowerCase().includes(term.toLowerCase())
+    );
+    setFilteredData(filtered);
+  };
 
   return (
     <main className="main-table">
@@ -31,11 +60,23 @@ const UserTable = () => {
         <div className="table__header">
           <h3>All Users</h3>
           <div className="controls">
-            <button className="sort">
-              <FaSortAmountUp /> Sort
-            </button>
-            <button className="filter">
-              <FaFilter /> Filter
+            <div className="search-container">
+              <FaSearch className="search-icon" />
+              <input
+                type="text"
+                placeholder="Search users..."
+                value={searchTerm}
+                onChange={handleSearch}
+                className="search-input"
+              />
+            </div>
+            <button className="sort" onClick={handleSort}>
+              {sortDirection === "asc" ? (
+                <FaSortAmountUp />
+              ) : (
+                <FaSortAmountDown />
+              )}{" "}
+              Sort
             </button>
           </div>
         </div>
@@ -94,14 +135,16 @@ const UserTable = () => {
             }
             disabled={currentPage === 1}
           >
-            Previous
-          </button>
+            {" "}
+            Previous{" "}
+          </button>{" "}
           {currentPage > 1 && (
             <button key={1} onClick={() => paginate(1)}>
-              {1}
+              {" "}
+              {1}{" "}
             </button>
-          )}
-          {currentPage > 3 && <span>...</span>}
+          )}{" "}
+          {currentPage > 3 && <span>...</span>}{" "}
           {Array.from(
             { length: Math.min(5, Math.ceil(data.length / itemsPerPage)) },
             (_, i) => (
@@ -110,21 +153,23 @@ const UserTable = () => {
                 onClick={() => paginate(currentPage + i)}
                 className={currentPage === currentPage + i ? "active" : ""}
               >
-                {currentPage + i}
+                {" "}
+                {currentPage + i}{" "}
               </button>
             )
-          )}
+          )}{" "}
           {currentPage + 5 < Math.ceil(data.length / itemsPerPage) && (
             <span>...</span>
-          )}
+          )}{" "}
           {currentPage + 5 <= Math.ceil(data.length / itemsPerPage) && (
             <button
               key={Math.ceil(data.length / itemsPerPage)}
               onClick={() => paginate(Math.ceil(data.length / itemsPerPage))}
             >
-              {Math.ceil(data.length / itemsPerPage)}
+              {" "}
+              {Math.ceil(data.length / itemsPerPage)}{" "}
             </button>
-          )}
+          )}{" "}
           <button
             onClick={() =>
               setCurrentPage(
@@ -135,7 +180,8 @@ const UserTable = () => {
             }
             disabled={currentPage === Math.ceil(data.length / itemsPerPage)}
           >
-            Next
+            {" "}
+            Next{" "}
           </button>
         </div>
       </div>
