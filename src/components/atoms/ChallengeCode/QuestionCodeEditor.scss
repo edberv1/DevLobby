@@ -1,81 +1,98 @@
 .container {
-    display: flex;
-    height: 100vh;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
   }
-  
-  .left, .right {
-    padding: 20px;
-  }
-  
-  .left {
+}
+
+.left, .right-side {
+  padding: 20px;
+}
+
+.left {
+  width: 100%;
+  background-color: #f0f0f0;
+  overflow-y: auto;
+  box-sizing: border-box;
+
+  @media (min-width: 768px) {
     width: 40%;
-    background-color: #f0f0f0;
-    overflow-y: auto;
     height: 100vh;
-    box-sizing: border-box;
   }
-  .right {
+}
+
+.right-side {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+
+  @media (min-width: 768px) {
     width: 60%;
+    height: 100vh;
+  }
+}
+
+.editor-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.code-editor-container {
+  .language-dropdown {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .action-buttons {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    overflow: auto;
-    height: 100vh;
-  }
-  .editor-container {
-    display: flex;
-    flex-grow: 1;
-    min-height: 0;
-    .monaco-editor {
-      width: 100%;
-      height: auto;
-      min-height: 400px;
+    align-items: stretch;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+      justify-content: flex-end;
     }
-  }
-  .code-editor-container {
-    .language-dropdown{
-        display: flex;
-        justify-content: flex-end;
-    }
-    .action-buttons{
-        display: flex;
-        justify-content: flex-end;
-        button {
-            margin-top: 5px;
-            padding: 10px;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            transition: background-color 0.3s;
-      
-            i {
-              margin-right: 5px;
-            }
-      
-            &:hover {
-              background-color: #f0f0f0;
-            }
-          }
-      
-          .run-code-button {
-            background-color: #4caf50;
-            color: white;
-      
-            &:hover {
-              background-color: #45a049;
-            }
-          }
-      
-          .submit-code-button {
-            background-color: #008cba;
-            color: white;
-      
-            &:hover {
-              background-color: #007199;
-            }
-          }
+
+    button {
+      margin-top: 5px;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      transition: background-color 0.3s;
+
+      i {
+        margin-right: 5px;
+      }
+
+      &:hover {
+        background-color: #f0f0f0;
+      }
+
+      .run-code-button {
+        background-color: #4caf50;
+        color: white;
+
+        &:hover {
+          background-color: #45a049;
         }
       }
+
+      .submit-code-button {
+        background-color: #008cba;
+        color: white;
+
+        &:hover {
+          background-color: #007199;
+        }
+      }
+    }
+  }
+}

@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import MonacoEditor from 'react-monaco-editor';
-import './QuestionCodeEditor.scss'
+import './QuestionCodeEditor.scss';
 
 const CodeEditor = () => {
   const [selectedLanguage, setSelectedLanguage] = useState('javascript');
 
   const editorDidMount = (editor, monaco) => {
     console.log('Editor mounted');
+    editor.focus();
   };
 
   const onChange = (newValue, e) => {
@@ -46,7 +47,10 @@ const CodeEditor = () => {
           language={selectedLanguage}
           theme="vs-dark"
           value={`// Start coding in ${selectedLanguage}...`}
-          options={{ fontSize: 16 }}
+          options={{
+            fontSize: 16,
+            automaticLayout: true
+          }}
           editorDidMount={editorDidMount}
           onChange={onChange}
         />
