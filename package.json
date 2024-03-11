@@ -48,6 +48,7 @@
   "devDependencies": {
     "@babel/preset-env": "^7.24.0",
     "@babel/preset-react": "^7.23.3",
+    "prettier": "3.2.5",
     "worker-loader": "^3.0.8"
   }
 }
