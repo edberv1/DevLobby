@@ -26,7 +26,7 @@ const AdminLayout = () => {
           <UserTable></UserTable>
         </div>
       ) : (
-        <Navigate to="/adminform" />
+        <Navigate to="/adminLogin" />
       )}
     </>
   );

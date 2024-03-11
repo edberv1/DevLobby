@@ -92,7 +92,7 @@ const router = createBrowserRouter([
     element: <Verification />,
   },
   {
-    path: "adminform",
+    path: "adminLogin",
     element: <AdminForm />,
   },
   {

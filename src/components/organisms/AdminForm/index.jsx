@@ -5,7 +5,7 @@ import cloudsBackground from "../../../assets/images/cloudsBackground.PNG";
 import cloudsBackgroundVertical from "../../../assets/images/cloudsBackgroundVertical.PNG";
 import devlobbyLogoWhiteHorisontal from "../../../assets/images/devlobbyWhiteHorisontal.png";
 import { AuthService } from "../../../services/AuthService";
-import { AuthContext } from "../../../utils/AuthContext"; // Import AuthContext
+import { AuthContext } from "../../../utils/AuthContext"; 
 
 const AdminForm = () => {
   const [email, setEmail] = useState("");
@@ -14,7 +14,7 @@ const AdminForm = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
-  // Use AuthContext
+
   const { login } = React.useContext(AuthContext);
 
   useEffect(() => {
@@ -29,13 +29,13 @@ const AdminForm = () => {
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
-    setErrorMessage(""); // Clear existing errors
+    setErrorMessage(""); 
 
     try {
       const response = await AuthService.adminLogin({ email, password });
       if (response.token && response.isAdmin) {
-        login(response.token, true); // Pass isAdmin as true
-        navigate("/admin"); // Navigate to admin panel
+        login(response.token, true); 
+        navigate("/admin"); 
       } else {
         setErrorMessage("Invalid admin credentials or not authorized.");
       }
