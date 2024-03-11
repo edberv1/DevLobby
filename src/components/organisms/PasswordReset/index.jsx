@@ -5,14 +5,14 @@ import ResetPasswordConfirm from '../../molecules/ResetPasswordConfirmForm'
 import { AuthService } from '../../../services/AuthService'
 
 const PasswordReset = () => {
-  const [email, setEmail] = useState('')
+  const [email, setEmail] = useState({ email: '' })
   const [verificationCode, setVerificationCode] = useState('')
   const [codeSent, setCodeSent] = useState(false)
   const [error, setError] = useState('')
   const [notFoundMessage, setNotFoundMessage] = useState('')
 
-  function handleChange (e) {
-    setEmail(e.target.value)
+  function handleEmailChange (e) {
+    setEmail({ email: e.target.value })
   }
 
   function handleCodeChange (e) {
@@ -35,10 +35,17 @@ const PasswordReset = () => {
   }
 
   const handleCodeRequest = async () => {
-    if (email.length && isValidEmail(email)) {
+    if (email.email.length && isValidEmail(email.email)) {
       // api req to send the 6 digit code to email
       const response = await AuthService.resetPassword(email)
       console.log(response)
+
+      if (!response.success) {
+        setNotFoundMessage(response.message)
+      } else {
+        setCodeSent(true)
+        setNotFoundMessage(false)
+      }
 
       //api checks if email is in database, if so
       // api sends a 6 digit code to that email,
@@ -56,8 +63,9 @@ const PasswordReset = () => {
     // }
   }
 
-  const handleCodeVerification = () => {
+  const triggerCodeSent = () => {
     setCodeSent(!codeSent)
+    setNotFoundMessage('')
   }
 
   return (
@@ -65,10 +73,11 @@ const PasswordReset = () => {
       <div className='reset-container'>
         {!codeSent ? (
           <ResetPasswordForm
-            email={email}
-            handleChange={handleChange}
+            email={email.email}
+            handleChange={handleEmailChange}
             error={error}
             setError={setError}
+            triggerCodeSent={triggerCodeSent}
             notFound={notFoundMessage}
             setNotFound={setNotFoundMessage}
             onButtonClick={handleCodeRequest}
@@ -81,7 +90,7 @@ const PasswordReset = () => {
             setError={setError}
             notFound={notFoundMessage}
             setNotFound={setNotFoundMessage}
-            onButtonClick={handleCodeVerification}
+            onButtonClick={triggerCodeSent}
           />
         )}
       </div>

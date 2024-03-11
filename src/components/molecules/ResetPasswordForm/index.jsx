@@ -3,6 +3,7 @@ import React from 'react'
 const ResetPasswordForm = ({
   email,
   notFound,
+  triggerCodeSent,
   error,
   handleChange,
   onButtonClick
@@ -27,6 +28,9 @@ const ResetPasswordForm = ({
           value={email}
           onChange={handleChange}
         />
+      </div>
+      <div onClick={triggerCodeSent} className='code-enter'>
+        Already have the code?
       </div>
       {!!notFound && <div className='notFoundMessage'>{notFound}</div>}
       <button onClick={onButtonClick} className='next-btn'>

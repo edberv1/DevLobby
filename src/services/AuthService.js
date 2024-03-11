@@ -14,6 +14,6 @@ export class AuthService {
   }
 
   static async resetPassword(email) {
-    return await Api.request("GET", '/user/reset-password');
+    return await Api.request("POST", '/user/reset-password', email);
   }
 }
