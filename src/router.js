@@ -17,7 +17,7 @@ import Testimonials from "./components/molecules/Testimonials";
 import ChallengeArea from "./components/organisms/ChallengeArea";
 import Verification from "./components/organisms/Verification";
 import { DarkModeProvider } from "./utils/DarkModeContext";
-
+import ChallengeCode from "./components/atoms/ChallengeCode";
 
 const router = createBrowserRouter([
   {
@@ -68,6 +68,10 @@ const router = createBrowserRouter([
       {
         path: "/playcodearena/practical",
         element: <ChallengeArea />,
+      },
+      {
+        path: "/playcodearena/practical/challenge-code",
+        element: <ChallengeCode />,
       },
     ],
   },
