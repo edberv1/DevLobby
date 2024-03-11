@@ -1,7 +1,7 @@
 import React from 'react'
 
 const ResetPasswordForm = ({
-  identity,
+  email,
   notFound,
   error,
   handleChange,
@@ -24,7 +24,7 @@ const ResetPasswordForm = ({
           placeholder='Email or username'
           name='email'
           required
-          value={identity}
+          value={email}
           onChange={handleChange}
         />
       </div>
