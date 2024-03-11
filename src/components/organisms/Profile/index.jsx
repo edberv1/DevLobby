@@ -1,22 +1,29 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Profile.scss";
 import ProfileGirl from "../../../assets/images/profile_picture_demo.png";
 import LinkedInIcon from "../../../assets/images/linkedin_icon.png";
 import TwitterIcon from "../../../assets/images/twitter_icon.png";
 import GitHubIcon from "../../../assets/images/github_icon.png";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../utils/AuthContext";
 
 const ProfileCard = () => {
+  const { userData } = useContext(AuthContext); 
+
   return (
     <div className="profile-container">
       <div className="profile-card">
         <header className="profile-header">
           <img src={ProfileGirl} alt="Profile" className="profile-image" />
-          <h1 className="profile-name">Sara</h1>
-          <p className="profile-username">@Sara</p>
-          <p className="profile-description">
-            A student of CSE Department at UBT
-          </p>
+          {userData && (
+            <>
+              <h1 className="profile-name">{userData.name}</h1> {/* user's name(not functional yet) */}
+              <p className="profile-username">@{userData.username}</p> {/* user's username */}
+              <p className="profile-description">
+                {userData.email} {/* users email */}
+              </p>
+            </>
+          )}
           <div className="profile-social-links">
             <Link to="twitter">
               <img src={TwitterIcon} alt="Click to go to Twitter account" />
