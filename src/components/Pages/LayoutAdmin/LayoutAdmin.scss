@@ -1,16 +1,23 @@
 .adminLayout {
   background-color: #282828;
-  padding-left: 250px;
+
+  > :not(.sidebar):not(.sidebar-menu) {
+    padding-left: 250px;
+  }
 
   @media screen and (max-width: 768px) {
-    padding-left: 0;
+    > :not(.sidebar):not(.sidebar-menu) {
+      padding-left: 0;
+      padding-top: 110px;
+    }
   }
 
   @media screen and (max-width: 1024px) {
-    padding-left: 0;
+    > :not(.sidebar):not(.sidebar-menu) {
+      padding-left: 0;
+      padding-top: 110px;
+    }
   }
-
-  
 }
 
 

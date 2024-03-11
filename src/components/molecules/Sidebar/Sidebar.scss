@@ -114,6 +114,10 @@
     width: 250px;
     height: 100vh;
   }
+  .sidebar{
+    position: fixed;
+    top: 0;
+  }
 }
 
 @media screen and (max-width: 1024px) {
@@ -122,6 +126,8 @@
     height: 100vh;
   }
   .sidebar {
+    position: fixed;
+    top: 0;
     .menu-bars {
       display: block;
       margin-left: 2rem;
