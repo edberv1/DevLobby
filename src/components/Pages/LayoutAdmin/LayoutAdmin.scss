@@ -1,19 +1,19 @@
 .adminLayout {
   background-color: #282828;
 
-  > :not(.sidebar):not(.sidebar-menu):not(.sidebar-menu) {
+  > :not(.sidebar):not(.sidebar-menu):not(.dashboard-header) {
     padding-left: 250px;
   }
 
   @media screen and (max-width: 768px) {
-    > :not(.sidebar):not(.sidebar-menu):not(.sidebar-menu) {
+    > :not(.sidebar):not(.sidebar-menu):not(.dashboard-header) {
       padding-left: 0;
       padding-top: 110px;
     }
   }
 
   @media screen and (max-width: 1024px) {
-    > :not(.sidebar):not(.sidebar-menu):not(.sidebar-menu) {
+    > :not(.sidebar):not(.sidebar-menu):not(.dashboard-header) {
       padding-left: 0;
       padding-top: 110px;
     }
