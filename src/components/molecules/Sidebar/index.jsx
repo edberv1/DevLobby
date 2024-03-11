@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import * as FaIcons from "react-icons/fa";
 import { FaMoon, FaSun } from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
@@ -13,6 +13,19 @@ const Sidebar = () => {
   const [sidebar, setSidebar] = useState(true);
 
   const showSidebar = () => setSidebar(!sidebar);
+
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768) { 
+        setSidebar(true);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
     <>
