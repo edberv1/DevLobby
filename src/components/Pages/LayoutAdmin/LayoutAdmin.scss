@@ -1,7 +1,7 @@
 .adminLayout {
   background-color: #282828;
 
-  > :not(.sidebar):not(.sidebar-menu) {
+  > :not(.sidebar):not(.sidebar-menu):not(.dashboard-header) {
     padding-left: 250px;
   }
 
