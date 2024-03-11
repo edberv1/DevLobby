@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './ChallengeTable.scss';
+import { Link } from 'react-router-dom';
 
 const PAGE_SIZE = 10;
 
@@ -70,6 +71,9 @@ export default function ChallengeTable({ challenges, sortCategory, onSortChange 
                             <th>
                                 <p>Estimated Time</p>
                             </th>
+                            <th>
+                                <p>Start</p>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -79,6 +83,7 @@ export default function ChallengeTable({ challenges, sortCategory, onSortChange 
                                 <td>{challenge.name}</td>
                                 <td>{challenge.difficulty}</td>
                                 <td>{challenge.time} minutes</td>
+                                <Link to="/playcodearena/practical/challenge-code" className="link-button">{challenge.start} Start</Link>
                             </tr>
                         ))}
                     </tbody>
