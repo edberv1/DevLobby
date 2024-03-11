@@ -2,11 +2,17 @@ import { Api } from "./ApiService";
 
 export class AuthService {
   static async login(data) {
-    return await Api.request("POST", "/user/login", data)
+    return await Api.request("POST", "/user/login", data);
+  }
+
+
+
+  static async adminLogin(data) {
+    return await Api.request("POST", "/user/admin/login", data);
   }
 
   static async signup(data) {
-    return await Api.request("POST", "/user/signup", data)
+    return await Api.request("POST", "/user/signup", data);
   }
 
   static async verifySignup(id, token) {

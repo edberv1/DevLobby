@@ -11,10 +11,10 @@ import ModalDemo from "../../organisms/ModalDemo";
 import DashboardCardAndTaskManager from "../../organisms/DashboardCardAndTaskManager"
 
 const AdminLayout = () => {
-  const { isLoggedIn, logout } = useContext(AuthContext);
+  const { isAdmin, logout } = useContext(AuthContext);
   return (
     <>
-      {isLoggedIn ? (
+      {isAdmin ? (
         <div className="adminLayout">
           <Sidebar />
           <button onClick={logout}>Logout</button>
@@ -26,7 +26,7 @@ const AdminLayout = () => {
           <UserTable></UserTable>
         </div>
       ) : (
-        <Navigate to="/login" />
+        <Navigate to="/adminform" />
       )}
     </>
   );

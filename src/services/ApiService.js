@@ -1,5 +1,4 @@
 const baseURI = "http://localhost:8080/api"
-
 export class Api {
   static getHeaders() {
     return {

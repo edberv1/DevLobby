@@ -17,6 +17,7 @@ import Testimonials from "./components/molecules/Testimonials";
 import ChallengeArea from "./components/organisms/ChallengeArea";
 import Verification from "./components/organisms/Verification";
 import ChallengeCode from "./components/atoms/ChallengeCode";
+import AdminForm from "./components/organisms/AdminForm";
 
 const router = createBrowserRouter([
   {
@@ -89,6 +90,10 @@ const router = createBrowserRouter([
   {
     path: "user/:id/verify/:token",
     element: <Verification />,
+  },
+  {
+    path: "adminform",
+    element: <AdminForm />,
   },
   {
     path: "*",
