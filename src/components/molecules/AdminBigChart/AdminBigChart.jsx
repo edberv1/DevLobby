@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
 import jsonData from './Constants/data.json';
 import './AdminBigChart.scss'; 
-import { Chart as ChartJS } from 'chart.js/auto';
 
 const AdminBigChart = () => {
   const [chartData, setChartData] = useState({});
