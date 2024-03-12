@@ -7,7 +7,7 @@ import { AuthContext } from '../../../utils/AuthContext'
 import { useNavigate } from 'react-router-dom'
 
 const PasswordReset = () => {
-  const [email, setEmail] = useState({ email: '' })
+  const [user, setUser] = useState({ email: '' })
   const [verificationCode, setVerificationCode] = useState('')
   const [codeSent, setCodeSent] = useState(false)
   const [error, setError] = useState('')
@@ -30,7 +30,7 @@ const PasswordReset = () => {
 
   function handleEmailChange (e) {
     resetErrors()
-    setEmail({ email: e.target.value })
+    setUser({ email: e.target.value })
   }
 
   function handleCodeChange (e) {
@@ -55,18 +55,19 @@ const PasswordReset = () => {
   const handleCodeRequest = async () => {
     if (requestInProgress) return
 
-    if (email.email.length && isValidEmail(email.email)) {
+    if (user.email.length && isValidEmail(user.email)) {
       // api req to send the 6 digit code to email
       requestInProgress = true
 
       try {
-        const response = await AuthService.resetPassword(email)
+        const response = await AuthService.reqResetCode(user)
         console.log(response)
 
         if (!response.success) {
           setNotFoundMessage(response.message)
         } else {
           setCodeSent(true)
+          setUser(response.user)
           setNotFoundMessage(false)
         }
       } catch (err) {
@@ -77,9 +78,33 @@ const PasswordReset = () => {
     }
   }
 
+  const handleCodeVerification = async () => {
+    if (requestInProgress) return
+
+    requestInProgress = true
+    try {
+      const response = await AuthService.verifyResetCode({
+        id: user._id,
+        code: verificationCode
+      })
+
+      if (!response.success) {
+        setNotFoundMessage(response.message)
+      } else {
+        setNotFoundMessage('')
+        console.log('success')
+      }
+    } catch (err) {
+      console.error('Error occured during API req:', err)
+    } finally {
+      requestInProgress = false
+    }
+  }
+
   const triggerCodeSent = () => {
     setCodeSent(!codeSent)
     setNotFoundMessage('')
+    setVerificationCode('')
   }
 
   return (
@@ -87,7 +112,7 @@ const PasswordReset = () => {
       <div className='reset-container'>
         {!codeSent ? (
           <ResetPasswordForm
-            email={email.email}
+            email={user.email}
             handleChange={handleEmailChange}
             error={error}
             setError={setError}
@@ -105,7 +130,7 @@ const PasswordReset = () => {
             triggerCodeSent={triggerCodeSent}
             notFound={notFoundMessage}
             setNotFound={setNotFoundMessage}
-            onButtonClick={triggerCodeSent}
+            onButtonClick={handleCodeVerification}
           />
         )}
       </div>

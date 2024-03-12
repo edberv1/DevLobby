@@ -13,7 +13,11 @@ export class AuthService {
     return await Api.request("GET", `/user/${id}/verify/${token}`)
   }
 
-  static async resetPassword(email) {
-    return await Api.request("POST", '/user/reset-password', email);
+  static async reqResetCode(email) {
+    return await Api.request("POST", '/user/req-reset', email);
+  }
+
+  static async verifyResetCode(data) {
+    return await Api.request("POST", '/user/verify-code', data)
   }
 }
