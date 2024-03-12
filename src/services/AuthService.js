@@ -20,4 +20,8 @@ export class AuthService {
   static async verifyResetCode(data) {
     return await Api.request("POST", '/user/verify-code', data)
   }
+
+  static async changePassword(data) {
+    return await Api.request("POST", '/users/new-password', data)
+  }
 }

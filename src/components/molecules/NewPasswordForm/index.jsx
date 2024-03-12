@@ -3,7 +3,6 @@ import React from 'react'
 const NewPasswordForm = ({
   error,
   verificationCode,
-  triggerCodeSent,
   notFound,
   handleChange,
   onButtonClick
@@ -21,17 +20,17 @@ const NewPasswordForm = ({
       {error && <div className='error-message'>{error}</div>}
       <div className='email-input'>
         <input
-          type='text'
+          type='password'
           placeholder='Enter a new password'
-          name='code'
+          name='pass1'
           value={verificationCode}
           required
           onChange={handleChange}
         />
         <input
-          type='text'
+          type='password'
           placeholder='Confirm your password'
-          name='code'
+          name='pass2'
           value={verificationCode}
           required
           onChange={handleChange}

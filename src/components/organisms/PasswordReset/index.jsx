@@ -10,8 +10,9 @@ import NewPasswordForm from '../../molecules/NewPasswordForm'
 const PasswordReset = () => {
   const [user, setUser] = useState({ email: '' })
   const [verificationCode, setVerificationCode] = useState('')
-  const [codeSent, setCodeSent] = useState(false)
   const [stage, setStage] = useState(1)
+  const [newPass, setNewPass] = useState({ pass1: '', pass2: '' })
+
   const [error, setError] = useState('')
   const [notFoundMessage, setNotFoundMessage] = useState('')
   const { isLoggedIn } = useContext(AuthContext)
@@ -39,6 +40,10 @@ const PasswordReset = () => {
     setVerificationCode(e.target.value)
   }
 
+  function handleNewPasswordChange (e) {
+    setNewPass({ ...newPass, [e.target.name]: e.target.value })
+  }
+
   function isValidEmail (email) {
     const pattern =
       // eslint-disable-next-line
@@ -47,6 +52,26 @@ const PasswordReset = () => {
 
     if (result !== true) {
       setError('Not a valid email format')
+      return false
+    } else {
+      setError('')
+      return true
+    }
+  }
+
+  function isValidStrongPassword (password) {
+    // eslint-disable-next-line
+    const pattern =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&^])[A-Za-z\d@.#$!%*?&]{8,36}$/
+    const result = pattern.test(password)
+
+    if (password.length < 8) {
+      setError('Password too short.')
+      return false
+    } else if (result !== true) {
+      setError(
+        'Weak password. Must include at least an uppercase, lowercase, symbol and a number.'
+      )
       return false
     } else {
       setError('')
@@ -69,7 +94,7 @@ const PasswordReset = () => {
           setNotFoundMessage(response.message)
         } else {
           setUser(response.user)
-          triggerCodeSent(2)
+          switchStage(2)
           setNotFoundMessage(false)
         }
       } catch (err) {
@@ -95,7 +120,7 @@ const PasswordReset = () => {
         setNotFoundMessage(response.message)
       } else {
         setNotFoundMessage('')
-        triggerCodeSent(3)
+        switchStage(3)
         console.log('success')
       }
     } catch (err) {
@@ -105,8 +130,25 @@ const PasswordReset = () => {
     }
   }
 
-  const triggerCodeSent = value => {
-    setCodeSent(!codeSent)
+  const handlePasswordChange = async () => {
+    if (newPass.pass1) {
+      if (newPass.pass1 !== newPass.pass2) {
+        setError("Passwords don't match")
+        return
+      }
+
+      if (isValidStrongPassword(newPass.pass1)) {
+        const response = await AuthService.changePassword({
+          id: user._id,
+          password: newPass.pass1
+        })
+
+        console.log(response)
+      }
+    }
+  }
+
+  const switchStage = value => {
     setStage(value)
     setNotFoundMessage('')
     setVerificationCode('')
@@ -122,7 +164,7 @@ const PasswordReset = () => {
           handleChange={handleEmailChange}
           error={error}
           setError={setError}
-          triggerCodeSent={triggerCodeSent}
+          switchStage={switchStage}
           notFound={notFoundMessage}
           setNotFound={setNotFoundMessage}
           onButtonClick={handleCodeRequest}
@@ -136,7 +178,7 @@ const PasswordReset = () => {
           handleChange={handleCodeChange}
           error={error}
           setError={setError}
-          triggerCodeSent={triggerCodeSent}
+          switchStage={switchStage}
           notFound={notFoundMessage}
           setNotFound={setNotFoundMessage}
           onButtonClick={handleCodeVerification}
@@ -146,13 +188,12 @@ const PasswordReset = () => {
     case 3:
       output = (
         <NewPasswordForm
-          handleChange={() => {}}
+          handleChange={handleNewPasswordChange}
           error={error}
           setError={setError}
-          triggerCodeSent={triggerCodeSent}
           notFound={notFoundMessage}
           setNotFound={setNotFoundMessage}
-          onButtonClick={() => {}}
+          onButtonClick={handlePasswordChange}
         />
       )
       break
@@ -163,7 +204,7 @@ const PasswordReset = () => {
           handleChange={handleEmailChange}
           error={error}
           setError={setError}
-          triggerCodeSent={triggerCodeSent}
+          triggerCodeSent={switchStage}
           notFound={notFoundMessage}
           setNotFound={setNotFoundMessage}
           onButtonClick={handleCodeRequest}

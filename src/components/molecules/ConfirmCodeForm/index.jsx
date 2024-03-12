@@ -3,7 +3,7 @@ import React from 'react'
 const ResetPasswordConfirm = ({
   error,
   verificationCode,
-  triggerCodeSent,
+  switchStage,
   notFound,
   handleChange,
   onButtonClick
@@ -28,7 +28,7 @@ const ResetPasswordConfirm = ({
           required
           onChange={handleChange}
         />
-        <div onClick={() => triggerCodeSent(1)} className='code-enter'>
+        <div onClick={() => switchStage(1)} className='code-enter'>
           <span>
             <svg
               width='24'
