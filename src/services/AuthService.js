@@ -22,6 +22,6 @@ export class AuthService {
   }
 
   static async changePassword(data) {
-    return await Api.request("POST", '/users/new-password', data)
+    return await Api.request("POST", '/user/new-password', data)
   }
 }

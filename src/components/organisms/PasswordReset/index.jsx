@@ -113,7 +113,7 @@ const PasswordReset = () => {
     try {
       const response = await AuthService.verifyResetCode({
         id: user._id,
-        code: verificationCode
+        code: verificationCode.trim()
       })
 
       if (!response.success) {
@@ -143,7 +143,12 @@ const PasswordReset = () => {
           password: newPass.pass1
         })
 
-        console.log(response)
+        if (!response.success) {
+          setNotFoundMessage(response.message)
+        } else {
+          navigate('/login')
+          setNotFoundMessage(false)
+        }
       }
     }
   }
