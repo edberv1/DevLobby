@@ -51,7 +51,7 @@ const ResetPasswordConfirm = ({
         </div>
       </div>
       {!!notFound && <div className='notFoundMessage'>{notFound}</div>}
-      <button onClick={onButtonClick} className='next-btn'>
+      <button onClick={onButtonClick} className={`next-btn`}>
         Confirm
       </button>
     </div>

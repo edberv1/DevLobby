@@ -14,6 +14,7 @@ const PasswordReset = () => {
   const [notFoundMessage, setNotFoundMessage] = useState('')
   const { isLoggedIn } = useContext(AuthContext)
   const navigate = useNavigate()
+  let requestInProgress = false
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -22,7 +23,13 @@ const PasswordReset = () => {
     // eslint-disable-next-line
   }, [isLoggedIn])
 
+  function resetErrors () {
+    setError('')
+    setNotFoundMessage('')
+  }
+
   function handleEmailChange (e) {
+    resetErrors()
     setEmail({ email: e.target.value })
   }
 
@@ -46,32 +53,28 @@ const PasswordReset = () => {
   }
 
   const handleCodeRequest = async () => {
+    if (requestInProgress) return
+
     if (email.email.length && isValidEmail(email.email)) {
       // api req to send the 6 digit code to email
-      const response = await AuthService.resetPassword(email)
-      console.log(response)
+      requestInProgress = true
 
-      if (!response.success) {
-        setNotFoundMessage(response.message)
-      } else {
-        setCodeSent(true)
-        setNotFoundMessage(false)
+      try {
+        const response = await AuthService.resetPassword(email)
+        console.log(response)
+
+        if (!response.success) {
+          setNotFoundMessage(response.message)
+        } else {
+          setCodeSent(true)
+          setNotFoundMessage(false)
+        }
+      } catch (err) {
+        console.error('Error occurred during API request:', err)
+      } finally {
+        requestInProgress = false
       }
-
-      //api checks if email is in database, if so
-      // api sends a 6 digit code to that email,
-      // else api returns an error message saying
-      // no account is associated to this email
     }
-
-    // if (email.length < 4) {
-    //   setError('Enter a valid username or email')
-    //   // setNotFoundMessage('dadsadas')
-    // } else {
-    //   console.log('good to go')
-    //   setCodeSent(!codeSent)
-    //   setError('')
-    // }
   }
 
   const triggerCodeSent = () => {
