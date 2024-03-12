@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './PasswordReset.scss'
 import ResetPasswordForm from '../../molecules/ResetPasswordForm'
 import ResetPasswordConfirm from '../../molecules/ResetPasswordConfirmForm'
 import { AuthService } from '../../../services/AuthService'
+import { AuthContext } from '../../../utils/AuthContext'
+import { useNavigate } from 'react-router-dom'
 
 const PasswordReset = () => {
   const [email, setEmail] = useState({ email: '' })
@@ -10,6 +12,15 @@ const PasswordReset = () => {
   const [codeSent, setCodeSent] = useState(false)
   const [error, setError] = useState('')
   const [notFoundMessage, setNotFoundMessage] = useState('')
+  const { isLoggedIn } = useContext(AuthContext)
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate('/')
+    }
+    // eslint-disable-next-line
+  }, [isLoggedIn])
 
   function handleEmailChange (e) {
     setEmail({ email: e.target.value })
@@ -88,6 +99,7 @@ const PasswordReset = () => {
             handleChange={handleCodeChange}
             error={error}
             setError={setError}
+            triggerCodeSent={triggerCodeSent}
             notFound={notFoundMessage}
             setNotFound={setNotFoundMessage}
             onButtonClick={triggerCodeSent}
