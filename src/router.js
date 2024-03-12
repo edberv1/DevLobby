@@ -17,6 +17,7 @@ import Testimonials from "./components/molecules/Testimonials";
 import ChallengeArea from "./components/organisms/ChallengeArea";
 import Verification from "./components/organisms/Verification";
 import ChallengeCode from "./components/atoms/ChallengeCode";
+import AdminForm from "./components/organisms/AdminForm";
 
 const router = createBrowserRouter([
   {
@@ -63,11 +64,6 @@ const router = createBrowserRouter([
         path: "profile",
         element: <ProfileCard />,
       },
-
-      {
-        path: "/playcodearena/practical",
-        element: <ChallengeArea />,
-      },
       {
         path: "/playcodearena/practical/challenge-code",
         element: <ChallengeCode />,
@@ -89,6 +85,10 @@ const router = createBrowserRouter([
   {
     path: "user/:id/verify/:token",
     element: <Verification />,
+  },
+  {
+    path: "adminLogin",
+    element: <AdminForm />,
   },
   {
     path: "*",
