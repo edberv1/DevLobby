@@ -1,15 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react'
 import './PasswordReset.scss'
-import ResetPasswordForm from '../../molecules/ResetPasswordForm'
-import ResetPasswordConfirm from '../../molecules/ResetPasswordConfirmForm'
 import { AuthService } from '../../../services/AuthService'
 import { AuthContext } from '../../../utils/AuthContext'
 import { useNavigate } from 'react-router-dom'
+import ResetPasswordForm from '../../molecules/ResetPasswordForm'
+import ConfirmCodeForm from '../../molecules/ConfirmCodeForm'
+import NewPasswordForm from '../../molecules/NewPasswordForm'
 
 const PasswordReset = () => {
   const [user, setUser] = useState({ email: '' })
   const [verificationCode, setVerificationCode] = useState('')
   const [codeSent, setCodeSent] = useState(false)
+  const [stage, setStage] = useState(1)
   const [error, setError] = useState('')
   const [notFoundMessage, setNotFoundMessage] = useState('')
   const { isLoggedIn } = useContext(AuthContext)
@@ -66,8 +68,8 @@ const PasswordReset = () => {
         if (!response.success) {
           setNotFoundMessage(response.message)
         } else {
-          setCodeSent(true)
           setUser(response.user)
+          triggerCodeSent(2)
           setNotFoundMessage(false)
         }
       } catch (err) {
@@ -80,6 +82,7 @@ const PasswordReset = () => {
 
   const handleCodeVerification = async () => {
     if (requestInProgress) return
+    if (!verificationCode) return
 
     requestInProgress = true
     try {
@@ -92,6 +95,7 @@ const PasswordReset = () => {
         setNotFoundMessage(response.message)
       } else {
         setNotFoundMessage('')
+        triggerCodeSent(3)
         console.log('success')
       }
     } catch (err) {
@@ -101,39 +105,76 @@ const PasswordReset = () => {
     }
   }
 
-  const triggerCodeSent = () => {
+  const triggerCodeSent = value => {
     setCodeSent(!codeSent)
+    setStage(value)
     setNotFoundMessage('')
     setVerificationCode('')
   }
 
+  let output
+
+  switch (stage) {
+    case 1:
+      output = (
+        <ResetPasswordForm
+          email={user.email}
+          handleChange={handleEmailChange}
+          error={error}
+          setError={setError}
+          triggerCodeSent={triggerCodeSent}
+          notFound={notFoundMessage}
+          setNotFound={setNotFoundMessage}
+          onButtonClick={handleCodeRequest}
+        />
+      )
+      break
+    case 2:
+      output = (
+        <ConfirmCodeForm
+          verificationCode={verificationCode}
+          handleChange={handleCodeChange}
+          error={error}
+          setError={setError}
+          triggerCodeSent={triggerCodeSent}
+          notFound={notFoundMessage}
+          setNotFound={setNotFoundMessage}
+          onButtonClick={handleCodeVerification}
+        />
+      )
+      break
+    case 3:
+      output = (
+        <NewPasswordForm
+          handleChange={() => {}}
+          error={error}
+          setError={setError}
+          triggerCodeSent={triggerCodeSent}
+          notFound={notFoundMessage}
+          setNotFound={setNotFoundMessage}
+          onButtonClick={() => {}}
+        />
+      )
+      break
+    default:
+      output = (
+        <ResetPasswordForm
+          email={user.email}
+          handleChange={handleEmailChange}
+          error={error}
+          setError={setError}
+          triggerCodeSent={triggerCodeSent}
+          notFound={notFoundMessage}
+          setNotFound={setNotFoundMessage}
+          onButtonClick={handleCodeRequest}
+        />
+      )
+      break
+  }
+
   return (
     <>
-      <div className='reset-container'>
-        {!codeSent ? (
-          <ResetPasswordForm
-            email={user.email}
-            handleChange={handleEmailChange}
-            error={error}
-            setError={setError}
-            triggerCodeSent={triggerCodeSent}
-            notFound={notFoundMessage}
-            setNotFound={setNotFoundMessage}
-            onButtonClick={handleCodeRequest}
-          />
-        ) : (
-          <ResetPasswordConfirm
-            verificationCode={verificationCode}
-            handleChange={handleCodeChange}
-            error={error}
-            setError={setError}
-            triggerCodeSent={triggerCodeSent}
-            notFound={notFoundMessage}
-            setNotFound={setNotFoundMessage}
-            onButtonClick={handleCodeVerification}
-          />
-        )}
-      </div>
+      <div className='reset-container'>{output}</div>
     </>
   )
 }

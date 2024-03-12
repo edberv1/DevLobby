@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ResetPasswordConfirm = ({
+const NewPasswordForm = ({
   error,
   verificationCode,
   triggerCodeSent,
@@ -12,23 +12,31 @@ const ResetPasswordConfirm = ({
     <div className='reset-form'>
       <div className='divider'>
         <hr />
-        We sent you a code <hr />
+        Choose a new password <hr />
       </div>
       <p className='message'>
-        Check your email to get your confirmation code. If you need to request a
-        new code, go back and redo the process.
+        Make sure your new password is 8 characters or more. Try including
+        letters, numbers, and punctuation marks for a strong password.
       </p>
       {error && <div className='error-message'>{error}</div>}
       <div className='email-input'>
         <input
           type='text'
-          placeholder='6 digit code'
+          placeholder='Enter a new password'
           name='code'
           value={verificationCode}
           required
           onChange={handleChange}
         />
-        <div onClick={triggerCodeSent} className='code-enter'>
+        <input
+          type='text'
+          placeholder='Confirm your password'
+          name='code'
+          value={verificationCode}
+          required
+          onChange={handleChange}
+        />
+        {/* <div onClick={triggerCodeSent} className='code-enter'>
           <span>
             <svg
               width='24'
@@ -48,14 +56,14 @@ const ResetPasswordConfirm = ({
             </svg>
           </span>
           Don't have a code?
-        </div>
+        </div> */}
       </div>
       {!!notFound && <div className='notFoundMessage'>{notFound}</div>}
       <button onClick={onButtonClick} className={`next-btn`}>
-        Confirm
+        Change password
       </button>
     </div>
   )
 }
 
-export default ResetPasswordConfirm
+export default NewPasswordForm

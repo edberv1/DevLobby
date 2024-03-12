@@ -29,7 +29,7 @@ const ResetPasswordForm = ({
           onChange={handleChange}
         />
       </div>
-      <div onClick={triggerCodeSent} className='code-enter'>
+      {/* <div onClick={() => triggerCodeSent(2)} className='code-enter'>
         Already have the code?{' '}
         <span>
           <svg
@@ -49,7 +49,7 @@ const ResetPasswordForm = ({
             <path d='M13 6l6 6' />
           </svg>
         </span>
-      </div>
+      </div> */}
       {!!notFound && <div className='notFoundMessage'>{notFound}</div>}
       <button
         onClick={() => {
