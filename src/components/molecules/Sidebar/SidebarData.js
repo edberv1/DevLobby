@@ -2,8 +2,16 @@ import React from 'react';
 import { FaChartPie, FaLightbulb, FaTicketAlt } from 'react-icons/fa'
 import { IoIosPeople, IoMdSettings } from 'react-icons/io'
 import { MdArticle, MdOutlineSupportAgent } from 'react-icons/md'
+import Logo from "../../../assets/images/icon.png";
 
 export const SidebarData = [
+
+  {
+    title: '',
+    path: '/',
+    icon: <img src={Logo} alt="Logo" />,
+    cName: 'sidebar-text'
+  },
   {
     title: 'Overview',
     path: '/',
