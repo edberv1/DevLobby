@@ -3,9 +3,7 @@ import "./Profile.scss";
 import ProfileGirl from "../../../assets/images/profile_picture_demo.png";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../utils/AuthContext";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTwitterSquare, faLinkedin, faGithubSquare } from '@fortawesome/free-brands-svg-icons';
-
+import { FaTwitterSquare, FaLinkedin, FaGithubSquare } from "react-icons/fa";
 
 const ProfileCard = () => {
   const { userData } = useContext(AuthContext); 
@@ -17,22 +15,20 @@ const ProfileCard = () => {
           <img src={ProfileGirl} alt="Profile" className="profile-image" />
           {userData && (
             <>
-              <h1 className="profile-name">{userData.name}</h1> {/* user's name(not functional yet) */}
-              <p className="profile-username">@{userData.username}</p> {/* user's username */}
-              <p className="profile-description">
-                {userData.email} {/* users email */}
-              </p>
+              <h1 className="profile-name">{userData.name}</h1>
+              <p className="profile-username">@{userData.username}</p>
+              <p className="profile-description">{userData.email}</p>
             </>
           )}
           <div className="profile-social-links">
             <Link to="twitter">
-              <FontAwesomeIcon icon={faTwitterSquare} alt="Click to go to Twitter account" />
+              <FaTwitterSquare />
             </Link>
             <Link to="linkedin">
-              <FontAwesomeIcon icon={faLinkedin} alt="Click to go to Linkedin account" />
+              <FaLinkedin />
             </Link>
             <Link to="github">
-              <FontAwesomeIcon icon={faGithubSquare} alt="Click to go to Github account" />
+              <FaGithubSquare />
             </Link>
           </div>
         </header>
