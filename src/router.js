@@ -16,6 +16,7 @@ import ProfileCard from "./components/organisms/Profile";
 import Testimonials from "./components/molecules/Testimonials";
 import ChallengeArea from "./components/organisms/ChallengeArea";
 import Verification from "./components/organisms/Verification";
+import { DarkModeProvider } from "./utils/DarkModeContext";
 import ChallengeCode from "./components/atoms/ChallengeCode";
 import AdminForm from "./components/organisms/AdminForm";
 
@@ -77,7 +78,7 @@ const router = createBrowserRouter([
   },
   {
     path: "admin",
-    element: <AdminLayout />,
+    element: <DarkModeProvider><AdminLayout /></DarkModeProvider>,
   },
   {
     path: "login",
