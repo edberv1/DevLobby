@@ -54,7 +54,7 @@ const ResetPasswordForm = ({
         onClick={() => {
           onButtonClick()
         }}
-        className={error || notFound ? 'next-btn-disable' : 'next-btn'}
+        className={'next-btn'}
       >
         Next
       </button>
