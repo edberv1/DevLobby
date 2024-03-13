@@ -15,14 +15,13 @@ const ResetPasswordForm = ({
         Find your DevLobby account <hr />
       </div>
       <p className='message'>
-        Enter the email, or username associated with your account to change your
-        password.
+        Enter the email associated with your account to change your password.
       </p>
       {error && <div className='error-message'>{error}</div>}
       <div className='email-input'>
         <input
           type='text'
-          placeholder='Email or username'
+          placeholder='Email'
           name='email'
           required
           value={email}
