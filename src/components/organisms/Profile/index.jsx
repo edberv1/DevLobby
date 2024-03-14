@@ -1,31 +1,34 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Profile.scss";
 import ProfileGirl from "../../../assets/images/profile_picture_demo.png";
-import LinkedInIcon from "../../../assets/images/linkedin_icon.png";
-import TwitterIcon from "../../../assets/images/twitter_icon.png";
-import GitHubIcon from "../../../assets/images/github_icon.png";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../utils/AuthContext";
+import { FaTwitterSquare, FaLinkedin, FaGithubSquare } from "react-icons/fa";
 
 const ProfileCard = () => {
+  const { userData } = useContext(AuthContext); 
+
   return (
     <div className="profile-container">
       <div className="profile-card">
         <header className="profile-header">
           <img src={ProfileGirl} alt="Profile" className="profile-image" />
-          <h1 className="profile-name">Sara</h1>
-          <p className="profile-username">@Sara</p>
-          <p className="profile-description">
-            A student of CSE Department at UBT
-          </p>
+          {userData && (
+            <>
+              <h1 className="profile-name">{userData.name}</h1>
+              <p className="profile-username">@{userData.username}</p>
+              <p className="profile-description">{userData.email}</p>
+            </>
+          )}
           <div className="profile-social-links">
             <Link to="twitter">
-              <img src={TwitterIcon} alt="Click to go to Twitter account" />
+              <FaTwitterSquare />
             </Link>
             <Link to="linkedin">
-              <img src={LinkedInIcon} alt="Click to go to Linkedin account" />
+              <FaLinkedin />
             </Link>
             <Link to="github">
-              <img src={GitHubIcon} alt="Click to go to Github account" />
+              <FaGithubSquare />
             </Link>
           </div>
         </header>
