@@ -21,4 +21,17 @@ export class AuthService {
   static async getUserById(userId) {
     return await Api.getUserById(userId);
   }
+
+  static async reqResetCode(email) {
+    return await Api.request("POST", '/user/req-reset', email);
+  }
+
+  static async verifyResetCode(data) {
+    return await Api.request("POST", '/user/verify-code', data)
+  }
+
+  static async changePassword(data) {
+    return await Api.request("POST", '/user/new-password', data)
+  }
 }
+

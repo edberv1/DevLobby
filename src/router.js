@@ -16,7 +16,10 @@ import ProfileCard from "./components/organisms/Profile";
 import Testimonials from "./components/molecules/Testimonials";
 import ChallengeArea from "./components/organisms/ChallengeArea";
 import Verification from "./components/organisms/Verification";
+import PasswordReset from "./components/organisms/PasswordReset";
+import { DarkModeProvider } from "./utils/DarkModeContext";
 import ChallengeCode from "./components/atoms/ChallengeCode";
+
 
 const router = createBrowserRouter([
   {
@@ -26,6 +29,22 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Landing />,
+      },
+      {
+        path: "signup",
+        element: <Signup />,
+      },
+      {
+        path: "login",
+        children: [
+          {
+            index: true,
+            element: <Login />
+          }, {
+            path: "reset",
+            element: <PasswordReset />
+          }
+        ]
       },
       {
         path: "about",
@@ -76,15 +95,7 @@ const router = createBrowserRouter([
   },
   {
     path: "admin",
-    element: <AdminLayout />,
-  },
-  {
-    path: "login",
-    element: <Login />,
-  },
-  {
-    path: "signup",
-    element: <Signup />,
+    element: <DarkModeProvider><AdminLayout /></DarkModeProvider>,
   },
   {
     path: "user/:id/verify/:token",
