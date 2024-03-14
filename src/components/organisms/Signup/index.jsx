@@ -3,7 +3,6 @@ import './Signup.scss'
 import SignupImage from '../../../assets/images/Signup-image.png'
 import DevLobbyLogoIcon from '../../../assets/images/icon.png'
 import { AuthService } from '../../../services/AuthService'
-import Navbar from '../../molecules/Navbar'
 import { AuthContext } from '../../../utils/AuthContext'
 import { useNavigate } from 'react-router-dom'
 
@@ -114,10 +113,10 @@ const SignUp = () => {
   const handleFocusChange = name => {
     switch (name) {
       case 'username':
-        isValidUsername(signupCreds.username)
+        signupCreds.username.length && isValidUsername(signupCreds.username)
         break
       case 'email':
-        isValidEmail(signupCreds.email)
+        signupCreds.email.length && isValidEmail(signupCreds.email)
         break
       default:
         break
@@ -126,7 +125,6 @@ const SignUp = () => {
 
   return (
     <>
-      <Navbar />
       <div className='signup-container'>
         {/* Conditionally render the form or success message */}
         <div className='signup-form'>
