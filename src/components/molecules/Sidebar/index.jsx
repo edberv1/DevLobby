@@ -6,14 +6,18 @@ import { Link } from "react-router-dom";
 import { SidebarData } from "./SidebarData";
 import "./Sidebar.scss";
 import { DarkModeContext } from "../../../utils/DarkModeContext"; // Update the path according to your project structure
+import { AuthContext } from "../../../utils/AuthContext"; 
+import { TbDoorExit } from "react-icons/tb";
+
+import DashboardHeader from '../../organisms/DashboardHeader'
 
 const Sidebar = () => {
   const { isDarkMode, toggleDarkMode } = useContext(DarkModeContext);
+  const { logout } = useContext(AuthContext); 
 
   const [sidebar, setSidebar] = useState(true);
 
   const showSidebar = () => setSidebar(!sidebar);
-
 
   useEffect(() => {
     const handleResize = () => {
@@ -33,6 +37,7 @@ const Sidebar = () => {
         <Link to="#" className="menu-bars">
           <FaIcons.FaBars onClick={showSidebar} />
         </Link>
+        <DashboardHeader />
       </div>
       <div className={sidebar ? "sidebar-menu active" : "sidebar-menu"}>
         <ul className="sidebar-menu-items">
@@ -57,6 +62,7 @@ const Sidebar = () => {
               {isDarkMode ? <FaSun /> : <FaMoon />}
               <span>{isDarkMode ? "Light Mode" : "Dark Mode"}</span>
             </button>
+            <button className="logout-button" onClick={logout}><TbDoorExit />Logout</button>
           </div>
         </ul>
       </div>
