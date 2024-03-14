@@ -94,7 +94,7 @@
   text-align: center;
 
   button {
-    margin: auto;
+    margin: 10px auto;
     display: inline-block;
     outline: none;
     cursor: pointer;
@@ -106,6 +106,39 @@
     border: 1px solid #fff;
     background: #222222;
     color: #fff;
+    width:180px;
+    height: 50px;
+    display: flex;
+    align-items: center; //aligning the icon me tekst vertically
+    justify-content: center;
+  }
+
+  .logout-button {
+    margin-top: 10px;
+    padding: 13px 23px;
+    border: 2px solid #ff4d4f;
+    background-color: #ffcccc;
+    color: #ff4d4f;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    line-height: 20px;
+    transition: all 0.3s ease-in-out;
+    width: 178px;//2px smaller than dark mode button per shkak te border
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background-color: #ff4d4f;
+      color: #fff;
+    }
+  }
+  .logout-button svg{
+    font-size: 20px;
+    margin-right: 5px;
+
   }
 }
 
