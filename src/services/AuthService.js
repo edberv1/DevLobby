@@ -5,11 +5,6 @@ export class AuthService {
     return await Api.request("POST", "/user/login", data);
   }
 
-  // admin endpoint
-  static async adminLogin(data) {
-    return await Api.request("POST", "/user/admin/login", data);
-  }
-
   static async signup(data) {
     return await Api.request("POST", "/user/signup", data);
   }
