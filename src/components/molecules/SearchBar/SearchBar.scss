@@ -3,11 +3,13 @@
 
   .searchInput {
     display: flex;
+    border: 2px solid #111;
+    border-radius: 4px;
 
     input {
       font-size: 15px;
       background-color: white;
-      border: 0;
+      border:white;
       border-radius: 4px;
       border-top-right-radius: 0px;
       border-bottom-right-radius: 0px;
@@ -16,6 +18,8 @@
       height: 30px;
       width: 264px; // Default width
       transition: width 0.3s ease;
+
+      
 
       @media screen and (max-width: 768px) {
         width: 155px; // Adjusted width for smaller screens
@@ -34,6 +38,7 @@
       background-color: white;
       padding-top: 6px;
       cursor: pointer;
+      border: none;
 
       &:hover {
         color: black;
