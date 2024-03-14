@@ -6,7 +6,7 @@ export class Api {
     }
   }
 
-  static async request(method = "TEST", endpoint, payload) {
+  static async request(method, endpoint, payload) {
     const reqOptions = {
       method: method,
       headers: this.getHeaders(),
