@@ -17,9 +17,9 @@ export class AuthService {
   static async verifySignup(id, token) {
     return await Api.request("GET", `/user/${id}/verify/${token}`);
   }
-  //get user by ID
+
   static async getUserById(userId) {
-    return await Api.getUserById(userId);
+    return await Api.request("GET", `/user/${userId}`)
   }
 
   static async reqResetCode(email) {

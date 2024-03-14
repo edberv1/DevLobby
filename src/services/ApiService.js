@@ -22,15 +22,4 @@ export class Api {
       return error.message;
     }
   }
-
-  static async getUserById(userId) {
-    const endpoint = `/user/${userId}`;
-    try {
-      const res = await this.request("GET", endpoint);
-      return res;
-    } catch (error) {
-      console.error("Error fetching user data:", error);
-      throw new Error("Failed to fetch user data");
-    }
-  }
 }
