@@ -4,8 +4,6 @@ import ChallengeButtons from "../../molecules/ChallengeButtons";
 import "./ChallengeArea.scss";
 import { data } from "./data";
 import ChallengeHeader from "../../atoms/ChallengeHeader";
-import Footer from "../Footer";
-import Navbar from "../../molecules/Navbar";
 
 export default function ChallengeArea() {
   const [sortCategory, setSortCategory] = useState("");
