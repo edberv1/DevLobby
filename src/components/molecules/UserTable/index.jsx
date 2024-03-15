@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   FaSortAmountUp,
   FaSortAmountDown,
@@ -8,50 +8,85 @@ import {
 import { MdDeleteForever } from "react-icons/md";
 import "./UserTable.scss";
 import ModalDelete from "../ModalDelete/index";
-import data from "./data";
+import Pagination from "../../atoms/Pagination";
 
 const UserTable = () => {
   const itemsPerPage = 6;
+  const [users, setUsers] = useState([]);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [selectedUserId, setSelectedUserId] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
-  const [filteredData, setFilteredData] = useState(data);
-  const [sortDirection, setSortDirection] = useState("asc");
+  const [sortDirection, setSortDirection] = useState("desc");
 
-  const handleDelete = () => {
-    // DELETE LOGIC
-    console.log("Deleting user with ID:", selectedUserId);
-    setShowDeleteModal(false);
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch("http://localhost:8080/api/user");
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      const sortedData = data.slice().sort((a, b) => {
+        const dateA = new Date(a.createdAt);
+        const dateB = new Date(b.createdAt);
+        return dateB - dateA;
+      });
+      setUsers(sortedData);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  const handleDelete = async () => {
+    console.log('Deleting user with ID:', selectedUserId);
+    try {
+      await fetch(`http://localhost:8080/api/user/${selectedUserId}`, {
+        method: "DELETE",
+      });
+      fetchData();
+      setShowDeleteModal(false);
+    } catch (error) {
+      console.error("Error deleting user:", error);
+    }
   };
 
   const handleSort = () => {
-    const sortedData = [...filteredData].sort((a, b) => {
-      if (sortDirection === "asc") {
-        return b.id - a.id; 
+    const sortedData = [...users].sort((a, b) => {
+      const dateA = new Date(a.createdAt);
+      const dateB = new Date(b.createdAt);
+  
+      if (sortDirection === "desc") {
+        return dateB - dateA;
       } else {
-        return a.id - b.id; 
+        return dateA - dateB;
       }
     });
-
-    setFilteredData(sortedData);
-    setSortDirection(sortDirection === "asc" ? "desc" : "asc"); // Toggle sort direction
+    setUsers(sortedData.reverse());
+    setSortDirection(sortDirection === "asc" ? "desc" : "asc");
   };
-
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-
-  const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
-
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const handleSearch = (e) => {
     const term = e.target.value;
     setSearchTerm(term);
-    const filtered = data.filter((item) =>
-      item.userDetails.toLowerCase().includes(term.toLowerCase())
-    );
-    setFilteredData(filtered);
+  };
+
+  const filteredUsers = users.filter((user) =>
+    user.username.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentUsers = filteredUsers.slice(indexOfFirstItem, indexOfLastItem);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleString(); // Adjust the formatting as needed
   };
 
   return (
@@ -85,30 +120,23 @@ const UserTable = () => {
           <thead>
             <tr>
               <th>ID</th>
-              <th>User Details</th>
+              <th>Name</th>
               <th>Email Address</th>
-              <th>Password</th>
               <th>Date Created</th>
-              <th>Last Login</th>
-              <th>Status</th>
+              <th>Date Updated</th>
+              <th>Role</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            {currentItems.map((item) => (
-              <tr key={item.id}>
-                <td>{item.id}</td>
-                <td>
-                  <img src="images/Image.jpg" alt="" />
-                  {item.userDetails}
-                </td>
-                <td>{item.emailAddress}</td>
-                <td>{item.password}</td>
-                <td>{item.dateCreated}</td>
-                <td>{item.lastLogin}</td>
-                <td>
-                  <p className={`status ${item.status}`}>{item.status}</p>
-                </td>
+            {currentUsers.map((user) => (
+              <tr key={user._id}>
+                <td>{user._id}</td>
+                <td>{user.username}</td>
+                <td>{user.email}</td>   
+                <td>{formatDate(user.createdAt)}</td>
+                <td>{formatDate(user.updatedAt)}</td>
+                <td>{user.isAdmin ? "Admin" : "Regular"}</td>
                 <td>
                   <button className="editIcon">
                     <FaEdit />
@@ -116,7 +144,7 @@ const UserTable = () => {
                   <button
                     className="deleteIcon"
                     onClick={() => {
-                      setSelectedUserId(item.id);
+                      setSelectedUserId(user._id);
                       setShowDeleteModal(true);
                     }}
                   >
@@ -128,62 +156,12 @@ const UserTable = () => {
           </tbody>
         </table>
 
-        <div className="pagination">
-          <button
-            onClick={() =>
-              setCurrentPage(currentPage === 1 ? 1 : currentPage - 1)
-            }
-            disabled={currentPage === 1}
-          >
-            {" "}
-            Previous{" "}
-          </button>{" "}
-          {currentPage > 1 && (
-            <button key={1} onClick={() => paginate(1)}>
-              {" "}
-              {1}{" "}
-            </button>
-          )}{" "}
-          {currentPage > 3 && <span>...</span>}{" "}
-          {Array.from(
-            { length: Math.min(5, Math.ceil(data.length / itemsPerPage)) },
-            (_, i) => (
-              <button
-                key={currentPage + i}
-                onClick={() => paginate(currentPage + i)}
-                className={currentPage === currentPage + i ? "active" : ""}
-              >
-                {" "}
-                {currentPage + i}{" "}
-              </button>
-            )
-          )}{" "}
-          {currentPage + 5 < Math.ceil(data.length / itemsPerPage) && (
-            <span>...</span>
-          )}{" "}
-          {currentPage + 5 <= Math.ceil(data.length / itemsPerPage) && (
-            <button
-              key={Math.ceil(data.length / itemsPerPage)}
-              onClick={() => paginate(Math.ceil(data.length / itemsPerPage))}
-            >
-              {" "}
-              {Math.ceil(data.length / itemsPerPage)}{" "}
-            </button>
-          )}{" "}
-          <button
-            onClick={() =>
-              setCurrentPage(
-                currentPage === Math.ceil(data.length / itemsPerPage)
-                  ? currentPage
-                  : currentPage + 1
-              )
-            }
-            disabled={currentPage === Math.ceil(data.length / itemsPerPage)}
-          >
-            {" "}
-            Next{" "}
-          </button>
-        </div>
+        <Pagination
+          currentPage={currentPage}
+          totalPages={Math.ceil(filteredUsers.length / itemsPerPage)}
+          onPageChange={paginate}
+        />
+
       </div>
 
       <ModalDelete
