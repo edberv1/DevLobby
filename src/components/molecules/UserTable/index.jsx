@@ -72,6 +72,7 @@ const UserTable = () => {
   const handleSearch = (e) => {
     const term = e.target.value;
     setSearchTerm(term);
+    setCurrentPage(1); // Reset to the first page when a new search is performed
   };
 
   const filteredUsers = users.filter((user) =>
