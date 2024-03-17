@@ -1,15 +1,25 @@
 import React, { useContext } from 'react'
-import { Outlet } from 'react-router-dom'
-
+import { AuthContext } from '../../../utils/AuthContext'
+import { Navigate, Outlet } from 'react-router-dom'
+import { DarkModeContext } from '../../../utils/DarkModeContext' // Import DarkModeContext
+import Sidebar from '../../molecules/Sidebar'
 import './LayoutAdmin.scss'
 
 const AdminLayout = () => {
+  const { isLoggedIn } = useContext(AuthContext)
+  const { isDarkMode } = useContext(DarkModeContext) // Use DarkModeContext
+
   return (
-    <div className='adminLayout'>
-      <div className='container'>
-        <Outlet />
-      </div>
-    </div>
+    <>
+      {isLoggedIn ? (
+        <div className={isDarkMode ? 'adminLayout dark-mode' : 'adminLayout'}>
+          <Sidebar />
+          <Outlet />
+        </div>
+      ) : (
+        <Navigate to='/login' />
+      )}
+    </>
   )
 }
 

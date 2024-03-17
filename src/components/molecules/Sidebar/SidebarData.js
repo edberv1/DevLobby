@@ -6,12 +6,11 @@ import Logo from "../../../assets/images/icon.png";
 
 export const SidebarData = [
 
-  {
-    title: '',
-    path: '/',
-    icon: <img src={Logo} alt="Logo" />,
-    cName: 'sidebar-text'
-  },
+  // {
+  //   title: '',
+  //   path: '/',
+  //   cName: 'sidebar-text'
+  // },
   {
     title: 'Overview',
     path: '/',
@@ -36,18 +35,18 @@ export const SidebarData = [
     icon:<IoIosPeople />,
     cName: 'sidebar-text'
   },
-  {
-    title: 'Agents',
-    path: '/',
-    icon: <MdOutlineSupportAgent />,
-    cName: 'sidebar-text'
-  },
-  {
-    title: 'Articles',
-    path: '/',
-    icon: <MdArticle />,
-    cName: 'sidebar-text'
-  },
+  // {
+  //   title: 'Agents',
+  //   path: '/',
+  //   icon: <MdOutlineSupportAgent />,
+  //   cName: 'sidebar-text'
+  // },
+  // {
+  //   title: 'Articles',
+  //   path: '/',
+  //   icon: <MdArticle />,
+  //   cName: 'sidebar-text'
+  // },
   {
     title: 'Settings',
     path: '/',

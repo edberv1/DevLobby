@@ -1,8 +1,19 @@
 import React from 'react'
+import AdminHeaderComponent from '../../molecules/AdminHeaderComponent'
+import BigChartAndStats from '../BigChartAndStats'
+import SmallChartsCombined from '../SmallChartsCombined'
+import UserTable from '../../molecules/UserTable'
+import DashboardCardAndTaskManager from '../DashboardCardAndTaskManager'
 
 const AdminLanding = () => {
   return (
-    <h1>AdminLanding</h1>
+    <div className='adminLanding'>
+      <AdminHeaderComponent />
+      <BigChartAndStats />
+      <SmallChartsCombined />
+      <DashboardCardAndTaskManager />
+      <UserTable />
+    </div>
   )
 }
 
