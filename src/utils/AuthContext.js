@@ -32,7 +32,7 @@ export default function AuthProvider({ children }) {
           console.error("Error validating token:", error);
           logout();
         } finally {
-          setIsLoading(false); // token osht valid, go to admin page
+          setIsLoading(false); // token osht valid, render admin page
         }
       } else {
         setIsLoading(false); //token not valid
