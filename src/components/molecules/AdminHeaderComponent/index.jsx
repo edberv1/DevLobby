@@ -3,7 +3,7 @@ import './AdminHeaderComponent.scss';
 import graphImage from '../../../assets/images/graph_image.png';
 
 function AdminHeaderComponent() {
-    return (
+    return (<div className='dashboard-header-container'>
         <header className="dashboard-header">
           <div className="left-content">
             <h3>Welcome to your Dashboard!</h3>
@@ -13,6 +13,7 @@ function AdminHeaderComponent() {
             <img src={graphImage} alt="Graph" />
           </div>
         </header>
+        </div>
       );
 }
 

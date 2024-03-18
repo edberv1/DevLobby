@@ -13,6 +13,16 @@ $hover-color: #000;
   @media only screen and (max-width: 768px) {
     padding: 10px 10px;
   }
+
+  h2 {
+    color: white;
+    margin: 0;
+    flex: 1;
+    margin-top: 10px;
+    margin-bottom: 0;
+    text-align: center;
+    font-size: 18px;
+  }
 }
 
 .chatListHeading {
@@ -154,15 +164,7 @@ $hover-color: #000;
   }
 }
 
-h2 {
-  color: white;
-  margin: 0;
-  flex: 1;
-  margin-top: 10px;
-  margin-bottom: 0;
-  text-align: center;
-  font-size: 18px;
-}
+
 
 .chatList {
   margin-top: 15px;
