@@ -15,6 +15,20 @@ export default function AuthProvider({ children }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    setIsLoggedIn(token);
+    if (token) {
+      const parsedToken = JSON.parse(atob(token.split('.')[1])); 
+      const userId = parsedToken._id; 
+      
+      AuthService.getUserById(userId)
+        .then((user) => setUserData(user))
+        .catch((error) => console.error("Error fetching user data:", error));
+    } else {
+      setUserData(null);
+    }
+  }, [token]);
+
+  useEffect(() => {
     const validateToken = async () => {
       if (token) {
         try {
@@ -62,7 +76,7 @@ export default function AuthProvider({ children }) {
   }
 
   return (
-    <AuthContext.Provider value={{ token, isLoggedIn, login, logout }}>
+    <AuthContext.Provider value={{ token, isLoggedIn, login, logout, userData }}>
       {children}
     </AuthContext.Provider>
   );

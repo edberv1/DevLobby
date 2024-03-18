@@ -5,14 +5,7 @@ export class AuthService {
     return await Api.request("POST", "/user/login", data);
   }
 
-
-
-  static async adminLogin(data) {
-    return await Api.request("POST", "/user/admin/login", data);
-  }
-
   static async signup(data) {
-    return await Api.request("POST", "/user/signup", data);
     return await Api.request("POST", "/user/signup", data);
   }
 
@@ -35,5 +28,8 @@ export class AuthService {
   static async changePassword(data) {
     return await Api.request("POST", '/user/new-password', data)
   }
+  
+  static async adminLogin(data) {
+    return await Api.request("POST", "/user/admin/login", data);
+  }
 }
-
