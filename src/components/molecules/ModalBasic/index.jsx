@@ -36,7 +36,7 @@ const ModalBasic = ({ children, title, modalOpen, setModalOpen }) => {
         <div className='modalBasic'>
           <BackDrop setModalOpen={setModalOpen} />
           <div className={`modalContainer${renderModal ? ' show' : ''}`}>
-            <div className='header'>
+            <div className='modalHeader'>
               <div className='title'>{title}</div>
               <div
                 onClick={() => {

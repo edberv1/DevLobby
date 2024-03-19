@@ -1,10 +1,11 @@
 import React, { useContext } from 'react'
 import { AuthContext } from '../../../utils/AuthContext'
-import { Navigate, Outlet } from 'react-router-dom'
+import { Link, Navigate, Outlet } from 'react-router-dom'
 import { DarkModeContext } from '../../../utils/DarkModeContext' // Import DarkModeContext
 import Sidebar from '../../molecules/Sidebar'
 import './LayoutAdmin.scss'
 import SearchBar from '../../molecules/SearchBar'
+import Logo from '../../../assets/images/icon.png'
 import AdminHeaderComponent from '../../molecules/AdminHeaderComponent'
 
 const AdminLayout = () => {
@@ -26,20 +27,22 @@ const AdminLayout = () => {
               </div>
             </div>
             <div class='sidebar'>
-              <div class='logo'>
-                <h1>Logo</h1>
-              </div>
+              <Link to='/'>
+                <div class='logo'>
+                  <img src={Logo} width={140} alt='' />
+                </div>{' '}
+              </Link>
 
               <div class='links'>
                 <ul>
                   <li>
-                    <a href=''>Overview</a>
+                    <Link to='/admin'>Overview</Link>
                   </li>
                   <li>
-                    <a href=''>Users</a>
+                    <Link to='/admin/users'>Users</Link>
                   </li>
                   <li>
-                    <a href=''>Settings</a>
+                    <Link to='/admin/settings'>Settings</Link>
                   </li>
                 </ul>
               </div>
@@ -50,9 +53,6 @@ const AdminLayout = () => {
             </div>
 
             <div className='main'>
-              <div className='heading'>
-                <AdminHeaderComponent />
-              </div>
               <Outlet />
             </div>
           </div>

@@ -43,7 +43,7 @@ const ModalDelete = ({
           <BackDrop setModalOpen={setModalOpen} />
           <div className='modalBackground'>
             <div className={`modalContainer${renderModal ? ' show' : ''}`}>
-              <div className='header'>
+              <div className='modalHeader'>
                 <div className='title'>
                   <svg
                     xmlns='http://www.w3.org/2000/svg'

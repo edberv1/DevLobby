@@ -7,7 +7,9 @@ import DashboardCardAndTaskManager from '../DashboardCardAndTaskManager'
 const AdminLanding = () => {
   return (
     <div className='adminLanding'>
-      {/* <AdminHeaderComponent /> */}
+      <div className='heading'>
+        <AdminHeaderComponent />
+      </div>
       <BigChartAndStats />
       <SmallChartsCombined />
       <DashboardCardAndTaskManager />

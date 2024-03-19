@@ -43,7 +43,7 @@ const ModalConfirm = ({
           <BackDrop setModalOpen={setModalOpen} />
           <div className='modalBackground'>
             <div className={`modalContainer${renderModal ? ' show' : ''}`}>
-              <div className='header'>
+              <div className='modalHeader'>
                 <div className='title'>{title}</div>
                 <div
                   onClick={() => {
