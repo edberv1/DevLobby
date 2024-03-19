@@ -88,7 +88,7 @@ const router = createBrowserRouter([
         element: <ChallengeArea />,
       },
       {
-        path: "/playcodearena/practical/challenge-code",
+        path: "/playcodearena/practical/challenge-code/:id",
         element: <ChallengeCode />,
       },
     ],

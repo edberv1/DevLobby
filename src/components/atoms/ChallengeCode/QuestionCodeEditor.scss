@@ -6,34 +6,36 @@
   @media (min-width: 768px) {
     flex-direction: row;
   }
-}
 
-.left, .right-side {
-  padding: 20px;
-}
+  .left {
+    padding: 20px;
+    width: 100%;
+    background-color: #f0f0f0;
+    overflow-y: auto;
+    box-sizing: border-box;
 
-.left {
-  width: 100%;
-  background-color: #f0f0f0;
-  overflow-y: auto;
-  box-sizing: border-box;
+    @media (min-width: 768px) {
+      width: 40%;
+      height: 100vh;
+    }
+  }
 
-  @media (min-width: 768px) {
-    width: 40%;
-    height: 100vh;
+  .right-side {
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+
+    @media (min-width: 768px) {
+      width: 60%;
+      height: 100vh;
+    }
   }
 }
 
-.right-side {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  overflow: auto;
-
-  @media (min-width: 768px) {
-    width: 60%;
-    height: 100vh;
-  }
+.header2 {
+  color: #023020;
 }
 
 .editor-wrapper {
@@ -46,18 +48,21 @@
     display: flex;
     justify-content: flex-end;
   }
-  
+
   .action-buttons {
     display: flex;
     flex-direction: column;
     align-items: stretch;
+    margin-right: 45px;
 
     @media (min-width: 768px) {
       flex-direction: row;
       justify-content: flex-end;
     }
 
-    button {
+    .run-code-button,
+    .submit-code-button,
+    .next-question-button {
       margin-top: 5px;
       padding: 10px;
       border: none;
@@ -67,6 +72,7 @@
       display: flex;
       align-items: center;
       transition: background-color 0.3s;
+      margin-right: 20px;
 
       i {
         margin-right: 5px;
@@ -75,22 +81,47 @@
       &:hover {
         background-color: #f0f0f0;
       }
+    }
 
-      .run-code-button {
-        background-color: #4caf50;
-        color: white;
+    .run-code-button {
+      background-color: #4caf50;
+      color: white;
 
-        &:hover {
-          background-color: #45a049;
-        }
+      &:hover {
+        background-color: #45a049;
       }
+    }
 
-      .submit-code-button {
-        background-color: #008cba;
-        color: white;
+    .submit-code-button {
+      background-color: #008cba;
+      color: white;
 
-        &:hover {
-          background-color: #007199;
+      &:hover {
+        background-color: #007199;
+      }
+    }
+
+    .next-question-button {
+      background-color: #2196f3;
+      color: white;
+
+      &:hover {
+        background-color: #0e7ae6;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .run-code-button,
+      .submit-code-button,
+      .next-question-button {
+        margin-right: 0;
+        margin-top: 5px;
+        width: 100%;
+
+        & + .run-code-button,
+        & + .submit-code-button,
+        & + .next-question-button {
+          margin-top: 10px;
         }
       }
     }
