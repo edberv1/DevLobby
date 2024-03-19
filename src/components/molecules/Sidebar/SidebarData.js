@@ -8,49 +8,25 @@ export const SidebarData = [
 
   {
     title: '',
-    path: '/',
+    path: '/admin',
     icon: <img src={Logo} alt="Logo" />,
     cName: 'sidebar-text'
   },
   {
     title: 'Overview',
-    path: '/',
+    path: '/admin',
     icon: <FaChartPie />,
     cName: 'sidebar-text'
   },
   {
-    title: 'Recent',
-    path: '/',
-    icon: <FaLightbulb />,
-    cName: 'sidebar-text'
-  },
-  {
-    title: 'Tickets',
-    path: '/',
-    icon: <FaTicketAlt />,
-    cName: 'sidebar-text'
-  },
-  {
-    title: 'Contacts',
-    path: '/',
-    icon:<IoIosPeople />,
-    cName: 'sidebar-text'
-  },
-  {
-    title: 'Agents',
-    path: '/',
-    icon: <MdOutlineSupportAgent />,
-    cName: 'sidebar-text'
-  },
-  {
-    title: 'Articles',
-    path: '/',
-    icon: <MdArticle />,
+    title: 'Users',
+    path: '/admin/users',
+    icon: <IoIosPeople />,
     cName: 'sidebar-text'
   },
   {
     title: 'Settings',
-    path: '/',
+    path: '/admin/settings',
     icon: <IoMdSettings />,
     cName: 'sidebar-text'
   }

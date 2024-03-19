@@ -12,7 +12,6 @@
   .menu-bars {
     display: none;
   }
-  
 }
 
 .sidebar-menu {
@@ -61,17 +60,15 @@
     text-decoration: none;
     color: #222222;
     font-size: 18px;
-    width: 100%;
+    width: 95%;
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: start;
     padding: 0 16px;
     border-radius: 4px;
 
     &:hover {
-      background-color: #3462d6;
-      width: 80%;
+      background-color: #c6c6c6;
     }
   }
 }
@@ -109,7 +106,7 @@
     border: 1px solid #fff;
     background: #222222;
     color: #fff;
-    width: 180px;
+    width:180px;
     height: 50px;
     display: flex;
     align-items: center; //aligning the icon me tekst vertically
@@ -127,7 +124,7 @@
     cursor: pointer;
     line-height: 20px;
     transition: all 0.3s ease-in-out;
-    width: 178px; //2px smaller than dark mode button per shkak te border
+    width: 178px;//2px smaller than dark mode button per shkak te border
     height: 48px;
     display: flex;
     align-items: center;
@@ -138,9 +135,10 @@
       color: #fff;
     }
   }
-  .logout-button svg {
+  .logout-button svg{
     font-size: 20px;
     margin-right: 5px;
+
   }
 }
 
@@ -149,7 +147,7 @@
     width: 250px;
     height: 100vh;
   }
-  .sidebar {
+  .sidebar{
     position: fixed;
     top: 0;
   }
