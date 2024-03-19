@@ -13,7 +13,7 @@ const AdminLayout = () => {
     <>
       {isLoggedIn ? (
         <div className={isDarkMode ? 'adminLayout dark-mode' : 'adminLayout'}>
-          <Sidebar />
+          {/* <Sidebar /> */}
           <Outlet />
         </div>
       ) : (

@@ -20,6 +20,7 @@ import PasswordReset from "./components/organisms/PasswordReset";
 import ChallengeCode from "./components/atoms/ChallengeCode";
 import AdminSettings from "./components/organisms/AdminSettings";
 import AdminLanding from "./components/organisms/AdminLanding";
+import UsersAdmin from "./components/organisms/UsersAdmin";
 
 
 const router = createBrowserRouter([
@@ -105,6 +106,10 @@ const router = createBrowserRouter([
       {
         path: "settings",
         element: <AdminSettings />
+      },
+      {
+        path: "users",
+        element: <UsersAdmin />
       }
     ]
   },

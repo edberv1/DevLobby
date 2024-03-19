@@ -2,7 +2,6 @@ import React from 'react'
 import AdminHeaderComponent from '../../molecules/AdminHeaderComponent'
 import BigChartAndStats from '../BigChartAndStats'
 import SmallChartsCombined from '../SmallChartsCombined'
-import UserTable from '../../molecules/UserTable'
 import DashboardCardAndTaskManager from '../DashboardCardAndTaskManager'
 
 const AdminLanding = () => {
@@ -12,7 +11,6 @@ const AdminLanding = () => {
       <BigChartAndStats />
       <SmallChartsCombined />
       <DashboardCardAndTaskManager />
-      <UserTable />
     </div>
   )
 }
