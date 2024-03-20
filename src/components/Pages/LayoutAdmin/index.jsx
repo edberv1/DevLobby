@@ -80,7 +80,7 @@ const AdminLayout = () => {
               </div>
             </div>
 
-            <div className='main'>
+            <div className={isDarkMode ? 'main main-dark' : 'main'}>
               <Outlet />
             </div>
           </div>
