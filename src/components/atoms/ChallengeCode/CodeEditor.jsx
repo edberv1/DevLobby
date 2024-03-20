@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import MonacoEditor from 'react-monaco-editor';
 import './QuestionCodeEditor.scss';
 
-const CodeEditor = () => {
+const CodeEditor = ({ handleNextQuestion, question }) => {
   const [selectedLanguage, setSelectedLanguage] = useState('javascript');
 
   const editorDidMount = (editor, monaco) => {
@@ -46,10 +46,10 @@ const CodeEditor = () => {
           height="600"
           language={selectedLanguage}
           theme="vs-dark"
-          value={`// Start coding in ${selectedLanguage}...`}
+          value="//Enter the code here"
           options={{
             fontSize: 16,
-            automaticLayout: true
+            automaticLayout: true,
           }}
           editorDidMount={editorDidMount}
           onChange={onChange}
@@ -62,6 +62,9 @@ const CodeEditor = () => {
         </button>
         <button className="submit-code-button" onClick={handleSubmitCode}>
           <i className="fas fa-check"></i> Submit Code
+        </button>
+        <button className="next-question-button" onClick={handleNextQuestion}>
+          Next Question
         </button>
       </div>
     </div>

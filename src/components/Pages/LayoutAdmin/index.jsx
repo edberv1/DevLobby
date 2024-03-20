@@ -11,12 +11,12 @@ import DashboardCardAndTaskManager from '../../organisms/DashboardCardAndTaskMan
 import './LayoutAdmin.scss'
 
 const AdminLayout = () => {
-  const { isLoggedIn } = useContext(AuthContext)
+  const { token, logout } = useContext(AuthContext);
   const { isDarkMode } = useContext(DarkModeContext) // Use DarkModeContext
 
   return (
     <>
-      {isLoggedIn ? (
+      {token ? (
         <div className={isDarkMode ? 'adminLayout dark-mode' : 'adminLayout'}>
           <Sidebar />
           <AdminHeaderComponent />
@@ -26,10 +26,10 @@ const AdminLayout = () => {
           <UserTable />
         </div>
       ) : (
-        <Navigate to='/login' />
-      )}
-    </>
-  )
-}
-
-export default AdminLayout
+        <Navigate to="/adminLogin" />
+        )}
+        </>
+      );
+    };
+    
+    export default AdminLayout;

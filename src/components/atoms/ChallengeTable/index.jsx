@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './ChallengeTable.scss';
 import { Link } from 'react-router-dom';
+import ChallengeCode from '../ChallengeCode';
 
 const PAGE_SIZE = 10;
 
@@ -8,6 +9,7 @@ export default function ChallengeTable({ challenges, sortCategory, onSortChange 
     const [sortColumn, setSortColumn] = useState(null);
     const [sortOrder, setSortOrder] = useState('asc');
     const [currentPage, setCurrentPage] = useState(1);
+    const [selectedChallenge] = useState(null);
 
     const handleSort = (column) => {
         if (sortColumn === column) {
@@ -83,7 +85,9 @@ export default function ChallengeTable({ challenges, sortCategory, onSortChange 
                                 <td>{challenge.name}</td>
                                 <td>{challenge.difficulty}</td>
                                 <td>{challenge.time} minutes</td>
-                                <Link to="/playcodearena/practical/challenge-code" className="link-button">{challenge.start} Start</Link>
+                                <td>
+                                    <Link to={`/playcodearena/practical/challenge-code/${challenge.id}`}>Start</Link>
+                                </td>
                             </tr>
                         ))}
                     </tbody>
@@ -98,6 +102,9 @@ export default function ChallengeTable({ challenges, sortCategory, onSortChange 
                     Next
                 </button>
             </div>
+            {selectedChallenge && (
+                <ChallengeCode question={selectedChallenge.question} />
+            )}
         </div>
     );
 }
