@@ -3,7 +3,7 @@ import './PlayArenaCards.scss';
 import theoryImage from '../../../assets/images/Theory-png.png';
 import practiceImage from '../../../assets/images/Practice-png.png';
 import SelectButton from '../../atoms/SelectButton';
-import PlayArenaLetsgoButton from '../../atoms/PlayArenaLetsgoButton';
+import ChallengeArea from '../../organisms/ChallengeArea';
 
 function PlayArenaCards() {
   const [selectedCard, setSelectedCard] = useState(null);
@@ -13,6 +13,7 @@ function PlayArenaCards() {
   };
 
   return (
+    <>
     <div className="play-arena-cards-container">
       <div className="play-arena-cards">
         <div className={`card ${selectedCard === 0 ? 'selected' : ''}`}>
@@ -32,8 +33,9 @@ function PlayArenaCards() {
           <SelectButton onClick={() => handleCardSelect(1)} selected={selectedCard === 1} />
         </div>
       </div>
-      <PlayArenaLetsgoButton selectedCard={selectedCard} />
+      {selectedCard === 1 && <ChallengeArea />}
     </div>
+    </>
   );
 }
 
