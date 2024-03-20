@@ -18,9 +18,12 @@ import ChallengeArea from "./components/organisms/ChallengeArea";
 import Verification from "./components/organisms/Verification";
 import PasswordReset from "./components/organisms/PasswordReset";
 import ChallengeCode from "./components/atoms/ChallengeCode";
+
 import AdminSettings from "./components/organisms/AdminSettings";
 import AdminLanding from "./components/organisms/AdminLanding";
 import UsersAdmin from "./components/organisms/UsersAdmin";
+import AdminForm from "./components/organisms/AdminForm";
+
 
 
 const router = createBrowserRouter([
@@ -90,7 +93,7 @@ const router = createBrowserRouter([
         element: <ChallengeArea />,
       },
       {
-        path: "/playcodearena/practical/challenge-code",
+        path: "/playcodearena/practical/challenge-code/:id",
         element: <ChallengeCode />,
       },
     ],
@@ -116,6 +119,10 @@ const router = createBrowserRouter([
   {
     path: "user/:id/verify/:token",
     element: <Verification />,
+  },
+  {
+    path: "adminLogin",
+    element: <AdminForm />,
   },
   {
     path: "*",

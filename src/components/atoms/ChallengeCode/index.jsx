@@ -1,16 +1,53 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import './QuestionCodeEditor.scss';
 import CodeEditor from './CodeEditor';
+import { mockQuestions } from './data';
 
 function ChallengeCode() {
+  const [question, setQuestion] = useState(null);
+  const [showQuestion, setShowQuestion] = useState(true);
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const questionId = Number(id);
+    const currentQuestion = mockQuestions.find(q => q.id === questionId);
+    setQuestion(currentQuestion);
+  }, [id]);
+
+  const handleNextQuestion = () => {
+    const currentId = Number(id);
+    const nextId = currentId + 1;
+    const nextQuestionExists = mockQuestions.some(q => q.id === nextId);
+
+    if (nextQuestionExists) {
+      navigate(`/playcodearena/practical/challenge-code/${nextId}`);
+    } else {
+      console.log('No more questions.');
+    }
+  };
+
   return (
     <div className="code-container">
       <div className="left">
-        In this kata, you have to write a simple Morse code decoder. While the Morse code is now mostly superseded by voice and digital data communication channels, it still has its use in some applications around the world.
-                The Morse code encodes every character as a sequence of "dots" and "dashes". For example, the letter A is coded as ·−, letter Q is coded as −−·−, and digit 1 is coded as ·−−−−. The Morse code is case-insensitive, traditionally capital letters are used. When the message is written in Morse code, a single space is used to separate the character codes and 3 spaces are used to separate words. For example, the message HEY JUDE in Morse code is ···· · −·−−   ·−−− ··− −·· ·.
+        {showQuestion && question ? (
+          <>
+            <h2>{question.name}</h2>
+            <p>{question.content}</p>
+            <p>{question.difficulty}</p>
+          </>
+        ) : (
+          <p>Loading question...</p>
+        )}
       </div>
       <div className="right-side">
-        <CodeEditor/>
+        <CodeEditor
+          handleNextQuestion={handleNextQuestion}
+          question={question ? question.content : ''}
+          showQuestion={showQuestion}
+          setShowQuestion={setShowQuestion}
+        />
       </div>
     </div>
   );

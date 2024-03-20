@@ -28,5 +28,8 @@ export class AuthService {
   static async changePassword(data) {
     return await Api.request("POST", '/user/new-password', data)
   }
+  
+  static async adminLogin(data) {
+    return await Api.request("POST", "/user/admin/login", data);
+  }
 }
-

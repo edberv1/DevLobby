@@ -10,12 +10,11 @@ import { IoMdSettings } from 'react-icons/io'
 import { TbDoorExit } from 'react-icons/tb'
 
 const AdminLayout = () => {
-  const { isLoggedIn } = useContext(AuthContext)
   const { isDarkMode, toggleDarkMode } = useContext(DarkModeContext) // Use DarkModeContext
-  const { logout } = useContext(AuthContext)
+  const { token, logout, isLoggedIn } = useContext(AuthContext);
   return (
     <>
-      {isLoggedIn ? (
+      {token ? (
         <div className='adminLayout'>
           <div className='container'>
             <div className={isDarkMode ? 'header header-dark' : 'header'}>
@@ -85,14 +84,12 @@ const AdminLayout = () => {
               <Outlet />
             </div>
           </div>
-
-          {/* <Sidebar /> */}
         </div>
       ) : (
-        <Navigate to='/login' />
-      )}
-    </>
-  )
-}
-
-export default AdminLayout
+        <Navigate to="/adminLogin" />
+        )}
+        </>
+      );
+    };
+    
+    export default AdminLayout;
