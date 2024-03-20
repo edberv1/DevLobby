@@ -37,7 +37,7 @@ const AdminLayout = () => {
                 </Link>
 
                 <div class='links'>
-                  <ul className={isDarkMode ? '' : 'light-mode'}>
+                  <ul className={isDarkMode ? 'dark-mode' : ''}>
                     <Link to='/admin'>
                       <li>
                         <FaChartPie />
