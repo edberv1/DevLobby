@@ -2,23 +2,26 @@ import React, { useContext } from 'react'
 import { AuthContext } from '../../../utils/AuthContext'
 import { Link, Navigate, Outlet } from 'react-router-dom'
 import { DarkModeContext } from '../../../utils/DarkModeContext' // Import DarkModeContext
-import Sidebar from '../../molecules/Sidebar'
 import './LayoutAdmin.scss'
 import SearchBar from '../../molecules/SearchBar'
 import Logo from '../../../assets/images/icon.png'
-import AdminHeaderComponent from '../../molecules/AdminHeaderComponent'
+import { FaChartPie, FaUsers } from 'react-icons/fa'
+import { IoMdSettings } from 'react-icons/io'
+import { TbDoorExit } from 'react-icons/tb'
 
 const AdminLayout = () => {
   const { isLoggedIn } = useContext(AuthContext)
   const { isDarkMode } = useContext(DarkModeContext) // Use DarkModeContext
-
+  const { logout } = useContext(AuthContext)
   return (
     <>
       {isLoggedIn ? (
         <div className={isDarkMode ? 'adminLayout dark-mode' : 'adminLayout'}>
           <div className='container'>
             <div className='header'>
-              <div className='left'></div>
+              <div className='left'>
+                <div className='title'>DevLobby Admin Dashboard</div>
+              </div>
 
               <div className='right'>
                 <div className='search'>
@@ -27,28 +30,40 @@ const AdminLayout = () => {
               </div>
             </div>
             <div class='sidebar'>
-              <Link to='/'>
-                <div class='logo'>
-                  <img src={Logo} width={140} alt='' />
-                </div>{' '}
-              </Link>
+              <div className='top'>
+                <Link to='/'>
+                  <div class='logo'>
+                    <img src={Logo} width={140} alt='' />
+                  </div>
+                </Link>
 
-              <div class='links'>
-                <ul>
-                  <li>
-                    <Link to='/admin'>Overview</Link>
-                  </li>
-                  <li>
-                    <Link to='/admin/users'>Users</Link>
-                  </li>
-                  <li>
-                    <Link to='/admin/settings'>Settings</Link>
-                  </li>
-                </ul>
+                <div class='links'>
+                  <ul>
+                    <Link to='/admin'>
+                      <li>
+                        <FaChartPie />
+                        Overview
+                      </li>
+                    </Link>
+                    <Link to='/admin/users'>
+                      <li>
+                        <FaUsers />
+                        Users
+                      </li>
+                    </Link>
+                    <Link to='/admin/settings'>
+                      <li>
+                        <IoMdSettings />
+                        Settings
+                      </li>
+                    </Link>
+                  </ul>
+                </div>
               </div>
 
-              <div class='logoutBtn'>
-                <button>Logout</button>
+              <div onClick={logout} class='logout-button'>
+                <TbDoorExit />
+                Logout
               </div>
             </div>
 
