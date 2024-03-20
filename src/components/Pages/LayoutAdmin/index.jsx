@@ -5,20 +5,20 @@ import { DarkModeContext } from '../../../utils/DarkModeContext' // Import DarkM
 import './LayoutAdmin.scss'
 import SearchBar from '../../molecules/SearchBar'
 import Logo from '../../../assets/images/icon.png'
-import { FaChartPie, FaUsers } from 'react-icons/fa'
+import { FaChartPie, FaUsers, FaMoon, FaSun } from 'react-icons/fa'
 import { IoMdSettings } from 'react-icons/io'
 import { TbDoorExit } from 'react-icons/tb'
 
 const AdminLayout = () => {
   const { isLoggedIn } = useContext(AuthContext)
-  const { isDarkMode } = useContext(DarkModeContext) // Use DarkModeContext
+  const { isDarkMode, toggleDarkMode } = useContext(DarkModeContext) // Use DarkModeContext
   const { logout } = useContext(AuthContext)
   return (
     <>
       {isLoggedIn ? (
-        <div className={isDarkMode ? 'adminLayout dark-mode' : 'adminLayout'}>
+        <div className='adminLayout'>
           <div className='container'>
-            <div className='header'>
+            <div className={isDarkMode ? 'header header-dark' : 'header'}>
               <div className='left'>
                 <div className='title'>DevLobby Admin Dashboard</div>
               </div>
@@ -29,7 +29,7 @@ const AdminLayout = () => {
                 </div>
               </div>
             </div>
-            <div class='sidebar'>
+            <div class={isDarkMode ? 'sidebar sidebar-dark' : 'sidebar'}>
               <div className='top'>
                 <Link to='/'>
                   <div class='logo'>
@@ -38,7 +38,7 @@ const AdminLayout = () => {
                 </Link>
 
                 <div class='links'>
-                  <ul>
+                  <ul className={isDarkMode ? '' : 'light-mode'}>
                     <Link to='/admin'>
                       <li>
                         <FaChartPie />
@@ -61,9 +61,23 @@ const AdminLayout = () => {
                 </div>
               </div>
 
-              <div onClick={logout} class='logout-button'>
-                <TbDoorExit />
-                Logout
+              <div className='bottom'>
+                <div onClick={logout} class='logout-button'>
+                  <TbDoorExit />
+                  Logout
+                </div>
+                <div>
+                  <button
+                    onClick={toggleDarkMode}
+                    className={
+                      !isDarkMode
+                        ? 'darkmode-button'
+                        : 'darkmode-button darkmode-light'
+                    }
+                  >
+                    {isDarkMode ? <FaSun /> : <FaMoon />}
+                  </button>
+                </div>
               </div>
             </div>
 

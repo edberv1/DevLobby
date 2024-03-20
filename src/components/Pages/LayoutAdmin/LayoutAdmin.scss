@@ -45,6 +45,11 @@
       }
     }
 
+    .header-dark {
+      background-color: #242424;
+      color: white;
+    }
+
     .sidebar {
       width: max(180px, 19%);
       height: 100%;
@@ -68,7 +73,7 @@
         flex-direction: column;
         justify-content: start;
         align-items: center;
-        gap: 2rem;
+        gap: 3rem;
 
         .logo {
           margin-top: 0px;
@@ -79,7 +84,7 @@
           justify-content: center;
           width: 200px;
 
-          li {
+          ul li {
             display: flex;
             justify-content: start;
             align-items: center;
@@ -100,28 +105,64 @@
               scale: 95%;
             }
           }
+
+          ul.light-mode li {
+            background-color: #2f2f2f;
+            color: white;
+          }
         }
       }
 
-      .logout-button {
-        display: flex;
-        align-items: center;
-        gap: 8px;
+      .bottom {
+        width: 80%;
         margin-bottom: 24px;
-        padding: 8px 12px;
-        background-color: #ffcccc;
-        color: #ff4d4f;
-        border-radius: 5px;
-        font-size: 16px;
-        cursor: pointer;
-        line-height: 20px;
-        transition: all 0.3s ease-in-out;
+        justify-content: space-between;
+        align-items: center;
+        display: flex;
 
-        &:hover {
-          background-color: #ff4d4f;
+        .darkmode-button {
+          border-style: none;
+          border: 1px solid rgb(43, 38, 38);
+          display: flex;
+          align-items: center;
+          border-radius: 100px;
+          padding: 10px;
+          font-size: 16px;
+          cursor: pointer;
+          line-height: 20px;
+          transition: all 0.3s ease-in-out;
+          background: #2f2f2f;
           color: #fff;
         }
+
+        .darkmode-light {
+          background-color: rgb(229, 229, 229);
+          color: black;
+        }
+
+        .logout-button {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 8px 12px;
+          background-color: #ffcccc;
+          color: #ff4d4f;
+          border-radius: 5px;
+          font-size: 16px;
+          cursor: pointer;
+          line-height: 20px;
+          transition: all 0.3s ease-in-out;
+
+          &:hover {
+            background-color: #ff4d4f;
+            color: #fff;
+          }
+        }
       }
+    }
+
+    .sidebar-dark {
+      background-color: #242424;
     }
 
     .main {
