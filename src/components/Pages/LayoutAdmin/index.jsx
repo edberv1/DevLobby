@@ -11,7 +11,7 @@ import { TbDoorExit } from 'react-icons/tb'
 
 const AdminLayout = () => {
   const { isDarkMode, toggleDarkMode } = useContext(DarkModeContext) // Use DarkModeContext
-  const { token, logout, isLoggedIn } = useContext(AuthContext);
+  const { token, logout, isLoggedIn } = useContext(AuthContext)
   return (
     <>
       {token ? (
@@ -86,10 +86,10 @@ const AdminLayout = () => {
           </div>
         </div>
       ) : (
-        <Navigate to="/adminLogin" />
-        )}
-        </>
-      );
-    };
-    
-    export default AdminLayout;
+        <Navigate to='/adminLogin' />
+      )}
+    </>
+  )
+}
+
+export default AdminLayout
