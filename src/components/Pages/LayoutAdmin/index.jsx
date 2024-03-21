@@ -11,10 +11,11 @@ import { TbDoorExit } from 'react-icons/tb'
 
 const AdminLayout = () => {
   const { isDarkMode, toggleDarkMode } = useContext(DarkModeContext) // Use DarkModeContext
-  const { token, logout, isLoggedIn } = useContext(AuthContext)
+  const { token, logout } = useContext(AuthContext)
   return (
     <>
       {token ? (
+        // Sidebar and Header
         <div className='adminLayout'>
           <div className='container'>
             <div className={isDarkMode ? 'header header-dark' : 'header'}>
@@ -80,6 +81,7 @@ const AdminLayout = () => {
               </div>
             </div>
 
+            {/* MAIN CONTENT (WITHIN ADMIN LAYOUT) */}
             <div className={isDarkMode ? 'main main-dark' : 'main'}>
               <Outlet />
             </div>
