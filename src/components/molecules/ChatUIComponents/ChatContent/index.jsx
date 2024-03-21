@@ -7,7 +7,6 @@ import ChatItem from './ChatItem';
 import ImageZoomModal from './ImageZoomModal';
 
 const ChatContent = () => {
-  
   const [isZoomModalOpen, setIsZoomModalOpen] = useState(false);
   const [currentZoomImage, setCurrentZoomImage] = useState('');
   const chatContentRef = useRef(null);
@@ -27,7 +26,9 @@ const ChatContent = () => {
   ]);
   const [msg, setMsg] = useState('');
   const [imagePreview, setImagePreview] = useState(null);
+  const [videoPreview, setVideoPreview] = useState(null);
   const fileInputRef = useRef(null);
+  
   useEffect(() => {
     scrollToBottom();
   }, [chat]);
@@ -43,27 +44,34 @@ const ChatContent = () => {
   };
 
   const sendMessage = () => {
-    if (msg !== '' || imagePreview !== null) {
+    if (msg !== '' || imagePreview !== null || videoPreview !== null) {
       const newChatMessage = {
         key: Date.now(),
         type: 'me',
-        msg: imagePreview ? <img src={imagePreview} alt="attachment" style={{ maxWidth: '200px', maxHeight: '200px' }} /> : msg,
+        msg: imagePreview ? <img src={imagePreview} alt="attachment" style={{ maxWidth: '200px', maxHeight: '200px' }} />
+            : videoPreview ? <video src={videoPreview} controls style={{ maxWidth: '200px', maxHeight: '200px' }} />
+            : msg,
         image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTA78Na63ws7B7EAWYgTr9BxhX_Z8oLa1nvOA&usqp=CAU',
       };
       setChat([...chat, newChatMessage]);
       setMsg('');
       setImagePreview(null);
+      setVideoPreview(null);
       scrollToBottom();
-      removeImagePreview();
+      removeMediaPreview();
     }
   };
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
-    if (file && file.type.startsWith('image/')) {
+    if (file) {
       const reader = new FileReader();
       reader.onload = (ev) => {
-        setImagePreview(ev.target.result);
+        if (file.type.startsWith('image/')) {
+          setImagePreview(ev.target.result);
+        } else if (file.type.startsWith('video/')) {
+          setVideoPreview(ev.target.result);
+        }
       };
       reader.readAsDataURL(file);
     }
@@ -73,16 +81,19 @@ const ChatContent = () => {
     fileInputRef.current.click();
   };
 
-  const removeImagePreview = () => {
+  const removeMediaPreview = () => {
     setImagePreview(null);
+    setVideoPreview(null);
     if (fileInputRef.current) {
-      fileInputRef.current.value = ''; // This ensures the input is cleared for re-uploads
+      fileInputRef.current.value = '';
     }
   };
 
-  const handleImageClick = (imageSrc) => {
-    setCurrentZoomImage(imageSrc);
-    setIsZoomModalOpen(true);
+  const handleImageClick = (mediaSrc, isVideo = false) => {
+    if (!isVideo) {
+      setCurrentZoomImage(mediaSrc);
+      setIsZoomModalOpen(true);
+    }
   };
 
   return (
@@ -110,44 +121,51 @@ const ChatContent = () => {
             msg={itm.msg}
             image={itm.image}
             onImageClick={handleImageClick}
-          />        ))}
-          </div>
-          <div className="content__footer">
-            <div className="sendNewMessage">
-              <button className="addFiles" onClick={triggerFileInput}>
-                <FontAwesomeIcon icon={faPlus} />
-              </button>
-              {imagePreview && (
-                <div className="image-preview" onClick={() => { setIsZoomModalOpen(true); setCurrentZoomImage(imagePreview); }}>
-                  <img src={imagePreview} alt="Preview" style={{ maxWidth: '200px', maxHeight: '200px' }} />
-                  <div className="image-preview__close" onClick={(e) => { e.stopPropagation(); removeImagePreview(); }}>X</div>
-                </div>
-              )}
-              <input
-                type="file"
-                ref={fileInputRef}
-                style={{ display: 'none' }}
-                onChange={handleFileChange}
-              />
-              <input
-                type="text"
-                placeholder="Type a message here..."
-                onChange={onStateChange}
-                value={msg}
-                onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
-              />
-              <button className="btnSendMsg" id="sendMsgBtn" onClick={sendMessage}>
-                <FontAwesomeIcon icon={faPaperPlane} />
-              </button>
+          />
+        ))}
+      </div>
+      <div className="content__footer">
+        <div className="sendNewMessage">
+          <button className="addFiles" onClick={triggerFileInput}>
+            <FontAwesomeIcon icon={faPlus} />
+          </button>
+          {imagePreview && (
+            <div className="image-preview" onClick={() => { setIsZoomModalOpen(true); setCurrentZoomImage(imagePreview); }}>
+              <img src={imagePreview} alt="Preview" style={{ maxWidth: '200px', maxHeight: '200px' }} />
+              <div className="image-preview__close" onClick={(e) => { e.stopPropagation(); removeMediaPreview(); }}>X</div>
             </div>
-          </div>
-          {isZoomModalOpen && (
-            <ImageZoomModal src={currentZoomImage} onClose={() => setIsZoomModalOpen(false)} />
           )}
+          {videoPreview && (
+            <div className="video-preview" onClick={() => { setIsZoomModalOpen(true); setCurrentZoomImage(videoPreview); }}>
+              <video src={videoPreview} alt="Preview" style={{ maxWidth: '200px', maxHeight: '200px' }} controls />
+              <div className="video-preview__close" onClick={(e) => { e.stopPropagation(); removeMediaPreview(); }}>X</div>
+            </div>
+          )}
+          <input
+            type="file"
+            ref={fileInputRef}
+            style={{ display: 'none' }}
+            onChange={handleFileChange}
+            accept="image/*,video/*"
+          />
+          <input
+            type="text"
+            placeholder="Type a message here..."
+            onChange={onStateChange}
+            value={msg}
+            onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
+          />
+          <button className="btnSendMsg" id="sendMsgBtn" onClick={sendMessage}>
+            <FontAwesomeIcon icon={faPaperPlane} />
+          </button>
         </div>
-      );
-    };
-    
-    export default ChatContent;
-    
-       
+      </div>
+      {isZoomModalOpen && (
+        <ImageZoomModal src={currentZoomImage} onClose={() => setIsZoomModalOpen(false)} />
+      )}
+    </div>
+  );
+};
+
+export default ChatContent;
+
