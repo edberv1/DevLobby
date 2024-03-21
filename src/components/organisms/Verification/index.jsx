@@ -7,6 +7,16 @@ import { AuthService } from '../../../services/AuthService'
 const Verification = () => {
   const [validUrl, setValidUrl] = useState()
   const param = useParams()
+  const [showComponent, setShowComponent] = useState(false)
+
+  //TODO: quick fix, not ideal
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setShowComponent(true)
+    }, 1000)
+
+    return () => clearTimeout(timeout)
+  }, [])
 
   useEffect(() => {
     const verifEmailUrl = async () => {
@@ -22,20 +32,23 @@ const Verification = () => {
     verifEmailUrl()
   }, [param])
 
-  return validUrl ? (
-    <div className='verification'>
-      <div className='container'>
-        <div id='success'>Verification successful ✅</div>
-        <div className='text2'>You are now a member of our community 💖</div>
-        <div className='guide'>
-          <Link to='/login'>
-            <div className='homeBtn'>Click to login</div>
-          </Link>
+  return (
+    showComponent &&
+    (validUrl ? (
+      <div className='verification'>
+        <div className='container'>
+          <div id='success'>Verification successful ✅</div>
+          <div className='text2'>You are now a member of our community 💖</div>
+          <div className='guide'>
+            <Link to='/login'>
+              <div className='homeBtn'>Click to login</div>
+            </Link>
+          </div>
         </div>
       </div>
-    </div>
-  ) : (
-    <PageNotFound />
+    ) : (
+      <PageNotFound />
+    ))
   )
 }
 
