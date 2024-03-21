@@ -10,7 +10,51 @@
     max-width: 100%;
   }
 }
+.image-preview {
+  position: relative;
+  display: inline-block;
+  max-width: 200px;
+  max-height: 200px;
+  margin-right: 10px;
+  img{
+    max-width: 200px;
+  max-height: 200px;
+  }
 
+  .image-preview__close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border-radius: 50%;
+    padding: 0; // Remove padding if you are going to align text with line-height
+    font-size: 0.8rem;
+    text-align: center;
+    line-height: 1.5rem; // Make line-height equal to height
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+  }
+  
+
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+}
+.addFiles{
+  margin-right: 10px;
+}
 .content__header {
   padding-bottom: 15px;
   border-bottom: 1px solid #ebe7fb;
@@ -45,7 +89,9 @@
   max-height: 64vh;
   overflow-y: auto;
   padding-right: 15px;
-
+  img {
+    cursor: pointer;
+  }
   @media only screen and (max-width: 768px) {
     max-height: 50vh;
   }
