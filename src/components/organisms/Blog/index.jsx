@@ -37,7 +37,7 @@ const featuredArticle = {
 };
 
 const BlogPage = () => (
-  <div>
+  <div className='blogPage'>
     <div className="hero-section">
       <div className="content">
         <h1>Rush your ideas with us</h1>

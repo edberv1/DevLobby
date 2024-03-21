@@ -17,9 +17,13 @@ import Testimonials from "./components/molecules/Testimonials";
 import ChallengeArea from "./components/organisms/ChallengeArea";
 import Verification from "./components/organisms/Verification";
 import PasswordReset from "./components/organisms/PasswordReset";
-import { DarkModeProvider } from "./utils/DarkModeContext";
 import ChallengeCode from "./components/atoms/ChallengeCode";
+
+import AdminSettings from "./components/organisms/AdminSettings";
+import AdminLanding from "./components/organisms/AdminLanding";
+import UsersAdmin from "./components/organisms/UsersAdmin";
 import AdminForm from "./components/organisms/AdminForm";
+
 
 
 const router = createBrowserRouter([
@@ -96,7 +100,21 @@ const router = createBrowserRouter([
   },
   {
     path: "admin",
-    element: <DarkModeProvider><AdminLayout /></DarkModeProvider>,
+    element: <AdminLayout />,
+    children: [
+      {
+        index: true,
+        element: <AdminLanding />
+      },
+      {
+        path: "settings",
+        element: <AdminSettings />
+      },
+      {
+        path: "users",
+        element: <UsersAdmin />
+      }
+    ]
   },
   {
     path: "user/:id/verify/:token",

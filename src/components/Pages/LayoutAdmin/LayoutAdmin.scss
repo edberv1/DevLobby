@@ -1,135 +1,182 @@
 .adminLayout {
-  background-color: #282828;
-
-  > :not(.sidebar):not(.sidebar-menu):not(.dashboard-header) {
-    padding-left: 250px;
+  a {
+    color: black;
+    text-decoration: none;
   }
 
-  @media screen and (max-width: 768px) {
-    > :not(.sidebar):not(.sidebar-menu):not(.dashboard-header) {
-      padding-left: 0;
-      padding-top: 110px;
-    }
+  li {
+    list-style: none;
   }
 
-  @media screen and (max-width: 1024px) {
-    > :not(.sidebar):not(.sidebar-menu):not(.dashboard-header) {
-      padding-left: 0;
-      padding-top: 110px;
-    }
-  }
-}
+  .container {
+    display: grid;
+    grid-template-columns: minmax(140px, 0.82fr) 3.48fr;
+    grid-template-rows: 1fr auto;
 
-.dark-mode {
-  //Sidebar
-  .sidebar {
-    background-color: #1a1a1a;
-  }
-  .sidebar-menu {
-    background-color: #1a1a1a;
-  }
-  .sidebar-toggle {
-    background-color: #1a1a1a;
-    .menu-bars {
-      color: white;
-    }
-  }
-  .menu-bars {
-    color: white;
-  }
-  .sidebar-text {
-    a {
-      color: white;
-    }
-  }
-
-  //Users Table
-  .table__header {
-    background-color: #1a1a1a;
-    color: white;
-  }
-
-  .main-table {
-    .controls {
-      button {
-        color: white;
-      }
-    }
-  }
-
-  .table__body {
-    background-color: #1a1a1a;
-  }
-
-  table {
-    thead th {
-      background-color: #282828;
-      color: white;
-    }
-    tbody td {
-      color: white;
-    }
-  }
-
-  .status.active {
-    color: #1a1a1a;
-  }
-
-  .status.inactive {
-    color: #1a1a1a;
-  }
-
-  .pagination {
-    button {
-      background-color: #282828;
-      border: 1px solid white;
-      color: white;
-      &:hover {
-        background-color: #0070ec;
-      }
-      
-      &.active {
-        background-color: #0070ec;
-        color: #fff;
-      }
-    }
-  }
-
-  //Generic Card
-
-  .dashboardCard {
-    .dashboard-card{
-      background-color: #1a1a1a;
+    .main {
+      padding-top: 20px;
+      z-index: 0;
+      height: 100vh;
+      background-color: #ced4da;
+      grid-column: 2 / 3;
+      grid-row: 2 / 3;
     }
 
-    header {
-      .title-container {
+    .main-dark {
+      background-color: #495057;
+    }
+
+    .header {
+      padding: 24px;
+
+      position: sticky;
+      z-index: 1;
+      top: 0;
+
+      background-color: #f8f9fa;
+      border-bottom: 1px solid #adb5bd;
+
+      grid-column: 2 / 3;
+      grid-row: 1 / 2;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .left {
         .title {
-          color: white;
+          font-size: 1.5rem;
+          font-weight: 500;
+        }
+      }
+
+      .right {
+        .search {
+          width: min-content;
         }
       }
     }
-    .item-container{
+
+    .header-dark {
+      background-color: #212529;
       color: white;
+      border-bottom: 1px solid #6c757d;
     }
-  }
 
+    .sidebar {
+      width: max(180px, 19%);
+      height: 100%;
 
-  //Task Manager
-  .dashboard-task-manager {
-    background-color: #1a1a1a;
-    header {
-      .title-container {
-        .title {
+      position: fixed;
+      top: 0;
+      left: 0;
+
+      background-color: #f8f9fa;
+      border-right: 1px solid #adb5bd;
+
+      grid-column: 1 / 2;
+      grid-row: 1 / 3;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+
+      .top {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 3rem;
+
+        .logo {
+          margin-top: 0px;
+        }
+
+        .links {
+          display: flex;
+          justify-content: center;
+          width: 200px;
+
+          ul li {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 12px;
+            font-weight: 500;
+            padding: 8px 64px;
+            background-color: #adb5bd;
+            color: black;
+            text-align: left;
+            margin-bottom: 8px;
+            border-radius: 2px;
+
+            &:hover {
+              background-color: #ced4da;
+            }
+          }
+
+          ul.dark-mode li {
+            background-color: #6c757d;
+            color: white;
+
+            &:hover {
+              background-color: #495057;
+            }
+          }
+        }
+      }
+
+      .bottom {
+        width: 80%;
+        margin-bottom: 24px;
+        justify-content: space-between;
+        align-items: center;
+        display: flex;
+
+        .darkmode-button {
+          border-style: none;
+          border: 1px solid rgb(43, 38, 38);
+          display: flex;
+          align-items: center;
+          border-radius: 100px;
+          padding: 10px;
+          font-size: 16px;
+          cursor: pointer;
+          line-height: 20px;
+          transition: all 0.3s ease-in-out;
+          background: #212529;
+          color: #fff;
+        }
+
+        .darkmode-light {
+          background-color: #e9ecef;
+          color: #212529;
+        }
+
+        .logout-button {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 8px 12px;
+          background-color: #ff5c5c;
           color: white;
+          border-radius: 5px;
+          font-size: 16px;
+          cursor: pointer;
+          line-height: 20px;
+          transition: all 0.3s ease-in-out;
 
+          &:hover {
+            background-color: #f73337;
+            color: #fff;
+          }
         }
       }
     }
-      .task-text {
-        color: white;
-      }
+
+    .sidebar-dark {
+      background-color: #212529;
+      border-right: 1px solid #6c757d;
+    }
   }
-
-
 }
