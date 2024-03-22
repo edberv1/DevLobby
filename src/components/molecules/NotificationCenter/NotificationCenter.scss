@@ -1,17 +1,27 @@
 .notificationCenter {
+  position: relative;
+  margin: 0;
+  padding: 0;
   display: flex;
+  width: 0;
   justify-content: center;
+  align-items: center;
 
   .container {
-    margin: 12px;
-    position: relative;
+    // adjust position here:
+    position: absolute;
+    top: -22px;
+    right: -26px;
+    width: 0;
 
     .bell-button {
+      cursor: pointer;
       position: absolute;
+      top: 0;
       right: 3px;
       background-color: #ffffff;
-      width: 20px;
-      height: 20px;
+      width: 22px;
+      height: 22px;
       max-width: 40px;
       border-radius: 100%;
       padding: 0.6rem;
@@ -37,6 +47,7 @@
       margin-top: 6px;
       background-color: white;
       border-radius: 18px;
+      border: 1px solid #2f2f2f;
       max-width: 18rem;
       min-width: 12rem;
       display: flex;
