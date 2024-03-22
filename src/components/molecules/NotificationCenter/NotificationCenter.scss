@@ -1,0 +1,68 @@
+.notificationCenter {
+  display: flex;
+  justify-content: center;
+
+  .container {
+    margin: 12px;
+    position: relative;
+
+    .bell-button {
+      position: absolute;
+      right: 3px;
+      background-color: #ffffff;
+      width: 20px;
+      height: 20px;
+      max-width: 40px;
+      border-radius: 100%;
+      padding: 0.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #2f2f2f;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #e1e1e1;
+      }
+
+      &:active {
+        transform: scale(95%);
+      }
+    }
+
+    .notification-container {
+      position: absolute;
+      right: 4px;
+      top: 42px;
+      margin-top: 6px;
+      background-color: white;
+      border-radius: 18px;
+      max-width: 18rem;
+      min-width: 12rem;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 8px 8px;
+
+      .msg-container {
+        display: flex;
+        gap: 5px;
+        background-color: #006eec3f;
+        border-radius: 11px;
+        padding: 6px 6px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        font-size: 0.9rem;
+
+        &:hover {
+          background-color: #006eecb0;
+        }
+
+        &:active {
+          transform: scale(95%);
+        }
+      }
+    }
+  }
+}
