@@ -30,6 +30,7 @@ const NotificationCenter = ({ notifications }) => {
 
   return (
     <div className='notificationCenter'>
+      <div className='unread'>{notifications?.length}</div>
       <div className='bell-button' onClick={handleNotificationClick}>
         <FaBell />
       </div>

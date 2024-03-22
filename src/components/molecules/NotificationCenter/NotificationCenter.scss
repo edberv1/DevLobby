@@ -36,6 +36,20 @@
     }
   }
 
+  .unread {
+    z-index: 15;
+    position: absolute;
+    top: -28px;
+    right: 6px;
+    background-color: red;
+    border-radius: 2px;
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+    padding: 0px 4px;
+    text-align: center;
+  }
+
   .notification-container {
     position: absolute;
     z-index: 500;

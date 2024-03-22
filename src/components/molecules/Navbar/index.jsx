@@ -72,20 +72,12 @@ const Navbar = () => {
     { id: 2, message: 'Hello Wolrd' },
     { id: 3, message: 'Hello Wolrd' },
     { id: 4, message: 'Hello Wolrd' },
-    { id: 4, message: 'Hello Wolrd' },
-    { id: 4, message: 'Hello Wolrd' },
-    { id: 4, message: 'Hello Wolrd' },
-    { id: 4, message: 'Hello Wolrd' },
-    { id: 4, message: 'Hello Wolrd' },
-    { id: 4, message: 'Hello Wolrd' },
-    { id: 4, message: 'Hello Wolrd' },
-    { id: 4, message: 'Hello Wolrd' },
-    { id: 4, message: 'Hello Wolrd' },
-    { id: 4, message: 'Hello Wolrd' },
-    { id: 4, message: 'Hello Wolrd' },
-    { id: 4, message: 'Hello Wolrd' },
-    { id: 4, message: 'Hello Wolrd' },
-    { id: 4, message: 'Hello Wolrd' }
+    { id: 5, message: 'Hello Wolrd' },
+    { id: 6, message: 'Hello Wolrd' },
+    { id: 7, message: 'Hello Wolrd' },
+    { id: 8, message: 'Hello Wolrd' },
+    { id: 9, message: 'Hello Wolrd' },
+    { id: 10, message: 'Hello Wolrd' }
   ]
 
   return (
