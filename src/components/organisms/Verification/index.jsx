@@ -7,23 +7,12 @@ import { AuthService } from '../../../services/AuthService'
 const Verification = () => {
   const [validUrl, setValidUrl] = useState()
   const param = useParams()
-  const [showComponent, setShowComponent] = useState(false)
-
-  //TODO: quick fix, not ideal
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setShowComponent(true)
-    }, 1000)
-
-    return () => clearTimeout(timeout)
-  }, [])
 
   useEffect(() => {
     const verifEmailUrl = async () => {
       try {
         const response = await AuthService.verifySignup(param.id, param.token)
-        console.log(response)
-        setValidUrl(true)
+        setValidUrl(response.success)
       } catch (error) {
         console.error(error)
         setValidUrl(false)
@@ -32,23 +21,20 @@ const Verification = () => {
     verifEmailUrl()
   }, [param])
 
-  return (
-    showComponent &&
-    (validUrl ? (
-      <div className='verification'>
-        <div className='container'>
-          <div id='success'>Verification successful ✅</div>
-          <div className='text2'>You are now a member of our community 💖</div>
-          <div className='guide'>
-            <Link to='/login'>
-              <div className='homeBtn'>Click to login</div>
-            </Link>
-          </div>
+  return validUrl ? (
+    <div className='verification'>
+      <div className='container'>
+        <div id='success'>Verification successful ✅</div>
+        <div className='text2'>You are now a member of our community 💖</div>
+        <div className='guide'>
+          <Link to='/login'>
+            <div className='homeBtn'>Click to login</div>
+          </Link>
         </div>
       </div>
-    ) : (
-      <PageNotFound />
-    ))
+    </div>
+  ) : (
+    <PageNotFound />
   )
 }
 
