@@ -3,7 +3,14 @@ import { FaBell } from 'react-icons/fa'
 import NotificationMessage from '../../atoms/NotificationMessage'
 import './NotificationCenter.scss'
 
-const NotificationCenter = () => {
+const arrNotifications = [
+  { id: 1, message: 'Hello Wolrd' },
+  { id: 2, message: 'Hello Wolrd' },
+  { id: 3, message: 'Hello Wolrd' },
+  { id: 4, message: 'Hello Wolrd' }
+]
+
+const NotificationCenter = ({ notifications }) => {
   const [showNotifications, setShowNotifications] = useState(false)
   const notificationRef = useRef(null)
 
@@ -35,11 +42,14 @@ const NotificationCenter = () => {
       </div>
       {showNotifications && (
         <div className='notification-container' ref={notificationRef}>
-          <div className='msg-container'>
-            <div className='icon'>#</div>
-            <div className='msg'>No notifications yet</div>
-          </div>
-          <NotificationMessage message={'hello'} />
+          {arrNotifications.map((item, i) => {
+            return (
+              <NotificationMessage
+                message={item.id + ' ' + item.message}
+                key={i}
+              />
+            )
+          })}
         </div>
       )}
     </div>
