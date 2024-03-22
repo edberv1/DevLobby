@@ -36,6 +36,7 @@
 
   .notification-container {
     position: absolute;
+    z-index: 500;
     right: -220px;
     top: 22px;
     margin-top: 6px;
@@ -44,10 +45,13 @@
     border: 1px solid #2f2f2f;
     max-width: 18rem;
     min-width: 12rem;
+    max-height: 16rem;
     display: flex;
     flex-direction: column;
     gap: 8px;
     padding: 8px 8px;
+    overflow-y: hidden;
+    overflow-y: auto;
 
     .msg-container {
       display: flex;
@@ -67,6 +71,10 @@
       &:active {
         transform: scale(95%);
       }
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
     }
   }
 }

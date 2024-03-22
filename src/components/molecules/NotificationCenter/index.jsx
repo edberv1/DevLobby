@@ -7,7 +7,21 @@ const arrNotifications = [
   { id: 1, message: 'Hello Wolrd' },
   { id: 2, message: 'Hello Wolrd' },
   { id: 3, message: 'Hello Wolrd' },
-  { id: 4, message: 'Hello Wolrd' }
+  { id: 4, message: 'Hello Wolrd' },
+  { id: 4, message: 'Hello Wolrd' },
+  { id: 4, message: 'Hello Wolrd' },
+  { id: 4, message: 'Hello Wolrd' },
+  { id: 4, message: 'Hello Wolrd' },
+  { id: 4, message: 'Hello Wolrd' },
+  { id: 4, message: 'Hello Wolrd' },
+  { id: 4, message: 'Hello Wolrd' },
+  { id: 4, message: 'Hello Wolrd' },
+  { id: 4, message: 'Hello Wolrd' },
+  { id: 4, message: 'Hello Wolrd' },
+  { id: 4, message: 'Hello Wolrd' },
+  { id: 4, message: 'Hello Wolrd' },
+  { id: 4, message: 'Hello Wolrd' },
+  { id: 4, message: 'Hello Wolrd' },
 ]
 
 const NotificationCenter = ({ notifications }) => {
