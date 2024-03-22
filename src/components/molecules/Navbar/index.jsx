@@ -68,7 +68,7 @@ const Navbar = () => {
   }
 
   const arrNotifications = [
-    { id: 1, message: 'Hello Wolrd' },
+    { id: 1, message: 'Shpat Spahiu sent you a friend request! And also went on to tell a story about a picnic he was in.' },
     { id: 2, message: 'Hello Wolrd' },
     { id: 3, message: 'Hello Wolrd' },
     { id: 4, message: 'Hello Wolrd' },

@@ -37,12 +37,7 @@ const NotificationCenter = ({ notifications }) => {
       {showNotifications && (
         <div className='notification-container' ref={notificationRef}>
           {notifications.map((item, i) => {
-            return (
-              <NotificationMessage
-                message={item.id + ' ' + item.message}
-                key={i}
-              />
-            )
+            return <NotificationMessage message={item.message} key={i} />
           })}
         </div>
       )}

@@ -59,7 +59,7 @@
     background-color: white;
     border-radius: 18px;
     border: 1px solid #2f2f2f;
-    max-width: 18rem;
+    max-width: 22rem;
     min-width: 12rem;
     max-height: 16rem;
     display: flex;
@@ -72,15 +72,29 @@
 
     .msg-container {
       display: flex;
-      gap: 5px;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 16px;
       background-color: #ececec92;
       border: 1px solid #2f2f2f1c;
       border-radius: 11px;
       padding: 6px 6px;
       cursor: pointer;
+      font-size: 0.9rem;
       transition: background-color 0.2s ease;
 
-      font-size: 0.9rem;
+      .icon {
+        display: flex;
+        align-items: center;
+      }
+
+      .msg {
+        width: 100%;
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
 
       &:hover {
         background-color: #006eec37;

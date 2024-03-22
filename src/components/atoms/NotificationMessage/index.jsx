@@ -1,10 +1,15 @@
 import React from 'react'
+import { TbPoint } from 'react-icons/tb'
 
 const Message = ({ message }) => {
   return (
     <div className='msg-container'>
-      <div className='icon'>#</div>
-      <div className='msg'>{message}</div>
+      <div className='icon'>
+        <TbPoint />
+      </div>
+      <div className='msg'>
+        <span>{message}</span>
+      </div>
     </div>
   )
 }
