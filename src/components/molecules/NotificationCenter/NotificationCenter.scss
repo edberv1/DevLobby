@@ -24,6 +24,7 @@
     justify-content: center;
     border: 1px solid #2f2f2f;
     transition: background-color 0.3s ease;
+    box-shadow: 0px 7px 11px -1px rgba(0, 0, 0, 0.5);
 
     &:hover {
       background-color: #e1e1e1;
@@ -31,6 +32,7 @@
 
     &:active {
       transform: scale(95%);
+      box-shadow: 0px 7px 11px -1px rgba(0, 0, 0, 0.3);
     }
   }
 
@@ -49,10 +51,10 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-    padding: 10px 8px;
+    padding: 8px 8px;
     overflow-y: hidden;
     overflow-y: auto;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px inset;
+    box-shadow: -6px 14px 16px -6px rgba(0, 0, 0, 0.67);
 
     .msg-container {
       display: flex;
