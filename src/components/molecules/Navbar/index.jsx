@@ -155,6 +155,7 @@ const Navbar = () => {
             Sign Out
           </li>
         )}
+        <NotificationCenter />
       </ul>
       <div className='butonat-client'>
         {!isLoggedIn && (
@@ -175,7 +176,6 @@ const Navbar = () => {
         )}
         {isLoggedIn && (
           <>
-            <NotificationCenter />
             <div
               className={`user-greeting ${showDropdown ? 'showDropdown' : ''}`}
             >

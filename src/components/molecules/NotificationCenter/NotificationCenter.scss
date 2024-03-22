@@ -3,76 +3,69 @@
   margin: 0;
   padding: 0;
   display: flex;
-  width: 0;
+  width: 30px;
   justify-content: center;
   align-items: center;
 
-  .container {
-    // adjust position here:
+  .bell-button {
     position: absolute;
     top: -22px;
-    right: -26px;
+    right: -54px;
     width: 0;
+    cursor: pointer;
+    background-color: #ffffff;
+    width: 22px;
+    height: 22px;
+    max-width: 40px;
+    border-radius: 100%;
+    padding: 0.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #2f2f2f;
+    transition: background-color 0.3s ease;
 
-    .bell-button {
-      cursor: pointer;
-      position: absolute;
-      top: 0;
-      right: 3px;
-      background-color: #ffffff;
-      width: 22px;
-      height: 22px;
-      max-width: 40px;
-      border-radius: 100%;
-      padding: 0.6rem;
+    &:hover {
+      background-color: #e1e1e1;
+    }
+
+    &:active {
+      transform: scale(95%);
+    }
+  }
+
+  .notification-container {
+    position: absolute;
+    right: -220px;
+    top: 22px;
+    margin-top: 6px;
+    background-color: white;
+    border-radius: 18px;
+    border: 1px solid #2f2f2f;
+    max-width: 18rem;
+    min-width: 12rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px 8px;
+
+    .msg-container {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid #2f2f2f;
+      gap: 5px;
+      background-color: #006eec3f;
+      border-radius: 11px;
+      padding: 6px 6px;
+      cursor: pointer;
       transition: background-color 0.3s ease;
 
+      font-size: 0.9rem;
+
       &:hover {
-        background-color: #e1e1e1;
+        background-color: #006eecb0;
       }
 
       &:active {
         transform: scale(95%);
-      }
-    }
-
-    .notification-container {
-      position: absolute;
-      right: 4px;
-      top: 42px;
-      margin-top: 6px;
-      background-color: white;
-      border-radius: 18px;
-      border: 1px solid #2f2f2f;
-      max-width: 18rem;
-      min-width: 12rem;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      padding: 8px 8px;
-
-      .msg-container {
-        display: flex;
-        gap: 5px;
-        background-color: #006eec3f;
-        border-radius: 11px;
-        padding: 6px 6px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-
-        font-size: 0.9rem;
-
-        &:hover {
-          background-color: #006eecb0;
-        }
-
-        &:active {
-          transform: scale(95%);
-        }
       }
     }
   }

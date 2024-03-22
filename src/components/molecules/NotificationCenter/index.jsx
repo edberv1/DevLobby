@@ -30,20 +30,18 @@ const NotificationCenter = () => {
 
   return (
     <div className='notificationCenter'>
-      <div className='container'>
-        <div className='bell-button' onClick={handleNotificationClick}>
-          <FaBell />
-        </div>
-        {showNotifications && (
-          <div className='notification-container' ref={notificationRef}>
-            <div className='msg-container'>
-              <div className='icon'>#</div>
-              <div className='msg'>No notifications yet</div>
-            </div>
-            <NotificationMessage message={'hello'} />
-          </div>
-        )}
+      <div className='bell-button' onClick={handleNotificationClick}>
+        <FaBell />
       </div>
+      {showNotifications && (
+        <div className='notification-container' ref={notificationRef}>
+          <div className='msg-container'>
+            <div className='icon'>#</div>
+            <div className='msg'>No notifications yet</div>
+          </div>
+          <NotificationMessage message={'hello'} />
+        </div>
+      )}
     </div>
   )
 }
