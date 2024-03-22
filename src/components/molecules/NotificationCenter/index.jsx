@@ -31,11 +31,15 @@ const NotificationCenter = ({ notifications }) => {
   return (
     <div className='notificationCenter'>
       <div className='unread'>{notifications?.length}</div>
-      <div className={`bell-button ${showNotifications && "bell-active"}`} onClick={handleNotificationClick}>
+      <div
+        className={`bell-button ${showNotifications && 'bell-active'}`}
+        ref={notificationRef}
+        onClick={handleNotificationClick}
+      >
         <FaBell />
       </div>
       {showNotifications && (
-        <div className='notification-container' ref={notificationRef}>
+        <div className='notification-container'>
           {notifications.map((item, i) => {
             return <NotificationMessage message={item.message} key={i} />
           })}
