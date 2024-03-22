@@ -67,6 +67,27 @@ const Navbar = () => {
     setShowDropdown(!showDropdown)
   }
 
+  const arrNotifications = [
+    { id: 1, message: 'Hello Wolrd' },
+    { id: 2, message: 'Hello Wolrd' },
+    { id: 3, message: 'Hello Wolrd' },
+    { id: 4, message: 'Hello Wolrd' },
+    { id: 4, message: 'Hello Wolrd' },
+    { id: 4, message: 'Hello Wolrd' },
+    { id: 4, message: 'Hello Wolrd' },
+    { id: 4, message: 'Hello Wolrd' },
+    { id: 4, message: 'Hello Wolrd' },
+    { id: 4, message: 'Hello Wolrd' },
+    { id: 4, message: 'Hello Wolrd' },
+    { id: 4, message: 'Hello Wolrd' },
+    { id: 4, message: 'Hello Wolrd' },
+    { id: 4, message: 'Hello Wolrd' },
+    { id: 4, message: 'Hello Wolrd' },
+    { id: 4, message: 'Hello Wolrd' },
+    { id: 4, message: 'Hello Wolrd' },
+    { id: 4, message: 'Hello Wolrd' }
+  ]
+
   return (
     <nav className={`navbar ${isMenuOpen ? 'menu-open' : ''}`}>
       {(!isMenuOpen || !isMobile || !isLoggedIn) && (
@@ -155,10 +176,9 @@ const Navbar = () => {
             Sign Out
           </li>
         )}
-        <NotificationCenter />
       </ul>
       <div className='butonat-client'>
-        {!isLoggedIn && (
+        {!isLoggedIn ? (
           <>
             <button
               className='login'
@@ -173,6 +193,8 @@ const Navbar = () => {
               Sign Up
             </button>
           </>
+        ) : (
+          <NotificationCenter notifications={arrNotifications} />
         )}
         {isLoggedIn && (
           <>
