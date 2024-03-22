@@ -7,7 +7,7 @@ const NotificationCenter = ({ notifications }) => {
   const [showNotifications, setShowNotifications] = useState(false)
   const notificationRef = useRef(null)
 
-  // Disappear on click outside
+  // Close on click outside
   useEffect(() => {
     function handleClickOutside (event) {
       if (
@@ -17,12 +17,21 @@ const NotificationCenter = ({ notifications }) => {
         setShowNotifications(false)
       }
     }
-
     document.addEventListener('mousedown', handleClickOutside)
     return () => {
       document.removeEventListener('mousedown', handleClickOutside)
     }
   }, [])
+
+  // Close if ESC pressed
+  useEffect(() => {
+    const keyHandler = ({ keyCode }) => {
+      if (!showNotifications || keyCode !== 27) return
+      setShowNotifications(false)
+    }
+    document.addEventListener('keydown', keyHandler)
+    return () => document.removeEventListener('keydown', keyHandler)
+  })
 
   const handleNotificationClick = () => {
     setShowNotifications(!showNotifications)
