@@ -68,16 +68,23 @@ const Navbar = () => {
   }
 
   const arrNotifications = [
-    { id: 1, message: 'Shpat Spahiu sent you a friend request! And also went on to tell a story about a picnic he was in.' },
-    { id: 2, message: 'Hello Wolrd' },
-    { id: 3, message: 'Hello Wolrd' },
-    { id: 4, message: 'Hello Wolrd' },
-    { id: 5, message: 'Hello Wolrd' },
-    { id: 6, message: 'Hello Wolrd' },
-    { id: 7, message: 'Hello Wolrd' },
-    { id: 8, message: 'Hello Wolrd' },
-    { id: 9, message: 'Hello Wolrd' },
-    { id: 10, message: 'Hello Wolrd' }
+    { id: 1, message: 'Welcome to dev lobby.' },
+    {
+      id: 2,
+      message: 'User Filan has posted for the first time after a while'
+    },
+    { id: 3, message: "You've got a new friend request." },
+    {
+      id: 4,
+      message:
+        'Shpat Spahiu sent you a friend request! And also went on to tell a story about a picnic he was in.'
+    },
+    { id: 5, message: 'Test1' },
+    { id: 6, message: 'Test2' },
+    { id: 7, message: 'Test3' },
+    { id: 8, message: 'Test4' },
+    { id: 9, message: 'Test5' },
+    { id: 10, message: 'Test6' }
   ]
 
   return (

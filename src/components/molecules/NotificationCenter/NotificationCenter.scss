@@ -84,7 +84,8 @@
       border-radius: 11px;
       padding: 6px 6px;
       cursor: pointer;
-      font-size: 0.9rem;
+      min-width: 20rem;
+      font-size: 0.8rem;
       transition: background-color 0.2s ease;
 
       .icon {
@@ -95,7 +96,7 @@
       .msg {
         width: 100%;
         display: block;
-        white-space: nowrap;
+        white-space: normal;
         overflow: hidden;
         text-overflow: ellipsis;
       }
