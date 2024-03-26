@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaChartPie } from 'react-icons/fa'
-import { IoIosPeople, IoMdSettings } from 'react-icons/io'
+import { IoIosAddCircle, IoIosPeople, IoMdSettings } from 'react-icons/io'
 import Logo from "../../../assets/images/icon.png";
 
 export const SidebarData = [
@@ -21,6 +21,12 @@ export const SidebarData = [
     title: 'Users',
     path: '/admin/users',
     icon: <IoIosPeople />,
+    cName: 'sidebar-text'
+  },
+  {
+    title: 'Challenges',
+    path: '/admin/challenges',
+    icon: <IoIosAddCircle />,
     cName: 'sidebar-text'
   },
   {

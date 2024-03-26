@@ -51,6 +51,12 @@ const AdminLayout = () => {
                         Users
                       </li>
                     </Link>
+                    <Link to='/admin/challenges'>
+                      <li>
+                        <FaChartPie />
+                        Challenges
+                      </li>
+                    </Link>
                     <Link to='/admin/settings'>
                       <li>
                         <IoMdSettings />

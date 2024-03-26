@@ -20,6 +20,7 @@ function EditTable() {
             })
             .catch((err) => console.log(err));
     }, [id]);
+         
 
     const handleUpdate = (event) => {
         event.preventDefault();
@@ -34,13 +35,12 @@ function EditTable() {
     };
 
     const handleInputChange = (e) => {
-      const { name, value: inputValue } = e.target;
-      setValue(prevState => ({
-          ...prevState,
-          [name]: inputValue
-      }));
-  };
-  
+        const { name, value: inputValue } = e.target;
+        setValue(prevState => ({
+            ...prevState,
+            [name]: inputValue
+        }));
+    };
 
     return (
         <div>

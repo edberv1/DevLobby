@@ -3,8 +3,9 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import './AdminChallengeTable.scss'
 
-function AdminChallengesTable() {
+function AdminChallengeTable() {
     const [challenge, setChallenge] = useState([])
   useEffect(() => {
     axios.get('http://localhost:8080/api/challenge/')
@@ -29,7 +30,7 @@ function AdminChallengesTable() {
   }
 
     return(
-        <>
+        <div className='table-container'>
         <h1>Challenges</h1>
         <table width={{}}>
             <thead>
@@ -38,9 +39,8 @@ function AdminChallengesTable() {
                 <th>Challenge Name</th>
                 <th>Difficulty</th>
                 <th>Theoretical</th>
-                <td>View</td>
-                <td>Edit</td>
-                <td>Delete</td>
+                <th>Edit</th>
+                <th>Delete</th>
             </tr>
             </thead>
             <tbody>
@@ -52,10 +52,7 @@ function AdminChallengesTable() {
                     <td>{challenge.challengeDifficulty}</td>
                     <td>{challenge.theoretical}</td>
                     <td>
-                        <Link to={`/view/${challenge._id}`}>View</Link>
-                    </td>
-                    <td>
-                        <Link to={`/edit/${challenge._id}`}>Edit</Link>
+                        <Link to={`/admin/challenges/edit/${challenge._id}`}>Edit</Link>
                     </td>
                     <td>
                         <button onClick={() => handleDelete(challenge._id)}>Delete</button>
@@ -65,8 +62,8 @@ function AdminChallengesTable() {
             })}
             </tbody>
         </table>
-        </>
+        </div>
     )
 }
 
-export default AdminChallengesTable;
+export default AdminChallengeTable;
