@@ -25,7 +25,6 @@ import UsersAdmin from "./components/organisms/UsersAdmin";
 import AdminForm from "./components/organisms/AdminForm";
 
 import AdminCreateChallengeArea from "./components/organisms/AdminCreateChallengeArea";
-import EditChallenge from "./components/organisms/EditChallenge";
 
 
 const router = createBrowserRouter([
@@ -118,13 +117,7 @@ const router = createBrowserRouter([
       },
       {
         path: "challenges",
-        element: <AdminCreateChallengeArea />,
-        children: [
-          {
-            path: "edit/:id",
-            element: <EditChallenge />
-          }
-        ]
+        element: <AdminCreateChallengeArea />
       }
     ]
   },
