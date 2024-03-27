@@ -86,7 +86,7 @@ export default function ChallengeTable({ challenges, sortCategory, onSortChange 
                                 <td>{challenge.difficulty}</td>
                                 <td>{challenge.time} minutes</td>
                                 <td>
-                                    <Link to={`/playcodearena/practical/challenge-code/${challenge.id}`}>Start</Link>
+                                    <Link className="start-link" to={`/playcodearena/practical/challenge-code/${challenge.id}`}>Start</Link>
                                 </td>
                             </tr>
                         ))}
