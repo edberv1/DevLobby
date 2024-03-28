@@ -21,3 +21,4 @@ export class ChallengeService {
         return await Api.request("DELETE", `/challenge/${challengeId}`);
     }
 }
+

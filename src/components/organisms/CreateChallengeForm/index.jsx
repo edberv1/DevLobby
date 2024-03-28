@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './createChallenge.scss'
+import { ChallengeService } from '../../../services/ChallengeService';
 
 function CreateChallenge() {
     const [challengeName, setChallengeName] = useState('');
@@ -11,7 +12,7 @@ function CreateChallenge() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        axios.post('http://localhost:8080/api/challenge/', {
+        ChallengeService.CreateChallenge({
             challengeName: challengeName,
             challengeDescription: challengeDescription,
             challengeDifficulty: challengeDifficulty,

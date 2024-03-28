@@ -8,6 +8,7 @@ import Logo from '../../../assets/images/icon.png'
 import { FaChartPie, FaUsers, FaMoon, FaSun } from 'react-icons/fa'
 import { IoMdSettings } from 'react-icons/io'
 import { TbDoorExit } from 'react-icons/tb'
+import { FaGamepad } from "react-icons/fa";
 
 const AdminLayout = () => {
   const { isDarkMode, toggleDarkMode } = useContext(DarkModeContext) // Use DarkModeContext
@@ -53,7 +54,7 @@ const AdminLayout = () => {
                     </Link>
                     <Link to='/admin/challenges'>
                       <li>
-                        <FaChartPie />
+                        <FaGamepad />
                         Challenges
                       </li>
                     </Link>
