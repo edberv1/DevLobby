@@ -4,7 +4,6 @@
   border-radius: 0.8rem;
   overflow: hidden;
   margin: auto;
-  
 
   .table__header {
     width: 97.5%;
@@ -28,7 +27,7 @@
     .controls {
       display: flex;
       align-items: center;
-    
+
       .search-container {
         display: flex;
         align-items: center;
@@ -37,12 +36,12 @@
         padding: 2px;
         margin-right: 10px;
         background-color: #fff;
-    
+
         .search-icon {
           margin-left: 8px;
           color: #999;
         }
-    
+
         .search-input {
           border: none;
           padding: 8px 12px;
@@ -52,7 +51,7 @@
           width: 150px; /* Adjust width as needed */
         }
       }
-    
+
       button {
         background: none;
         color: black;
@@ -129,7 +128,9 @@
 
     tbody tr {
       --delay: 0.1s;
-      transition: 0.5s ease-in-out var(--delay), background-color 0s;
+      transition:
+        0.5s ease-in-out var(--delay),
+        background-color 0s;
     }
 
     tbody tr.hide {
@@ -221,17 +222,15 @@
     .controls {
       flex-wrap: wrap;
     }
-  
+
     .search-container {
       margin-bottom: 0.5rem;
     }
-  
+
     .search-input {
       width: 100%; /* Adjust width for smaller screens */
       max-width: 200px; /* Set a maximum width for the input */
     }
-  
-    
 
     table {
       width: 100%;
@@ -247,5 +246,62 @@
         margin-right: 0.5rem;
       }
     }
+  }
+}
+
+// Edit Modal
+
+.usernameEdit{
+  width: 100%;
+  margin-bottom: 16px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+  padding: 4px 8px;
+}
+input[type='email'],
+input[type='password'],
+input[type='date'] {
+  width: 100%;
+  margin-bottom: 16px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+  padding: 4px 8px;
+}
+
+select {
+  width: 100%;
+  padding: 4px 8px;
+  margin-bottom: 16px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+label {
+  display: block;
+  color: #495057;
+  font-size: 14px;
+}
+
+.saveButton {
+  display: block;
+  width: 50%;
+  padding: 5px 0;
+  margin-top: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #0056b3;
   }
 }
