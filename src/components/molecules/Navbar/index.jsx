@@ -149,6 +149,11 @@ const Navbar = () => {
             <Link to='/chat'>Chat</Link>
           </li>
         )}
+        {isLoggedIn && (
+          <li onClick={closeMenu}>
+            <Link to='/diary'>Diary</Link>
+          </li>
+        )}
         <li onClick={closeMenu}>
           <Link to='/blog'>Blog</Link>
         </li>

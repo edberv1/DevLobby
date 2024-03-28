@@ -23,6 +23,7 @@ import AdminSettings from "./components/organisms/AdminSettings";
 import AdminLanding from "./components/organisms/AdminLanding";
 import UsersAdmin from "./components/organisms/UsersAdmin";
 import AdminForm from "./components/organisms/AdminForm";
+import DevDiary from "./components/organisms/DevDiary";
 
 import AdminCreateChallengeArea from "./components/organisms/AdminCreateChallengeArea";
 
@@ -59,6 +60,11 @@ const router = createBrowserRouter([
       {
         path: "chat",
         element: <Chat />,
+      },
+      {
+        path: 'diary',
+        element: <DevDiary />
+
       },
       {
         path: "playcodearena",
