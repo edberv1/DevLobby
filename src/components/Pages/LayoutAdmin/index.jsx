@@ -8,6 +8,7 @@ import Logo from '../../../assets/images/icon.png'
 import { FaChartPie, FaUsers, FaMoon, FaSun } from 'react-icons/fa'
 import { IoMdSettings } from 'react-icons/io'
 import { TbDoorExit } from 'react-icons/tb'
+import { FaGamepad } from "react-icons/fa";
 import AdminForm from '../../organisms/AdminForm'
 
 const AdminLayout = () => {
@@ -59,6 +60,12 @@ const AdminLayout = () => {
                       <li>
                         <FaUsers />
                         Users
+                      </li>
+                    </Link>
+                    <Link to='/admin/challenges'>
+                      <li>
+                        <FaGamepad />
+                        Challenges
                       </li>
                     </Link>
                     <Link to='/admin/settings'>

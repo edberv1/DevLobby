@@ -1,0 +1,57 @@
+.challenge-form-container{
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 20px;
+
+    form{
+        width: 90%;
+        padding: 20px;
+        border: 1px solid #000;
+        border-radius: 10px;
+
+        label{
+            display: block;
+        }
+
+        input{
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #000;
+            border-radius: 5px;
+        }
+
+        select{
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #000;
+            border-radius: 5px;
+            outline: none;
+            transition: all 0.3s ease-in-out;
+        }
+
+        background-color: #1a1a1a;
+        color: #fff;
+    }
+    
+    button{
+        display: block;
+        padding: 10px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 5px;
+        background-color: #fff;
+        color: #000;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        &:hover{
+            background-color: #000;
+            color: #fff;
+        }
+    }
+}
