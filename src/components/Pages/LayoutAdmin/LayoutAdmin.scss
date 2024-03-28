@@ -16,7 +16,7 @@
     .main {
       padding-top: 20px;
       z-index: 0;
-      height: 100vh;
+      min-height: 100vh;
       background-color: #ced4da;
       grid-column: 2 / 3;
       grid-row: 2 / 3;
