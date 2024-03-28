@@ -19,7 +19,7 @@ function PlayArenaCards() {
           <div className={`card ${selectedCard === 'Theory' ? 'selected' : ''}`}>
             <div className="content">
               <h2>Theoretical Questions</h2>
-              <p>Test your theory knowledge and expertise with a variety of theoretical questions. Explore concepts, principles, and frameworks to expand your understanding.</p>
+              <p>Test your theory knowledge and expertise with a variety of theoretical questions. Explore concepts and frameworks to expand your understanding.</p>
             </div>
             <div className="image" style={{ backgroundImage: `url(${theoryImage})` }}></div>
             <SelectButton onClick={() => handleCardSelect('Theory')} selected={selectedCard === 'Theory'} />

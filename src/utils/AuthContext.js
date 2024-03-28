@@ -6,6 +6,7 @@ const AuthContext = createContext({
   isLoggedIn: false,
   login: () => {},
   logout: () => {},
+  isAdmin: false,
 });
 
 export default function AuthProvider({ children }) {
@@ -13,6 +14,7 @@ export default function AuthProvider({ children }) {
   const [isLoggedIn, setIsLoggedIn] = useState(token);
   const [userData, setUserData] = useState(null); // Add userData state
   const [isLoading, setIsLoading] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false); 
 
   useEffect(() => {
     setIsLoggedIn(token);
@@ -21,42 +23,17 @@ export default function AuthProvider({ children }) {
       const userId = parsedToken._id; 
       
       AuthService.getUserById(userId)
-        .then((user) => setUserData(user))
-        .catch((error) => console.error("Error fetching user data:", error));
+        .then((user) => {
+          setUserData(user);
+          setIsAdmin(user.isAdmin); 
+        })
+        .catch((error) => console.error("Error fetching user data:", error))
+        .finally(() => setIsLoading(false));
     } else {
       setUserData(null);
+      setIsLoading(false);
     }
   }, [token]);
-
-  useEffect(() => {
-    const validateToken = async () => {
-      if (token) {
-        try {
-          const response = await AuthService.validateToken(token);
-          if (response.success) {
-            setIsLoggedIn(true);
-            
-          } else if (response.success) {
-            setIsLoggedIn(true);
-          
-          } else {
-            logout(); 
-          }
-        } catch (error) {
-          console.error("Error validating token:", error);
-          logout();
-        } finally {
-          setIsLoading(false); // token osht valid, render admin page
-        }
-      } else {
-        setIsLoading(false); //token not valid
-      }
-    };
-
-    validateToken();
-
-   
-  }, []); 
 
   const login = (newToken) => {
     setToken(newToken);
@@ -64,19 +41,38 @@ export default function AuthProvider({ children }) {
     localStorage.setItem("token", newToken);
   };
 
+  const adminLogin = async (newToken) => {
+    try {
+      const parsedToken = JSON.parse(atob(newToken.split('.')[1]));
+      const userId = parsedToken._id;
+      const user = await AuthService.getUserById(userId);
+      
+      if (user.isAdmin) {
+        setIsAdmin(true); 
+        login(newToken);
+      } else {
+        console.error("User is not an admin.");
+      }
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
+  };
+  
+
   const logout = () => {
     setToken(null);
     setIsLoggedIn(false);
+    setUserData(null);
+    setIsAdmin(false); 
     localStorage.removeItem("token");
   };
 
   if (isLoading) {
-    // Render loading page while token validationn is happening
     return <div>Loading...</div>;
   }
 
   return (
-    <AuthContext.Provider value={{ token, isLoggedIn, login, logout, userData }}>
+    <AuthContext.Provider value={{ token, isLoggedIn, login, adminLogin, logout, userData, isAdmin }}>
       {children}
     </AuthContext.Provider>
   );

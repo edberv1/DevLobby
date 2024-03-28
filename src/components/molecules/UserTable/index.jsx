@@ -19,17 +19,21 @@ const UserTable = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortDirection, setSortDirection] = useState("desc");
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
+   const fetchData = async () => {
     try {
-      const response = await fetch("http://localhost:8080/api/user");
+      const token = localStorage.getItem('token');
+      const response = await fetch("http://localhost:8080/api/user", {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
+      
       const data = await response.json();
+      // Sorting data by createdAt field
       const sortedData = data.slice().sort((a, b) => {
         const dateA = new Date(a.createdAt);
         const dateB = new Date(b.createdAt);
@@ -40,6 +44,10 @@ const UserTable = () => {
       console.error("Error fetching data:", error);
     }
   };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const handleDelete = async () => {
     console.log('Deleting user with ID:', selectedUserId);
