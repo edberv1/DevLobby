@@ -1,0 +1,54 @@
+.devDiary {
+  min-height: 100vh;
+  padding: 2rem 8rem;
+  padding-bottom: 2rem;
+  background-color: #1a1a1a;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  .diaryBody {
+    display: flex;
+    justify-content: space-between;
+    gap: 2.5rem;
+
+    .cardContainer {
+      margin-left: 2rem;
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .devDiary {
+    padding: 1rem 2rem;
+
+    .diaryBody {
+      .cardContainer {
+        width: 100%;
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 564px) {
+  .devDiary {
+    padding: 1rem 2rem;
+
+    .diaryBody {
+      .cardContainer {
+        width: 100%;
+        margin-left: 0;
+      }
+    }
+
+    .contacts {
+      display: none;
+    }
+  }
+}
