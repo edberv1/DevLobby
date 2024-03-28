@@ -15,7 +15,7 @@ const AdminForm = () => {
   const navigate = useNavigate();
 
 
-  const { login } = React.useContext(AuthContext);
+  const { adminLogin } = React.useContext(AuthContext);
 
   useEffect(() => {
     const handleResize = () => {
@@ -34,7 +34,7 @@ const AdminForm = () => {
     try {
       const response = await AuthService.adminLogin({ email, password });
       if (response.token && response.isAdmin) {
-        login(response.token, true); 
+        adminLogin(response.token, true); 
         navigate("/admin"); 
       } else {
         setErrorMessage("Invalid admin credentials or not authorized.");

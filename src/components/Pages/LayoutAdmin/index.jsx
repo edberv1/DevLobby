@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { AuthContext } from '../../../utils/AuthContext'
 import { Link, Navigate, Outlet } from 'react-router-dom'
 import { DarkModeContext } from '../../../utils/DarkModeContext' // Import DarkModeContext
@@ -9,14 +9,24 @@ import { FaChartPie, FaUsers, FaMoon, FaSun } from 'react-icons/fa'
 import { IoMdSettings } from 'react-icons/io'
 import { TbDoorExit } from 'react-icons/tb'
 import { FaGamepad } from "react-icons/fa";
+import AdminForm from '../../organisms/AdminForm'
 
 const AdminLayout = () => {
   const { isDarkMode, toggleDarkMode } = useContext(DarkModeContext) // Use DarkModeContext
-  const { token, logout } = useContext(AuthContext)
+  const { token, logout, isAdmin } = useContext(AuthContext)
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(false);
+  }, [isAdmin]);
+
+  // if loading ose isAdmin osht false kthehemi ne admin forme.
+  if (loading || !isAdmin) {
+    return <AdminForm />;
+  }
   return (
     <>
-      {token ? (
-        // Sidebar and Header
+        {/*Sidebar and Header*/}
         <div className='adminLayout'>
           <div className='container'>
             <div className={isDarkMode ? 'header header-dark' : 'header'}>
@@ -94,9 +104,6 @@ const AdminLayout = () => {
             </div>
           </div>
         </div>
-      ) : (
-        <Navigate to='/adminLogin' />
-      )}
     </>
   )
 }

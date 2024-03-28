@@ -11,9 +11,8 @@ const About = () => {
     { id: 5, name: 'Leon Miftari', position: 'Web Developer', gender: 'male' },
     { id: 6, name: 'Nol Ahmedi', position: 'Web Developer', gender: 'male' },
     { id: 7, name: 'Orges Isufi', position: 'Web Developer', gender: 'male' },
-    { id: 8, name: 'Rrezon Curraj', position: 'Web Developer', gender: 'male' },
-    { id: 9, name: 'Saimir Bunjaku', position: 'Web Developer', gender: 'male' },
-    { id: 10, name: 'Shpat Spahiu', position: 'Web Developer', gender: 'male' },
+    { id: 8, name: 'Saimir Bunjaku', position: 'Web Developer', gender: 'male' },
+    { id: 9, name: 'Shpat Spahiu', position: 'Web Developer', gender: 'male' },
   ];
 
   const teamLeader = teamMembers.find(member => member.position === 'Lead Team');

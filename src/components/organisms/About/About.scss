@@ -4,12 +4,12 @@
 
   .company-info {
     padding: 3rem 1rem;
-    background-color: #1a1a1a;
+    background-color: #3f3f3f;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
     h2 {
       font-size: 2.8rem;
-      color: #005792;
+      color: #fff;
       margin-bottom: 1rem;
       text-transform: uppercase;
     }
@@ -25,13 +25,14 @@
 
   h1 {
     font-size: 2.2rem;
-    color: #0077b6;
+    color: #fff;
     margin: 2rem auto;
     max-width: 600px;
   }
 
   .team-members {
     display: grid;
+    background-color: #1a1a1a;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 1.5rem;
     padding: 0 2rem 2rem;
@@ -40,13 +41,9 @@
       grid-template-columns: repeat(3, 1fr);
     }
   }
-  .team-leader-only {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-  }
+
   .team-member-card {
-    background-color: #fff;
+    background-color: #d1c4c4ef;
     border: none;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
@@ -91,10 +88,28 @@
         color: #666;
       }
     }
+
+    &.team-leader {
+      border: 2px solid #0077b6;
+    }
   }
-  @media (max-width: 768px) {
-    .team-members {
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+
+  .team-members {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+
+    .team-member-card {
+      flex: 0 0 calc(33.333% - 1rem);
+
+      @media (max-width: 768px) {
+        flex: 0 0 calc(50% - 1rem);
+      }
+
+      @media (max-width: 480px) {
+        flex: 0 0 calc(100% - 1rem);
+      }
     }
   }
 }
