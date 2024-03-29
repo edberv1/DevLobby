@@ -1,6 +1,21 @@
 .diaryForm {
   background-color: #1b2730;
-  height: 6rem;
-  width: 100%;
   border-radius: 16px;
+  min-height: 8rem;
+  padding: 1rem;
+  padding-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+
+  img {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .inputContainer {
+    width: 90%;
+    background-color: #28343e;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+  }
 }

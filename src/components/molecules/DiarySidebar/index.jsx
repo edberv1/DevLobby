@@ -9,11 +9,11 @@ const Contacts = ({ fullName, username, about }) => {
         <div className='userContainer'>
           <img src={ProfileGirl} alt='Profile' className='profile-img' />
 
-          <div className='fullName'>Filan Fisteku</div>
-          <div className='username'>@fistekuuu</div>
+          <div className='fullName'>Filan Fisteku {fullName}</div>
+          <div className='username'>@fistekuuu {username}</div>
           <div className='about'>
-            A full stack developer and a secret agent. Here to solve your
-            problems.
+            {about} A full stack developer and a secret agent. Here to solve
+            your problems.
           </div>
         </div>
         <div className='friendsContainer'>Friends</div>
