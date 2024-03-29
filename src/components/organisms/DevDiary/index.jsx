@@ -2,7 +2,7 @@ import React from 'react'
 import './DevDiary.scss'
 import DiaryFrom from '../../molecules/DiaryForm'
 import DiaryCard from '../../molecules/DiaryCard'
-import Contacts from '../../molecules/DiaryContacts'
+import Contacts from '../../molecules/DiarySidebar'
 
 const DevDiary = () => {
   const cards = [
@@ -36,7 +36,7 @@ const DevDiary = () => {
   return (
     <div className='devDiary'>
       <div className='diaryBody'>
-        <Contacts className='contacts' />
+        <Contacts />
         <div className='cardContainer'>
           <DiaryFrom />
           {cards.map((card, i) => {
