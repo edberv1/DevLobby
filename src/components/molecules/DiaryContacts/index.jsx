@@ -5,15 +5,9 @@ import './DiaryContacts.scss'
 const Contacts = () => {
   return (
     <div className='contacts'>
-      <img src={ProfileGirl} alt='Profile' className='profile-image' />
-      <img src={ProfileGirl} alt='Profile' className='profile-image' />
-      <img src={ProfileGirl} alt='Profile' className='profile-image' />
-      <img src={ProfileGirl} alt='Profile' className='profile-image' />
-      <img src={ProfileGirl} alt='Profile' className='profile-image' />
-      <img src={ProfileGirl} alt='Profile' className='profile-image' />
-      <img src={ProfileGirl} alt='Profile' className='profile-image' />
-      <img src={ProfileGirl} alt='Profile' className='profile-image' />
-      <img src={ProfileGirl} alt='Profile' className='profile-image' />
+      <div className='userContainer'>profile</div>
+
+      <div className='friendsContainer'>Friends</div>
     </div>
   )
 }

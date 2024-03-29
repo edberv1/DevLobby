@@ -35,9 +35,10 @@ const DevDiary = () => {
 
   return (
     <div className='devDiary'>
-      <DiaryFrom />
       <div className='diaryBody'>
+        <Contacts className='contacts' />
         <div className='cardContainer'>
+          <DiaryFrom />
           {cards.map((card, i) => {
             return (
               <DiaryCard
@@ -52,8 +53,6 @@ const DevDiary = () => {
             )
           })}
         </div>
-
-        <Contacts className='contacts' />
       </div>
     </div>
   )
