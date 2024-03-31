@@ -1,15 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './DiaryForm.scss'
 import ProfileGirl from '../../../assets/images/profile_picture_demo.png'
 
 const DiaryFrom = () => {
+  const [text, setText] = useState('')
+
+  const handleInputBlur = e => {
+    if (text.length) {
+      return e.target.focus()
+    }
+  }
+
+  const handlePost = () => {
+    console.log(text)
+    setText('')
+  }
+
   return (
     <div className='diaryForm'>
       <img src={ProfileGirl} alt='Profile' className='profile-img' />
 
       <div className='inputContainer'>
-        <textarea name='postContent' 
-        placeholder="What's going on today dev?"/>
+        <textarea
+          value={text}
+          onChange={e => setText(e.target.value)}
+          name='postContent'
+          placeholder="What's going on today dev?"
+          onBlur={handleInputBlur}
+        />
 
         <div className='actionContainer'>
           <div className='addPhotoBtn'>
@@ -31,7 +49,9 @@ const DiaryFrom = () => {
             </svg>
           </div>
 
-          <div className="postBtn">Post</div>
+          <div onClick={handlePost} className='postBtn'>
+            Post
+          </div>
         </div>
       </div>
     </div>
