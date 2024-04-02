@@ -1,12 +1,12 @@
-import './App.css';
-import Section from "./Organisms/TestSection/Section"
+import { RouterProvider } from "react-router-dom";
+import router from "./router";
+import "./App.scss";
 
 function App() {
   return (
-   <> 
-   <h1>Dev Lobby</h1>
-   <Section/>
-   </>
+    <div className="App">
+      <RouterProvider router={router} />
+    </div>
   );
 }
 

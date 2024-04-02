@@ -1,0 +1,76 @@
+.diaryForm {
+  background-color: #1b2730;
+  border-radius: 16px;
+  min-height: 8rem;
+  padding: 1rem;
+  padding-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+
+  img {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .inputContainer {
+    width: 90%;
+    border-radius: 12px;
+
+    textarea {
+      cursor: pointer;
+      width: 100%;
+      height: 80px;
+      padding: 0.5rem 0.8rem;
+      color: white;
+      background-color: #28343e;
+      box-sizing: border-box;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      resize: none;
+      outline: none;
+      transition: height 0.4s ease;
+
+      &:focus {
+        height: 150px;
+        cursor: default;
+      }
+    }
+
+    .actionContainer {
+      padding: 0.6rem 0.2rem;
+      display: flex;
+      justify-content: space-between;
+
+      svg {
+        color: #747ae3;
+        cursor: pointer;
+
+        &:hover {
+          color: #4b52d7;
+        }
+
+        &:active {
+          scale: 95%;
+        }
+      }
+
+      .postBtn {
+        cursor: pointer;
+        background-color: #747ae3;
+        color: white;
+        padding: 0.2rem 1rem;
+        border-radius: 16px;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: #4b52d7;
+        }
+
+        &:active {
+          scale: 95%;
+        }
+      }
+    }
+  }
+}
